@@ -60,25 +60,27 @@
         <div class="flex flex-col gap-2">
             <div class="font-medium text-[#37352f] mb-1 pl-1">Frontend</div>
             <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
-                React • SvelteKit<br>
-                Vue.js • Next.js<br>
-                TailwindCSS
+                Javascript • Typescript<br>
+                ReactJS • NextJS • VueJS<br>
+                Svelte • Tailwind CSS
             </div>
         </div>
         <div class="flex flex-col gap-2">
             <div class="font-medium text-[#37352f] mb-1 pl-1">Backend</div>
             <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
-                Node.js • Express<br>
-                PostgreSQL • Redis<br>
-                Firebase • Supabase
+                NodeJS • ExpressJS • NestJS<br>
+                Python • Flask • Django<br>
+                MySQL • NoSQL • Firebase<br>
+                C • C++
             </div>
         </div>
         <div class="flex flex-col gap-2">
-            <div class="font-medium text-[#37352f] mb-1 pl-1">General</div>
+            <div class="font-medium text-[#37352f] mb-1 pl-1">DevOps & Tools</div>
             <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
-                Git / GitHub<br>
-                Docker • AWS<br>
-                Agile • Scrum
+                Git • GitHub • Actions<br>
+                Docker • Kubernetes<br>
+                Ubuntu • CloudFlare<br>
+                Jupyter
             </div>
         </div>
     </div>
@@ -94,13 +96,16 @@
     <NotionBlock>
         <ul class="list-disc pl-6 space-y-2 text-[#37352f]">
             <li>
-                <span class="font-medium">1st Place Hackathon 2024</span> - Built an AI-powered accessibility tool.
+                <span class="font-medium">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed an innovative smart city solution focusing on urban sustainability.
             </li>
             <li>
-                <span class="font-medium">Open Source Contributor</span> - Merged PRs to Svelte and Vite core repos.
+                <span class="font-medium">2nd Place on Technology Development - KRTI (2025)</span> - Designed and implemented advanced control systems for unmanned aerial vehicles.
             </li>
             <li>
-                <span class="font-medium">Best UI/UX Design</span> - University Capstone Project Award.
+                <span class="font-medium">3rd Place on Web Development Hackathon Fit Competition 2025 - UKSW</span> - Created a responsive web application solving real-world logistics problems.
+            </li>
+            <li>
+                <span class="font-medium">Best Methodology Award on Technology Development - KRTI (2024)</span> - Recognized for comprehensive research methods and systematic engineering approach.
             </li>
         </ul>
     </NotionBlock>
