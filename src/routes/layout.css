@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+:root {
+	--notion-bg: #ffffff;
+	--notion-text: #37352f;
+	--notion-gray: #f7f7f5;
+	--notion-border: #e9e9e7;
+    --font-inter: 'Inter', sans-serif;
+}
+
+body {
+	background-color: var(--notion-bg);
+	color: var(--notion-text);
+	font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+}
