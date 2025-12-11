@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './layout.css';
+    import { page } from '$app/stores';
     import { fade, fly } from 'svelte/transition';
     import FloatingNav from '$lib/components/FloatingNav.svelte';
     import Contact from 'lucide-svelte/icons/contact'
@@ -11,6 +12,10 @@
     function toggleContact() {
         isContactOpen = !isContactOpen;
     }
+
+    const routeConfig: Record<string, { icon: string, label: string }> = {
+        'linktree': { icon: '🔗', label: 'Links' }
+    };
 </script>
 
 <div class="min-h-screen w-full bg-[#ffffff] text-[#37352f]">
@@ -18,11 +23,26 @@
 	<main class="w-full relative">
         <!-- Minimal Topbar like public Notion -->
         <div class="sticky top-0 z-10 flex h-11 items-center justify-between px-3 bg-white/95 backdrop-blur-sm transition-all border-b border-[#e9e9e7]">
-             <div class="flex items-center gap-2 text-sm text-[#37352f]">
-                 <div class="flex items-center gap-1 hover:bg-[#e9e9e7] px-2 py-1 rounded cursor-pointer">
+             <div class="flex items-center gap-1 text-sm text-[#37352f]">
+                 <a href="/" class="flex items-center gap-1 hover:bg-[#e9e9e7] px-2 py-1 rounded cursor-pointer transition-colors text-[#37352f]">
                     <span class="text-base">👋</span>
                     <span class="font-medium">Dimas Andhika's Portfolio</span>
-                 </div>
+                 </a>
+
+                 {#if $page.url.pathname !== '/'}
+                    {#each $page.url.pathname.split('/').filter(Boolean) as segment, i}
+                        <span class="text-[#9b9a97] px-0.5">/</span>
+                        <div class="flex items-center gap-1 hover:bg-[#e9e9e7] px-2 py-1 rounded cursor-pointer transition-colors">
+                            {#if routeConfig[segment]}
+                                <span class="text-base">{routeConfig[segment].icon}</span>
+                                <span class="font-medium">{routeConfig[segment].label}</span>
+                            {:else}
+                                <span class="text-base">📄</span>
+                                <span class="font-medium capitalize">{segment}</span>
+                            {/if}
+                        </div>
+                    {/each}
+                 {/if}
              </div>
              <div class="flex items-center gap-2">
                   <button onclick={toggleContact} class="flex items-center gap-1.5 text-sm cursor-pointer font-medium hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors text-[#37352f]">

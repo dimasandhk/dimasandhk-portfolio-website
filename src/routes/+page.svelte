@@ -16,25 +16,39 @@
             title: "BEM ITS Official Website",
             tags: ["Next.js", "Cloudinary", "Tailwind CSS", "Cloudflare"],
             image: "/projects/bemits.png",
-            description: "The official website for the Student Executive Board of ITS (BEM ITS). Built to serve thousands of students with news, transparency reports, and event information. Features a custom CMS for easy content management and optimized for high traffic."
+            description: "The official website for the Student Executive Board of ITS (BEM ITS). Built to serve thousands of students with news, transparency reports, and event information. Features a custom CMS for easy content management and optimized for high traffic.",
+            icon: "🏛️",
+            timeline: "Mar 2025 - Present",
+            preview: "https://bem-its.com"
         },
         {
             title: "Autonomous UAV Control System Software",
             tags: ["Python", "Flask", "Firebase", "React", "Tailwind CSS", "MAVLink"],
              image: "/projects/bayu.jpg",
-             description: "A comprehensive ground control station (GCS) software for autonomous UAVs. Features real-time telemetry tracking, mission planning interface, and safety override protocols. Used in the KRTI national robotics competition."
+             description: "A comprehensive ground control station (GCS) software for autonomous UAVs. Features real-time telemetry tracking, mission planning interface, and safety override protocols. Used in the KRTI national robotics competition.",
+             icon: "✈️",
+             timeline: "Mar 2024 - Present",
         },
         {
             title: "SRE ITS Official Website",
             tags: ["Next.js", "Tailwind CSS"],
              image: "/projects/sre.png",
-             description: "Official platform for the Society of Renewable Energy ITS Student Chapter. Showcases renewable energy projects, upcoming events, and educational resources. Designed with a clean, eco-friendly aesthetic."
+             description: "Official platform for the Society of Renewable Energy ITS Student Chapter. Showcases renewable energy projects, upcoming events, and educational resources. Designed with a clean, eco-friendly aesthetic.",
+             icon: "⚡",
+             timeline: "Aug 2024 - Jul 2025",
+             preview: "https://sre-its.com" 
         },
         {
             title: "SustainaMap",
             tags: ["Next.js", "Leaflet", "Tailwind CSS", "MongoDB", "ExpressJS"],
              image: "/projects/sustainamap.png",
-             description: "An interactive mapping platform designed to visualize environmental data and sustainable initiatives. Users can pin locations, view detailed environmental metrics, and filter by sustainability categories."
+             description: "An interactive mapping platform designed to visualize environmental data and sustainable initiatives. Users can pin locations, view detailed environmental metrics, and filter by sustainability categories.",
+             icon: "🗺️",
+             timeline: "2025",
+             sources: [
+                { label: "Frontend Source Code", url: "https://github.com/Ax3lrod/sustainamap-fe" },
+                { label: "Backend Source Code", url: "https://github.com/dimasandhk/be-fit-sustainamap/" } // Placeholder
+             ],
         }
     ];
 </script>
@@ -119,6 +133,10 @@
         <div class="flex items-center gap-2 border-b border-[#e9e9e7] pb-2 mb-4 mt-8">
             <span class="text-xl">🏆</span>
             <h2 class="text-xl font-semibold text-[#37352f]">Achievements</h2>
+            <a href="/projects" class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors no-underline">
+                <span>More details on /projects</span>
+                <span class="text-[10px]">↗</span>
+            </a>
         </div>
     </NotionBlock>
 
@@ -163,6 +181,11 @@
     </NotionBlock>
 
     <NotionGallery items={projects} viewMode={viewMode} />
+
+    <NotionBlock>
+        <div class="h-6"></div> 
+    </NotionBlock>
+
 
     <GithubContributions />
 

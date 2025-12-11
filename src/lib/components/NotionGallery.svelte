@@ -1,13 +1,17 @@
 <script lang="ts">
     import { fade, fly } from 'svelte/transition';
     import X from 'lucide-svelte/icons/x';
-    import Maximize2 from 'lucide-svelte/icons/maximize-2';
+    import ArrowRight from 'lucide-svelte/icons/arrow-right';
 
     interface GalleryItem {
         title: string;
         image?: string;
         tags: string[];
         description?: string;
+        icon?: string;
+        timeline: string;
+        preview?: string;
+        sources?: { label: string; url: string }[];
     }
 
     interface Props {
@@ -42,17 +46,33 @@
                 <div class="h-32 w-full bg-cover bg-center" style="background-image: {item.image ? `url(${item.image})` : getRandomGradient(i)}"></div>
                 <div class="flex flex-col p-3">
                     <div class="flex items-center gap-2 mb-1">
-                        <span class="text-lg">📄</span>
+                        <span class="text-lg">{item.icon || '📄'}</span>
                         <span class="font-medium text-[#37352f]">{item.title}</span>
                     </div>
                     <div class="flex flex-wrap gap-1 mt-2">
-                        {#each item.tags as tag}
+                        {#each item.tags.slice(0, 5) as tag}
                             <span class="rounded bg-[#e3e2e0] px-1.5 py-0.5 text-xs text-[#505558]">{tag}</span>
                         {/each}
+                        {#if item.tags.length > 5}
+                            <span class="rounded bg-[#e3e2e0] px-1.5 py-0.5 text-xs text-[#505558]">+{item.tags.length - 5}</span>
+                        {/if}
                     </div>
                 </div>
             </div>
         {/each}
+        
+        <!-- View More Placeholder -->
+        <a 
+            href="/projects"
+            class="group relative flex cursor-pointer flex-col overflow-hidden rounded border-2 border-dashed border-[#e9e9e7] bg-[#f7f7f5]/50 hover:bg-[#efefef] transition-colors p-4 items-center justify-center min-h-[250px]"
+        >
+            <div class="flex flex-col items-center gap-3 text-[#9b9a97] group-hover:text-[#37352f] transition-colors">
+                <span class="p-3 rounded-full bg-[#e9e9e7] group-hover:bg-[#d3d3d1] transition-colors">
+                     <ArrowRight size={24} />
+                </span>
+                <span class="font-medium">View More Projects</span>
+            </div>
+        </a>
     </div>
 {:else}
     <div class="flex flex-col w-full">
@@ -63,7 +83,7 @@
                 class="flex items-center gap-3 p-2 border-b border-[#e9e9e7] hover:bg-[#efefef] cursor-pointer transition-colors"
                 onclick={() => selectedItem = item}
             >
-                <span class="text-lg">📄</span>
+                <span class="text-lg">{item.icon || '📄'}</span>
                 <span class="font-medium text-[#37352f] flex-1">{item.title}</span>
                 <div class="flex gap-1">
                     {#each item.tags.slice(0, 3) as tag}
@@ -75,13 +95,22 @@
                 </div>
             </div>
         {/each}
+
+        <!-- View More Placeholder (List View) -->
+        <a 
+            href="/projects"
+            class="flex items-center gap-3 p-2 border-b border-dashed border-[#e9e9e7] hover:bg-[#efefef] cursor-pointer transition-colors text-[#9b9a97] hover:text-[#37352f]"
+        >
+            <span class="text-lg flex items-center justify-center w-6 opacity-50"><ArrowRight size={16} /></span>
+            <span class="font-medium italic flex-1">View More Projects...</span>
+        </a>
     </div>
 {/if}
 
 <!-- Project Details Modal -->
 {#if selectedItem}
     <div 
-        class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 md:p-12"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 md:p-12 !mb-0"
         transition:fade={{ duration: 200 }}
         onclick={(e) => {
             if (e.target === e.currentTarget) selectedItem = null;
@@ -102,13 +131,12 @@
             aria-modal="true"
             tabindex="-1"
         >
-            <!-- Modal Cover -->
             <div 
                 class="h-48 w-full bg-cover bg-center shrink-0"
                 style="background-image: {selectedItem.image ? `url(${selectedItem.image})` : getRandomGradient(0)}"
             >
                 <button 
-                    class="absolute top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors"
+                    class="absolute cursor-pointer top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors"
                     onclick={() => selectedItem = null}
                 >
                     <X size={20} />
@@ -118,20 +146,49 @@
             <!-- Modal Content -->
             <div class="flex-1 overflow-y-auto p-8 md:p-12 notion-scrollbar">
                 <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">📄</span>
+                    <span class="text-4xl">{selectedItem.icon || '📄'}</span>
                     <h2 class="text-3xl font-bold text-[#37352f]">{selectedItem.title}</h2>
                 </div>
 
                 <!-- Properties -->
-                <div class="flex flex-col gap-4 mb-8">
-                    <div class="flex gap-4 items-start">
-                        <span class="w-24 text-[#9b9a97] text-sm">Tags</span>
+                <div class="flex flex-col gap-3 mb-8">
+                     <!-- Timeline -->
+                     <div class="flex gap-4 items-center text-sm">
+                        <span class="w-24 text-[#9b9a97] flex-shrink-0">Timeline</span>
+                        <span class="text-[#37352f]">{selectedItem.timeline}</span>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="flex gap-4 items-start text-sm">
+                        <span class="w-24 text-[#9b9a97] flex-shrink-0 pt-0.5">Tags</span>
                         <div class="flex flex-wrap gap-1">
                             {#each selectedItem.tags as tag}
-                                <span class="rounded bg-[#f0f0f0] px-2 py-0.5 text-sm text-[#37352f]">{tag}</span>
+                                <span class="rounded bg-[#f0f0f0] px-2 py-0.5 text-xs text-[#37352f]">{tag}</span>
                             {/each}
                         </div>
                     </div>
+                     <!-- Links -->
+                     {#if selectedItem.preview || (selectedItem.sources && selectedItem.sources.length > 0)}
+                        <div class="flex gap-4 items-start text-sm">
+                            <span class="w-24 text-[#9b9a97] flex-shrink-0 pt-0.5">Links</span>
+                            <div class="flex flex-col gap-1">
+                                {#if selectedItem.preview}
+                                    <a href={selectedItem.preview} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:bg-[#efefef] px-1.5 py-0.5 -ml-1.5 rounded transition-colors text-[#37352f] underline decoration-[#e9e9e7] hover:decoration-[#37352f]">
+                                        <span>↗</span>
+                                        <span>Live Preview</span>
+                                    </a>
+                                {/if}
+                                {#if selectedItem.sources}
+                                    {#each selectedItem.sources as source}
+                                         <a href={source.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:bg-[#efefef] px-1.5 py-0.5 -ml-1.5 rounded transition-colors text-[#37352f] underline decoration-[#e9e9e7] hover:decoration-[#37352f]">
+                                            <span>⚡</span>
+                                            <span>{source.label}</span>
+                                        </a>
+                                    {/each}
+                                {/if}
+                            </div>
+                        </div>
+                     {/if}
                 </div>
 
                 <div class="h-[1px] w-full bg-[#e9e9e7] mb-8"></div>
