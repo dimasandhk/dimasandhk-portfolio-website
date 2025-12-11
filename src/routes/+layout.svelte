@@ -1,6 +1,8 @@
 <script lang="ts">
 	import './layout.css';
     import { fade, fly } from 'svelte/transition';
+    import FloatingNav from '$lib/components/FloatingNav.svelte';
+    import Contact from 'lucide-svelte/icons/contact'
 
 	let { children } = $props();
 
@@ -23,11 +25,16 @@
                  </div>
              </div>
              <div class="flex items-center gap-2">
-                  <button onclick={toggleContact} class="text-sm cursor-pointer font-medium hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors text-[#37352f]">Contact</button>
+                  <button onclick={toggleContact} class="flex items-center gap-1.5 text-sm cursor-pointer font-medium hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors text-[#37352f]">
+                    <Contact size={16} />
+                    <span>Contact</span>
+                  </button>
              </div>
         </div>
 
 		{@render children()}
+
+        <FloatingNav />
 
         <!-- Contact Modal -->
         {#if isContactOpen}

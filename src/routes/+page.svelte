@@ -6,32 +6,40 @@
     import AppWindow from 'lucide-svelte/icons/app-window';
     import Server from 'lucide-svelte/icons/server';
     import Terminal from 'lucide-svelte/icons/terminal';
+    import LayoutGrid from 'lucide-svelte/icons/layout-grid';
+    import List from 'lucide-svelte/icons/list';
+
+    let viewMode = $state<'gallery' | 'list'>('gallery');
 
     const projects = [
         {
-            title: "E-Commerce Dashboard",
-            tags: ["React", "Dashboard", "Sales"],
-            image: ""
+            title: "BEM ITS Official Website",
+            tags: ["Next.js", "Cloudinary", "Tailwind CSS", "Cloudflare"],
+            image: "/projects/bemits.png",
+            description: "The official website for the Student Executive Board of ITS (BEM ITS). Built to serve thousands of students with news, transparency reports, and event information. Features a custom CMS for easy content management and optimized for high traffic."
         },
         {
-            title: "Social Media App",
-            tags: ["Mobile", "Flutter", "Social"],
-             image: ""
+            title: "Autonomous UAV Control System Software",
+            tags: ["Python", "Flask", "Firebase", "React", "Tailwind CSS", "MAVLink"],
+             image: "/projects/bayu.jpg",
+             description: "A comprehensive ground control station (GCS) software for autonomous UAVs. Features real-time telemetry tracking, mission planning interface, and safety override protocols. Used in the KRTI national robotics competition."
         },
         {
-            title: "Portfolio 2024",
-            tags: ["SvelteKit", "Design", "Vercel"],
-             image: ""
+            title: "SRE ITS Official Website",
+            tags: ["Next.js", "Tailwind CSS"],
+             image: "/projects/sre.png",
+             description: "Official platform for the Society of Renewable Energy ITS Student Chapter. Showcases renewable energy projects, upcoming events, and educational resources. Designed with a clean, eco-friendly aesthetic."
         },
         {
-            title: "AI Chat Interface",
-            tags: ["OpenAI", "Next.js", "Streaming"],
-             image: ""
+            title: "SustainaMap",
+            tags: ["Next.js", "Leaflet", "Tailwind CSS", "MongoDB", "ExpressJS"],
+             image: "/projects/sustainamap.png",
+             description: "An interactive mapping platform designed to visualize environmental data and sustainable initiatives. Users can pin locations, view detailed environmental metrics, and filter by sustainability categories."
         }
     ];
 </script>
 
-<NotionPage title="Dimas Andhika's Portfolio" icon="👋" coverImage="/Banner_Linked_baru.png">
+<NotionPage title="Dimas Andhika's Portfolio" icon="👋" coverImage="/Banner_Linked_baru.png" domicile="Jakarta, Indonesia">
     <!-- <NotionBlock> -->
         <!-- <div class="h-4"></div> Spacer -->
     <!-- </NotionBlock> -->
@@ -41,7 +49,7 @@
     </NotionBlock>
     <NotionBlock>
         <p class="text-[16px] leading-[1.5]">
-            Hi there! I'm Dimas Andhika a passionate software engineer who loves building something that is useful and innovative as well as considering best practice for a clean codebase. A third-year undergraduate at Institute Technology of Sepuluh Nopember Surabaya, studying Information Technology. Experienced in software engineering, and collaborative work, supported by a strong academic and non-academic track, as well as intra- and interpersonal skills.
+            Hi there! I'm <span class="font-bold text-[#37352f]">Dimas</span> Andhika a passionate <span class="font-bold text-[#37352f]">Software Engineer</span> who loves building something that is useful and innovative as well as considering best practice for a clean, secure, and maintainable codebase. A third-year undergraduate at Institute Technology of Sepuluh Nopember Surabaya, studying Information Technology. Experienced in software engineering, and collaborative work, supported by a strong academic and non-academic track, as well as intra- and interpersonal skills.
         </p>
     </NotionBlock>
 
@@ -80,8 +88,8 @@
             <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
                 NodeJS • ExpressJS • NestJS<br>
                 Python • Flask • Django<br>
-                MySQL • NoSQL • Firebase<br>
-                C • C++
+                MySQL • MongoDB • Firebase<br>
+                Prisma • Drizzle • Mongoose<br>
             </div>
         </div>
         <div class="flex flex-col gap-2">
@@ -92,8 +100,7 @@
             <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
                 Git • GitHub • Actions<br>
                 Docker • Kubernetes<br>
-                Ubuntu • CloudFlare<br>
-                Jupyter
+                Ubuntu • CloudFlare
             </div>
         </div>
     </div>
@@ -140,11 +147,22 @@
         <div class="flex items-center gap-2 border-b border-[#e9e9e7] pb-2 mb-4 mt-8">
             <span class="text-xl">🚀</span>
             <h2 class="text-xl font-semibold text-[#37352f]">Selected Projects</h2>
-             <span class="ml-auto text-xs text-[#9b9a97]">Gallery View</span>
+             <button 
+                class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors"
+                onclick={() => viewMode = viewMode === 'gallery' ? 'list' : 'gallery'}
+             >
+                {#if viewMode === 'gallery'}
+                    <List size={14} />
+                    <span>List View</span>
+                {:else}
+                    <LayoutGrid size={14} />
+                    <span>Gallery View</span>
+                {/if}
+             </button>
         </div>
     </NotionBlock>
 
-    <NotionGallery items={projects} />
+    <NotionGallery items={projects} viewMode={viewMode} />
 
     <GithubContributions />
 

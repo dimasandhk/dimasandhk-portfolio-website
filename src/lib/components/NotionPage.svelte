@@ -1,12 +1,14 @@
 <script lang="ts">
+    import Globe from 'lucide-svelte/icons/globe';
     interface Props {
         title: string;
         icon?: string;
         coverImage?: string;
+        domicile?: string;
         children?: import('svelte').Snippet;
     }
 
-    let { title, icon = "📄", coverImage, children }: Props = $props();
+    let { title, icon = "📄", coverImage, domicile, children }: Props = $props();
 
     let scrollY = $state(0);
 </script>
@@ -37,6 +39,12 @@
         <!-- Title & Meta -->
         <div class="pt-12 pb-8 group">
             <h1 class="text-4xl font-bold text-[#37352f]">{title}</h1>
+            {#if domicile}
+                <div class="flex items-center gap-2 mt-2 text-[#9b9a97] text-[15px]">
+                    <Globe size={16} />
+                    <span>{domicile}</span>
+                </div>
+            {/if}
         </div>
         
         <div class="h-[1px] w-full bg-[#e9e9e7] mb-8"></div>
