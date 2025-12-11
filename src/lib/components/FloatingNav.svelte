@@ -1,14 +1,14 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import House from 'lucide-svelte/icons/house';
-    import Trophy from 'lucide-svelte/icons/trophy';
+    // import Trophy from 'lucide-svelte/icons/trophy';
     import Rocket from 'lucide-svelte/icons/rocket';
     import Link from 'lucide-svelte/icons/link';
 
     const links = [
         { href: '/', icon: House, label: 'Home' },
         // { href: '/skills', icon: Wrench, label: 'Skills' },
-        { href: '/achievements', icon: Trophy, label: 'Achievements' },
+        // { href: '/achievements', icon: Trophy, label: 'Achievements' },
         { href: '/projects', icon: Rocket, label: 'Projects' },
         { href: '/linktree', icon: Link, label: 'Linktree' }
     ];

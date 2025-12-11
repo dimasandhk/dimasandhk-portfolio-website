@@ -11,46 +11,9 @@
 
     let viewMode = $state<'gallery' | 'list'>('gallery');
 
-    const projects = [
-        {
-            title: "BEM ITS Official Website",
-            tags: ["Next.js", "Cloudinary", "Tailwind CSS", "Cloudflare"],
-            image: "/projects/bemits.png",
-            description: "The official website for the Student Executive Board of ITS (BEM ITS). Built to serve thousands of students with news, transparency reports, and event information. Features a custom CMS for easy content management and optimized for high traffic.",
-            icon: "🏛️",
-            timeline: "Mar 2025 - Present",
-            preview: "https://bem-its.com"
-        },
-        {
-            title: "Autonomous UAV Control System Software",
-            tags: ["Python", "Flask", "Firebase", "React", "Tailwind CSS", "MAVLink"],
-             image: "/projects/bayu.jpg",
-             description: "A comprehensive ground control station (GCS) software for autonomous UAVs. Features real-time telemetry tracking, mission planning interface, and safety override protocols. Used in the KRTI national robotics competition.",
-             icon: "✈️",
-             timeline: "Mar 2024 - Present",
-        },
-        {
-            title: "SRE ITS Official Website",
-            tags: ["Next.js", "Tailwind CSS"],
-             image: "/projects/sre.png",
-             description: "Official platform for the Society of Renewable Energy ITS Student Chapter. Showcases renewable energy projects, upcoming events, and educational resources. Designed with a clean, eco-friendly aesthetic.",
-             icon: "⚡",
-             timeline: "Aug 2024 - Jul 2025",
-             preview: "https://sre-its.com" 
-        },
-        {
-            title: "SustainaMap",
-            tags: ["Next.js", "Leaflet", "Tailwind CSS", "MongoDB", "ExpressJS"],
-             image: "/projects/sustainamap.png",
-             description: "An interactive mapping platform designed to visualize environmental data and sustainable initiatives. Users can pin locations, view detailed environmental metrics, and filter by sustainability categories.",
-             icon: "🗺️",
-             timeline: "2025",
-             sources: [
-                { label: "Frontend Source Code", url: "https://github.com/Ax3lrod/sustainamap-fe" },
-                { label: "Backend Source Code", url: "https://github.com/dimasandhk/be-fit-sustainamap/" } // Placeholder
-             ],
-        }
-    ];
+    import { projects } from '$lib/data/projects.js';
+
+    const featuredProjects = projects.filter(p => p.featured);
 </script>
 
 <NotionPage title="Dimas Andhika's Portfolio" icon="👋" coverImage="/Banner_Linked_baru.png" domicile="Jakarta, Indonesia">
@@ -180,7 +143,7 @@
         </div>
     </NotionBlock>
 
-    <NotionGallery items={projects} viewMode={viewMode} />
+    <NotionGallery items={featuredProjects} viewMode={viewMode} />
 
     <NotionBlock>
         <div class="h-6"></div> 

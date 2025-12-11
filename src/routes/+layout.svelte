@@ -14,7 +14,8 @@
     }
 
     const routeConfig: Record<string, { icon: string, label: string }> = {
-        'linktree': { icon: '🔗', label: 'Links' }
+        'linktree': { icon: '🔗', label: 'Links' },
+        'projects': { icon: '🚀', label: 'Projects' },
     };
 </script>
 
@@ -26,7 +27,8 @@
              <div class="flex items-center gap-1 text-sm text-[#37352f]">
                  <a href="/" class="flex items-center gap-1 hover:bg-[#e9e9e7] px-2 py-1 rounded cursor-pointer transition-colors text-[#37352f]">
                     <span class="text-base">👋</span>
-                    <span class="font-medium">Dimas Andhika's Portfolio</span>
+                    <span class="font-medium sm:hidden">Dimas' Portfolio</span>
+                    <span class="font-medium hidden sm:inline">Dimas Andhika's Portfolio</span>
                  </a>
 
                  {#if $page.url.pathname !== '/'}
