@@ -143,7 +143,7 @@
         </div>
     </NotionBlock>
 
-    <NotionGallery items={featuredProjects} viewMode={viewMode} />
+    <NotionGallery items={featuredProjects} viewMode={viewMode} showViewMore={true} />
 
     <NotionBlock>
         <div class="h-6"></div> 

@@ -2,7 +2,7 @@
     import NotionPage from '$lib/components/NotionPage.svelte';
     import NotionBlock from '$lib/components/NotionBlock.svelte';
     import NotionGallery from '$lib/components/NotionGallery.svelte';
-    import { projects } from '$lib/data/projects.js';
+    import { projects, type ProjectCategory } from '$lib/data/projects.js';
     import LayoutGrid from 'lucide-svelte/icons/layout-grid';
     import List from 'lucide-svelte/icons/list';
 
@@ -14,7 +14,7 @@
     let filteredProjects = $derived(
         selectedCategory === 'All' 
             ? projects 
-            : projects.filter(p => p.category === selectedCategory)
+            : projects.filter(p => p.category.includes(selectedCategory as ProjectCategory))
     );
 </script>
 

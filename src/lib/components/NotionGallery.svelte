@@ -10,16 +10,18 @@
         description?: string;
         icon?: string;
         timeline: string;
-        preview?: string;
+    preview?: string;
         sources?: { label: string; url: string }[];
+        gallery?: string[];
     }
 
     interface Props {
         items: GalleryItem[];
         viewMode?: 'gallery' | 'list';
+        showViewMore?: boolean;
     }
 
-    let { items, viewMode = 'gallery' }: Props = $props();
+    let { items, viewMode = 'gallery', showViewMore = false }: Props = $props();
 
     let selectedItem = $state<GalleryItem | null>(null);
 
@@ -61,6 +63,7 @@
             </div>
         {/each}
         
+        {#if showViewMore}
         <!-- View More Placeholder -->
         <a 
             href="/projects"
@@ -73,6 +76,7 @@
                 <span class="font-medium">View More Projects</span>
             </div>
         </a>
+        {/if}
     </div>
 {:else}
     <div class="flex flex-col w-full">
@@ -96,6 +100,7 @@
             </div>
         {/each}
 
+        {#if showViewMore}
         <!-- View More Placeholder (List View) -->
         <a 
             href="/projects"
@@ -104,6 +109,7 @@
             <span class="text-lg flex items-center justify-center w-6 opacity-50"><ArrowRight size={16} /></span>
             <span class="font-medium italic flex-1">View More Projects...</span>
         </a>
+        {/if}
     </div>
 {/if}
 
@@ -200,6 +206,24 @@
                         <p class="text-[#9b9a97] italic">No description available.</p>
                     {/if}
                 </div>
+
+                {#if selectedItem.gallery && selectedItem.gallery.length > 0}
+                    <div class="mt-8">
+                        <h3 class="text-[#37352f] font-semibold text-lg mb-4">Gallery</h3>
+                        <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory notion-scrollbar">
+                            {#each selectedItem.gallery as image, i}
+                                <div class="shrink-0 snap-center first:pl-0 last:pr-0">
+                                    <div 
+                                        class="h-48 md:h-64 aspect-video rounded-lg bg-cover bg-center shadow-sm border border-[#e9e9e7]" 
+                                        style="background-image: url({image})"
+                                        role="img"
+                                        aria-label={`Gallery image ${i + 1}`}
+                                    ></div>
+                                </div>
+                            {/each}
+                        </div>
+                    </div>
+                {/if}
             </div>
         </div>
     </div>
