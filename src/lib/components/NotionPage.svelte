@@ -4,11 +4,12 @@
         title: string;
         icon?: string;
         coverImage?: string;
+        mobileCoverImage?: string;
         domicile?: string;
         children?: import('svelte').Snippet;
     }
 
-    let { title, icon = "📄", coverImage, domicile, children }: Props = $props();
+    let { title, icon = "📄", coverImage, mobileCoverImage, domicile, children }: Props = $props();
 
     let scrollY = $state(0);
 </script>
@@ -19,11 +20,12 @@
     <!-- Cover Image -->
     <div class="relative h-[30vh] w-full overflow-hidden">
         <div 
-            class="absolute w-full bg-cover bg-center will-change-transform"
+            class="absolute w-full bg-cover bg-center will-change-transform cover-bg"
             style="
                 height: 200%;
                 top: -50%;
-                background-image: {coverImage ? `url(${coverImage})` : 'linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)'};
+                --bg-desktop: {coverImage ? `url(${coverImage})` : 'linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)'};
+                --bg-mobile: {mobileCoverImage ? `url(${mobileCoverImage})` : (coverImage ? `url(${coverImage})` : 'linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)')};
                 transform: translate3d(0, {scrollY * 0.5}px, 0);
             "
         >
@@ -57,6 +59,16 @@
 </div>
 
 <style>
+    .cover-bg {
+        background-image: var(--bg-desktop);
+    }
+
+    @media (max-width: 768px) {
+        .cover-bg {
+            background-image: var(--bg-mobile);
+        }
+    }
+
     :global(.notion-content > *) {
         margin-bottom: 0.5rem;
     }

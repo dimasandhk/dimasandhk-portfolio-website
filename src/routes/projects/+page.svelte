@@ -5,9 +5,15 @@
     import { projects, type ProjectCategory } from '$lib/data/projects.js';
     import LayoutGrid from 'lucide-svelte/icons/layout-grid';
     import List from 'lucide-svelte/icons/list';
+    import ArrowUp from 'lucide-svelte/icons/arrow-up';
 
     let viewMode = $state<'gallery' | 'list'>('gallery');
     let selectedCategory = $state<string>('All');
+    let scrollY = $state(0);
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     const categories = ['All', 'Achievements', 'Apps', 'Bots', 'System Testing / Utils'];
 
@@ -18,7 +24,13 @@
     );
 </script>
 
-<NotionPage title="Projects" icon="🚀" coverImage="/Banner_Linked_baru.png"> 
+<NotionPage title="Projects" icon="🚀" coverImage="/Banner_Linked_baru.png" mobileCoverImage="/Banner_Linked_mobile.png"> 
+    <NotionBlock>
+        <p class="text-[16px] leading-[1.5] mb-6">
+            Here are some of my projects. More projects will be added soon.
+        </p>
+    </NotionBlock>
+
     <NotionBlock>
         <div class="flex flex-col gap-6 mt-8 mb-8">
             <!-- Header and View Toggle -->
@@ -72,3 +84,15 @@
         </div>
     </NotionBlock>
 </NotionPage>
+
+<svelte:window bind:scrollY={scrollY} />
+
+{#if scrollY > 300}
+    <button
+        class="fixed bottom-8 right-8 p-3 bg-white shadow-lg rounded-full border border-[#e9e9e7] text-[#37352f] hover:bg-[#efefef] transition-all z-50 cursor-pointer"
+        onclick={scrollToTop}
+        aria-label="Back to top"
+    >
+        <ArrowUp size={20} />
+    </button>
+{/if}

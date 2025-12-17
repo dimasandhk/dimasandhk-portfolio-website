@@ -16,7 +16,7 @@
     const featuredProjects = projects.filter(p => p.featured);
 </script>
 
-<NotionPage title="Dimas Andhika's Portfolio" icon="👋" coverImage="/Banner_Linked_baru.png" domicile="Jakarta, Indonesia">
+<NotionPage title="Dimas Andhika's Portfolio" icon="👋" coverImage="/Banner_Linked_baru.png" mobileCoverImage="/Banner_Linked_mobile.png" domicile="Jakarta, Indonesia | GMT+7">
     <!-- <NotionBlock> -->
         <!-- <div class="h-4"></div> Spacer -->
     <!-- </NotionBlock> -->

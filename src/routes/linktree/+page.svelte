@@ -42,7 +42,7 @@
     ];
 </script>
 
-<NotionPage title="Links" icon="🔗" coverImage="/Banner_Linked_baru.png" domicile="Jakarta, Indonesia">
+<NotionPage title="Links" icon="🔗" coverImage="/Banner_Linked_baru.png" mobileCoverImage="/Banner_Linked_mobile.png" domicile="Jakarta, Indonesia | GMT+7">
     <NotionBlock>
         <p class="text-[16px] leading-[1.5] mb-6">
             Everything you need to find me on the internet.
