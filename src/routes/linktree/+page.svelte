@@ -56,14 +56,14 @@
                     href={link.url} 
                     target={link.url.startsWith('/') ? '_self' : '_blank'} 
                     rel={link.url.startsWith('/') ? '' : 'noopener noreferrer'}
-                    class="flex items-center gap-4 p-3 rounded hover:bg-[#f1f1ef] border border-transparent hover:border-[#e9e9e7] transition-all group"
+                    class="flex items-center gap-4 p-3 rounded hover:bg-[var(--notion-hover)] border border-transparent hover:border-[var(--notion-border)] transition-all group"
                 >
-                    <div class="flex items-center justify-center w-10 h-10 rounded bg-white border border-[#e9e9e7] shadow-sm text-[#37352f]">
+                    <div class="flex items-center justify-center w-10 h-10 rounded bg-[var(--notion-bg)] border border-[var(--notion-border)] shadow-sm text-[var(--notion-text)]">
                         <svelte:component this={link.icon} size={20} />
                     </div>
                     
                     <div class="flex flex-col flex-1">
-                        <span class="font-medium text-[#37352f] group-hover:text-black">{link.label}</span>
+                        <span class="font-medium text-[var(--notion-text)] group-hover:text-[var(--notion-text)]">{link.label}</span>
                         <span class="text-xs text-[#9b9a97]">{link.desc}</span>
                     </div>
 
@@ -76,7 +76,7 @@
     </div>
     
     <NotionBlock>
-        <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[#e9e9e7] pt-4 text-center">
+        <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4 text-center">
             © {new Date().getFullYear()} Dimas Andhika
         </div>
     </NotionBlock>

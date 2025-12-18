@@ -22,47 +22,47 @@
     <!-- </NotionBlock> -->
 
     <NotionBlock>
-        <h2 class="text-2xl font-semibold mb-2 mt-4 text-[#37352f]">About Me</h2>
+        <h2 class="text-2xl font-semibold mb-2 mt-4 text-[var(--notion-text)]">About Me</h2>
     </NotionBlock>
     <NotionBlock>
         <p class="text-[16px] leading-[1.5]">
-            Hi there! I'm <span class="font-bold text-[#37352f]">Dimas</span> Andhika a passionate <span class="font-bold text-[#37352f]">Software Engineer</span> who loves building something that is useful and innovative as well as considering best practice for a clean, secure, and maintainable codebase. A third-year undergraduate at Institute Technology of Sepuluh Nopember Surabaya, studying Information Technology. Experienced in software engineering, and collaborative work, supported by a strong academic and non-academic track, as well as intra- and interpersonal skills.
+            Hi there! I'm <span class="font-bold text-[var(--notion-text)]">Dimas</span> Andhika a passionate <span class="font-bold text-[var(--notion-text)]">Software Engineer</span> who loves building something that is useful and innovative as well as considering best practice for a clean, secure, and maintainable codebase. A third-year undergraduate at Institute Technology of Sepuluh Nopember Surabaya, studying Information Technology. Experienced in software engineering, and collaborative work, supported by a strong academic and non-academic track, as well as intra- and interpersonal skills.
         </p>
     </NotionBlock>
 
     <NotionBlock>
-       <div class="bg-[#f1f1ef] p-4 rounded mt-4 mb-4 border border-[#e9e9e7] flex items-start">
+       <div class="bg-[var(--notion-gray)] p-4 rounded mt-4 mb-4 border border-[var(--notion-border)] flex items-start">
            <span class="mr-2 flex-shrink-0">💡</span> 
-           <span class="font-medium">Currently open for Internship or Freelance opportunities! Hit me up on <a href="https://www.linkedin.com/in/dimasandhk/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">LinkedIn</a> or <a href="mailto:dimasandhikadiputra@gmail.com" class="underline hover:text-gray-600">Email</a>!</span>
+           <span class="font-medium text-[var(--notion-text)]">Currently open for Internship or Freelance opportunities! Hit me up on <a href="https://www.linkedin.com/in/dimasandhk/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">LinkedIn</a> or <a href="mailto:dimasandhikadiputra@gmail.com" class="underline hover:text-gray-600">Email</a>!</span>
        </div>
     </NotionBlock>
 
     <!-- Skills Section -->
      <NotionBlock>
-        <div class="flex items-center gap-2 border-b border-[#e9e9e7] pb-2 mb-4 mt-8">
+        <div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
             <span class="text-xl">🛠️</span>
-            <h2 class="text-xl font-semibold text-[#37352f]">Skills</h2>
+            <h2 class="text-xl font-semibold text-[var(--notion-text)]">Skills</h2>
         </div>
     </NotionBlock>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2 font-medium text-[#37352f] mb-1 pl-1">
+            <div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
                 <AppWindow size={18} />
                 Frontend
             </div>
-            <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
+            <div class="bg-[var(--notion-gray)] p-3 rounded text-sm text-[var(--notion-text)] leading-relaxed">
                 Javascript • Typescript<br>
                 ReactJS • NextJS • VueJS<br>
                 Svelte • Tailwind CSS
             </div>
         </div>
         <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2 font-medium text-[#37352f] mb-1 pl-1">
+            <div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
                 <Server size={18} />
                 Backend
             </div>
-            <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
+            <div class="bg-[var(--notion-gray)] p-3 rounded text-sm text-[var(--notion-text)] leading-relaxed">
                 NodeJS • ExpressJS • NestJS<br>
                 Python • Flask • Django<br>
                 MySQL • MongoDB • Firebase<br>
@@ -70,11 +70,11 @@
             </div>
         </div>
         <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2 font-medium text-[#37352f] mb-1 pl-1">
+            <div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
                 <Terminal size={18} />
                 DevOps & Tools
             </div>
-            <div class="bg-[#f7f7f5] p-3 rounded text-sm text-[#37352f] leading-relaxed">
+            <div class="bg-[var(--notion-gray)] p-3 rounded text-sm text-[var(--notion-text)] leading-relaxed">
                 Git • GitHub • Actions<br>
                 Docker • Kubernetes<br>
                 Ubuntu • CloudFlare
@@ -83,7 +83,7 @@
     </div>
 
     <NotionBlock>
-       <div class="bg-[#f1f1ef] p-3 rounded mt-2 mb-8 flex items-start gap-3 text-[15px] text-[#37352f]">
+       <div class="bg-[var(--notion-gray)] p-3 rounded mt-2 mb-8 flex items-start gap-3 text-[15px] text-[var(--notion-text)]">
            <span class="mt-0.5 flex-shrink-0">🌱</span> 
            <span class="font-medium">
                I'm always eager to learn! I am open to challenging opportunities that require diving into new fields and mastering new technologies.
@@ -93,10 +93,10 @@
 
     <!-- Achievements Section -->
     <NotionBlock>
-        <div class="flex items-center gap-2 border-b border-[#e9e9e7] pb-2 mb-4 mt-8">
+        <div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
             <span class="text-xl">🏆</span>
-            <h2 class="text-xl font-semibold text-[#37352f]">Achievements</h2>
-            <a href="/projects" class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors no-underline">
+            <h2 class="text-xl font-semibold text-[var(--notion-text)]">Achievements</h2>
+            <a href="/projects" class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors no-underline">
                 <span>More details on /projects</span>
                 <span class="text-[10px]">↗</span>
             </a>
@@ -104,7 +104,7 @@
     </NotionBlock>
 
     <NotionBlock>
-        <ul class="list-disc pl-6 space-y-2 text-[#37352f]">
+        <ul class="list-disc pl-6 space-y-2 text-[var(--notion-text)]">
             <li>
                 <span class="font-medium">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed an innovative smart city solution for Jakarta's flood control system.
             </li>
@@ -125,11 +125,11 @@
     </NotionBlock>
 
     <NotionBlock>
-        <div class="flex items-center gap-2 border-b border-[#e9e9e7] pb-2 mb-4 mt-8">
+        <div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
             <span class="text-xl">🚀</span>
-            <h2 class="text-xl font-semibold text-[#37352f]">Selected Projects</h2>
+            <h2 class="text-xl font-semibold text-[var(--notion-text)]">Selected Projects</h2>
              <button 
-                class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors"
+                class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors"
                 onclick={() => viewMode = viewMode === 'gallery' ? 'list' : 'gallery'}
              >
                 {#if viewMode === 'gallery'}
@@ -153,7 +153,7 @@
     <GithubContributions />
 
     <NotionBlock>
-        <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[#e9e9e7] pt-4">
+        <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4">
             Built with 💓 by Dimas Andhika himself • {new Date().getFullYear()}
         </div>
     </NotionBlock>

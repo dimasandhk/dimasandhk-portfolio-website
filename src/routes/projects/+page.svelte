@@ -34,14 +34,14 @@
     <NotionBlock>
         <div class="flex flex-col gap-6 mt-8 mb-8">
             <!-- Header and View Toggle -->
-            <div class="flex items-center justify-between border-b border-[#e9e9e7] pb-2">
+            <div class="flex items-center justify-between border-b border-[var(--notion-border)] pb-2">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">📂</span>
-                    <h2 class="text-xl font-semibold text-[#37352f]">All Projects</h2>
+                    <h2 class="text-xl font-semibold text-[var(--notion-text)]">All Projects</h2>
                 </div>
                 
                 <button 
-                    class="flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[#e9e9e7] px-2 py-1 rounded transition-colors"
+                    class="flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors"
                     onclick={() => viewMode = viewMode === 'gallery' ? 'list' : 'gallery'}
                 >
                     {#if viewMode === 'gallery'}
@@ -58,7 +58,7 @@
             <div class="flex flex-wrap gap-2 pb-2">
                 {#each categories as category}
                     <button
-                        class="px-3 py-1 rounded-full text-sm transition-all duration-200 border {selectedCategory === category ? 'bg-[#37352f] text-white border-[#37352f]' : 'bg-white text-[#37352f] border-[#e9e9e7] hover:bg-[#efefef]'}"
+                        class="px-3 py-1 rounded-full text-sm transition-all duration-200 border {selectedCategory === category ? 'bg-[var(--notion-text)] text-[var(--notion-bg)] border-[var(--notion-text)]' : 'bg-[var(--notion-bg)] text-[var(--notion-text)] border-[var(--notion-border)] hover:bg-[var(--notion-hover)]'}"
                         onclick={() => selectedCategory = category}
                     >
                         {category}
@@ -70,7 +70,7 @@
             {#if filteredProjects.length > 0}
                 <NotionGallery items={filteredProjects} viewMode={viewMode} />
             {:else}
-                <div class="flex flex-col items-center justify-center p-12 text-[#9b9a97] border-2 border-dashed border-[#e9e9e7] rounded-xl bg-[#f7f7f5]/30">
+                <div class="flex flex-col items-center justify-center p-12 text-[#9b9a97] border-2 border-dashed border-[var(--notion-border)] rounded-xl bg-[var(--notion-gray)]/30">
                     <span class="text-4xl mb-2">📭</span>
                     <p>No projects found in this category yet.</p>
                 </div>
@@ -79,7 +79,7 @@
     </NotionBlock>
 
     <NotionBlock>
-        <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[#e9e9e7] pt-4">
+        <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4">
             Built with 💓 by Dimas Andhika himself • {new Date().getFullYear()}
         </div>
     </NotionBlock>
@@ -89,7 +89,7 @@
 
 {#if scrollY > 300}
     <button
-        class="fixed bottom-8 right-8 p-3 bg-white shadow-lg rounded-full border border-[#e9e9e7] text-[#37352f] hover:bg-[#efefef] transition-all z-50 cursor-pointer"
+        class="fixed bottom-8 right-8 p-3 bg-[var(--notion-bg)] shadow-lg rounded-full border border-[var(--notion-border)] text-[var(--notion-text)] hover:bg-[var(--notion-hover)] transition-all z-50 cursor-pointer"
         onclick={scrollToTop}
         aria-label="Back to top"
     >

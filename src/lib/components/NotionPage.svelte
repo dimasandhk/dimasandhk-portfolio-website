@@ -40,7 +40,7 @@
 
         <!-- Title & Meta -->
         <div class="pt-12 pb-8 group">
-            <h1 class="text-4xl font-bold text-[#37352f]">{title}</h1>
+            <h1 class="text-4xl font-bold text-[var(--notion-text)]">{title}</h1>
             {#if domicile}
                 <div class="flex items-center gap-2 mt-2 text-[#9b9a97] text-[15px]">
                     <Globe size={16} />
@@ -49,7 +49,7 @@
             {/if}
         </div>
         
-        <div class="h-[1px] w-full bg-[#e9e9e7] mb-8"></div>
+        <div class="h-[1px] w-full bg-[var(--notion-border)] mb-8"></div>
 
         <!-- Page Content -->
         <div class="notion-content">

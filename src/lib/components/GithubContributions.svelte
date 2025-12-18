@@ -46,12 +46,12 @@
 
     function getLevelColor(level: number) {
         switch (level) {
-            case 0: return 'bg-[#ebedf0]';
-            case 1: return 'bg-[#9be9a8]';
-            case 2: return 'bg-[#40c463]';
-            case 3: return 'bg-[#30a14e]';
-            case 4: return 'bg-[#216e39]';
-            default: return 'bg-[#ebedf0]';
+            case 0: return 'bg-[var(--contrib-0)]';
+            case 1: return 'bg-[var(--contrib-1)]';
+            case 2: return 'bg-[var(--contrib-2)]';
+            case 3: return 'bg-[var(--contrib-3)]';
+            case 4: return 'bg-[var(--contrib-4)]';
+            default: return 'bg-[var(--contrib-0)]';
         }
     }
 
@@ -80,16 +80,16 @@
 </script>
 
 <NotionBlock>
-    <div class="flex items-center gap-2 border-b border-[#e9e9e7] pb-2 mb-4 mt-8">
+    <div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
         <span class="text-xl">🟩</span>
-        <h2 class="text-xl font-semibold text-[#37352f]">How Active I Am on GitHub</h2>
+        <h2 class="text-xl font-semibold text-[var(--notion-text)]">How Active I Am on GitHub</h2>
         <span class="ml-auto text-xs text-[#9b9a97]">{totalContributions} in {selectedYear}</span>
     </div>
 
     <div class="flex gap-2 overflow-x-auto pb-2 mb-2 text-sm">
         {#each years as year}
             <button 
-                class="px-2 py-1 rounded transition-colors {selectedYear === year ? 'bg-[#e9e9e7] text-[#37352f] font-medium' : 'text-[#9b9a97] hover:bg-[#f1f1ef]'}"
+                class="px-2 py-1 rounded transition-colors {selectedYear === year ? 'bg-[var(--notion-border)] text-[var(--notion-text)] font-medium' : 'text-[#9b9a97] hover:bg-[var(--notion-hover)]'}"
                 on:click={() => selectedYear = year}
             >
                 {year}
@@ -144,11 +144,11 @@
             </div>
             <div class="flex text-[10px] text-[#9b9a97] mt-2 justify-end items-center gap-1">
                 <span>Less</span>
-                <div class="w-[10px] h-[10px] rounded-[2px] bg-[#ebedf0]"></div>
-                <div class="w-[10px] h-[10px] rounded-[2px] bg-[#9be9a8]"></div>
-                <div class="w-[10px] h-[10px] rounded-[2px] bg-[#40c463]"></div>
-                <div class="w-[10px] h-[10px] rounded-[2px] bg-[#30a14e]"></div>
-                <div class="w-[10px] h-[10px] rounded-[2px] bg-[#216e39]"></div>
+                <div class="w-[10px] h-[10px] rounded-[2px] bg-[var(--contrib-0)]"></div>
+                <div class="w-[10px] h-[10px] rounded-[2px] bg-[var(--contrib-1)]"></div>
+                <div class="w-[10px] h-[10px] rounded-[2px] bg-[var(--contrib-2)]"></div>
+                <div class="w-[10px] h-[10px] rounded-[2px] bg-[var(--contrib-3)]"></div>
+                <div class="w-[10px] h-[10px] rounded-[2px] bg-[var(--contrib-4)]"></div>
                 <span>More</span>
             </div>
         </div>
@@ -163,10 +163,10 @@
         background: transparent;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background-color: #e9e9e7;
+        background-color: var(--notion-border);
         border-radius: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background-color: #d3d3d1;
+        background-color: var(--notion-hover);
     }
 </style>

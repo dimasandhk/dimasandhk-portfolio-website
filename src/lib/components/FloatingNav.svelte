@@ -20,7 +20,7 @@
     /* Desktop Styles: Right, Vertical */
     md:bottom-auto md:left-auto md:right-6 md:top-1/2 md:-translate-y-1/2 md:flex-col
     
-    flex items-center gap-2 p-2 bg-white/80 backdrop-blur-md border border-[#e9e9e7] rounded-full shadow-sm"
+    flex items-center gap-2 p-2 bg-[var(--notion-bg)]/80 backdrop-blur-md border border-[var(--notion-border)] rounded-full shadow-sm"
 >
     {#each links as link}
         {@const isActive = $page.url.pathname === link.href || ($page.url.pathname === '/' && link.href === '/') && false} 
@@ -30,15 +30,15 @@
             href={link.href}
             class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 group
             {$page.url.pathname === link.href 
-                ? 'bg-[#37352f] text-white' 
-                : 'text-[#9b9a97] hover:bg-[#f1f1ef] hover:text-[#37352f]'
+                ? 'bg-[var(--notion-text)] text-[var(--notion-bg)]' 
+                : 'text-[#9b9a97] hover:bg-[var(--notion-hover)] hover:text-[var(--notion-text)]'
             }"
             aria-label={link.label}
         >
             <svelte:component this={link.icon} size={20} />
             
             <!-- Tooltip (Desktop only) -->
-            <span class="absolute right-full mr-3 px-2 py-1 bg-[#37352f] text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap hidden md:block">
+            <span class="absolute right-full mr-3 px-2 py-1 bg-[var(--notion-text)] text-[var(--notion-bg)] text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap hidden md:block">
                 {link.label}
             </span>
         </a>
