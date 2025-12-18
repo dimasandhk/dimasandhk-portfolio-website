@@ -42,7 +42,7 @@
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <div 
-                class="group relative flex cursor-pointer flex-col overflow-hidden rounded shadow-[0_0_0_1px_rgba(15,15,15,0.1)] transition-shadow hover:bg-[var(--notion-hover)] hover:shadow-[0_0_0_1px_rgba(15,15,15,0.2),0_2px_4px_rgba(15,15,15,0.1)]"
+                class="group relative flex cursor-pointer flex-col overflow-hidden rounded border border-[var(--notion-border)] transition-all hover:bg-[var(--notion-hover)] hover:shadow-sm"
                 onclick={() => selectedItem = item}
             >
                 <div class="h-32 w-full bg-cover bg-center" style="background-image: {item.image ? `url(${item.image})` : getRandomGradient(i)}"></div>
