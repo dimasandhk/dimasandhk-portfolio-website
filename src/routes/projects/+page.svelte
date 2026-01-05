@@ -2,7 +2,9 @@
     import NotionPage from '$lib/components/NotionPage.svelte';
     import NotionBlock from '$lib/components/NotionBlock.svelte';
     import NotionGallery from '$lib/components/NotionGallery.svelte';
+    import MetaTags from '$lib/components/MetaTags.svelte';
     import { projects, type ProjectCategory } from '$lib/data/projects.js';
+    import { pageSEO } from '$lib/config/seo';
     import LayoutGrid from 'lucide-svelte/icons/layout-grid';
     import List from 'lucide-svelte/icons/list';
     import ArrowUp from 'lucide-svelte/icons/arrow-up';
@@ -23,6 +25,13 @@
             : projects.filter(p => p.category.includes(selectedCategory as ProjectCategory))
     );
 </script>
+
+<MetaTags 
+    title={pageSEO.projects.title}
+    description={pageSEO.projects.description}
+    keywords={pageSEO.projects.keywords}
+    type={pageSEO.projects.type}
+/>
 
 <NotionPage title="Projects" icon="🚀" coverImage="/Banner_Linked_baru.png" mobileCoverImage="/Banner_Linked_mobile.png"> 
     <NotionBlock>

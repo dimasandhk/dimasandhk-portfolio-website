@@ -3,11 +3,13 @@
     import NotionBlock from '$lib/components/NotionBlock.svelte';
     import NotionGallery from '$lib/components/NotionGallery.svelte';
     import GithubContributions from '$lib/components/GithubContributions.svelte';
+    import MetaTags from '$lib/components/MetaTags.svelte';
     import AppWindow from 'lucide-svelte/icons/app-window';
     import Server from 'lucide-svelte/icons/server';
     import Terminal from 'lucide-svelte/icons/terminal';
     import LayoutGrid from 'lucide-svelte/icons/layout-grid';
     import List from 'lucide-svelte/icons/list';
+    import { pageSEO, personSchema } from '$lib/config/seo';
 
     let viewMode = $state<'gallery' | 'list'>('gallery');
 
@@ -15,6 +17,14 @@
 
     const featuredProjects = projects.filter(p => p.featured);
 </script>
+
+<MetaTags 
+    title={pageSEO.home.title}
+    description={pageSEO.home.description}
+    keywords={pageSEO.home.keywords}
+    type={pageSEO.home.type}
+    jsonLd={personSchema}
+/>
 
 <NotionPage title="Dimas Andhika's Portfolio" icon="👋" coverImage="/Banner_Linked_baru.png" mobileCoverImage="/Banner_Linked_mobile.png" domicile="Jakarta, Indonesia | GMT+7">
     <!-- <NotionBlock> -->

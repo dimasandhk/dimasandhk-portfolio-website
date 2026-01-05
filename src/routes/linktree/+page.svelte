@@ -1,6 +1,8 @@
 <script lang="ts">
     import NotionPage from '$lib/components/NotionPage.svelte';
     import NotionBlock from '$lib/components/NotionBlock.svelte';
+    import MetaTags from '$lib/components/MetaTags.svelte';
+    import { pageSEO } from '$lib/config/seo';
     import House from 'lucide-svelte/icons/house';
     import Github from 'lucide-svelte/icons/github';
     import Linkedin from 'lucide-svelte/icons/linkedin';
@@ -57,6 +59,13 @@
         }
     });
 </script>
+
+<MetaTags 
+    title={pageSEO.linktree.title}
+    description={pageSEO.linktree.description}
+    keywords={pageSEO.linktree.keywords}
+    type={pageSEO.linktree.type}
+/>
 
 <NotionPage title="Links" icon="🔗" coverImage="/Banner_Linked_baru.png" mobileCoverImage="/Banner_Linked_mobile.png" domicile="Jakarta, Indonesia | GMT+7">
     <NotionBlock>
