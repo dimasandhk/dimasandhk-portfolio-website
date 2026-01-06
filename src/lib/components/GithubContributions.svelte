@@ -5,7 +5,7 @@
     export let username = 'dimasandhk';
 
     let selectedYear = new Date().getFullYear();
-    let years = Array.from({ length: 6 }, (_, i) => 2025 - i); // 2025, 2024, ..., 2020
+    let years = Array.from({ length: 7 }, (_, i) => 2026 - i); // 2025, 2024, ..., 2020
     let loading = true;
     let error = '';
     
