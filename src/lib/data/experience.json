@@ -1,0 +1,132 @@
+[
+  {
+    "company": "ParagonCorp",
+    "roles": [
+      {
+        "title": "Software Engineer",
+        "duration": "January 2026 - Present (4 months)",
+        "location": "South Jakarta, Jakarta, Indonesia",
+        "tasks": []
+      }
+    ]
+  },
+  {
+    "company": "Badan Eksekutif Mahasiswa Institut Teknologi Sepuluh Nopember (BEM ITS)",
+    "roles": [
+      {
+        "title": "FullStack Website Director General Staf",
+        "duration": "March 2025 - Present (1 year 2 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Developed the first official BEM ITS website from scratch, serving as its web representative.",
+          "Built article, link shortener, and profile pages for the platform."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Bayucaraka UAV Research Team",
+    "totalDuration": "2 years 4 months total duration",
+    "roles": [
+      {
+        "title": "Software Engineer - Ground Control Station Software",
+        "duration": "March 2024 - Present (2 years 2 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Co-developed a custom UAV mission planner, designed to compete with commercial closed-source mission planning systems, focusing on flexibility and research-driven features.",
+          "Engineered the end-to-end communication infrastructure between UAV, ground control station, and cloud services for reliable telemetry, command exchange, and real-time data transfer.",
+          "Designed and deployed live aerial video streaming from onboard UAV cameras using TCP/UDP protocols, integrating edge capture, transmission pipeline, and monitoring interface.",
+          "Implemented an AI-based aerial detection system using ONNX for inference, Flask for model serving, and ReactJS for visualization and control dashboard."
+        ]
+      },
+      {
+        "title": "Internship Programming Division",
+        "duration": "January 2024 - March 2024 (3 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Learn the basics of robotic programming including image processing and ROS2 communication."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Society of Renewable Energy ITS (SRE ITS SC)",
+    "roles": [
+      {
+        "title": "Frontend Developer",
+        "duration": "August 2024 - July 2025 (1 year)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Improved frontend codebase by implementing SOLID principles."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "TEDxITS",
+    "roles": [
+      {
+        "title": "Product Manager",
+        "duration": "November 2024 - May 2025 (7 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Served as Product Manager, collaborating with two other PMs to lead a 32-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints involving animation-heavy pages and transitions.",
+          "Successfully managed to make all features including seat ticketing page, 3 pace event page, ticket order form page, online ticket exchange, etc on time within a very fast paced event timeline based website with over 10k page visitors.",
+          "Developed real time leaderboard minigame on main event with over 50+ users."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Future Energy Summit (Futurest)",
+    "roles": [
+      {
+        "title": "Product Manager",
+        "duration": "October 2024 - May 2025 (8 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Served as Product Manager, collaborating with two other PMs to lead a 28-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints.",
+          "Successfully delivered all requested features on time for an event-based website, including the landing page, role-based dashboard, and competition registration and submission forms."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "ARA 7.0",
+    "totalDuration": "1 year 8 months total duration",
+    "roles": [
+      {
+        "title": "Senior Frontend Developer",
+        "duration": "June 2024 - May 2025 (1 year)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
+          "Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event."
+        ]
+      },
+      {
+        "title": "Frontend Developer",
+        "duration": "October 2023 - June 2024 (9 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
+          "Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Ini Lho ITS!",
+    "roles": [
+      {
+        "title": "Senior Frontend Developer",
+        "duration": "October 2024 - January 2025 (4 months)",
+        "location": "Surabaya, East Java, Indonesia",
+        "tasks": [
+          "Developed a fast-paced website that handled thousands of concurrent users across Indonesia during major events.",
+          "Developed a registration form page, role based dashboard, profile page, payment gateway integration, massive quiz platform accessed by thousands of students all over Indonesia, etc)."
+        ]
+      }
+    ]
+  }
+]
