@@ -11,6 +11,8 @@
     import List from 'lucide-svelte/icons/list';
     import { pageSEO, personSchema } from '$lib/config/seo';
 
+    import experienceData from '$lib/data/experience.json';
+
     let viewMode = $state<'gallery' | 'list'>('gallery');
 
     import { projects } from '$lib/data/projects.js';
@@ -100,6 +102,41 @@
            </span>
        </div>
     </NotionBlock>
+
+    <!-- Experience Section -->
+    <NotionBlock>
+        <div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
+            <span class="text-xl">💼</span>
+            <h2 class="text-xl font-semibold text-[var(--notion-text)]">Experience</h2>
+        </div>
+    </NotionBlock>
+
+    <div class="mb-8 flex flex-col gap-6">
+        {#each experienceData as exp}
+            <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2">
+                    <h3 class="text-lg font-semibold text-[var(--notion-text)]">{exp.company}</h3>
+                    {#if exp.totalDuration}
+                        <span class="text-sm text-[#9b9a97] italic ml-2">({exp.totalDuration})</span>
+                    {/if}
+                </div>
+
+                {#each exp.roles as role}
+                    <div class="mt-2 pl-4 border-l-2 border-[var(--notion-border)]">
+                        <div class="font-medium text-[var(--notion-text)]">{role.title}</div>
+                        <div class="text-sm text-[#9b9a97] mb-1">{role.duration} • {role.location}</div>
+                        {#if role.tasks && role.tasks.length > 0}
+                            <ul class="list-disc pl-5 mt-1 space-y-1 text-sm text-[var(--notion-text)]">
+                                {#each role.tasks as task}
+                                    <li>{task}</li>
+                                {/each}
+                            </ul>
+                        {/if}
+                    </div>
+                {/each}
+            </div>
+        {/each}
+    </div>
 
     <!-- Achievements Section -->
     <NotionBlock>
