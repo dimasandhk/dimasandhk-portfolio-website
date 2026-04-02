@@ -50,20 +50,6 @@
     ]
   },
   {
-    "company": "Institut Teknologi Sepuluh Nopember (ITS)",
-    "roles": [
-      {
-        "title": "Laboratory Assistant and Assistant Lecturer of Database System Course",
-        "duration": "February 2025 - July 2025 (6 months)",
-        "location": "Surabaya, East Java, Indonesia",
-        "tasks": [
-          "Developed learning modules and taught practical sessions for 100+ students to ensure clear understanding of theoretical and hands-on materials.",
-          "Designed and prepared lab assignments and exercises for junior students as well as evaluated and graded student submissions to ensure compliance with experiment guidelines and successful implementation of lab tasks."
-        ]
-      }
-    ]
-  },
-  {
     "company": "Society of Renewable Energy ITS (SRE ITS SC)",
     "roles": [
       {
@@ -139,20 +125,6 @@
         "tasks": [
           "Developed a fast-paced website that handled thousands of concurrent users across Indonesia during major events.",
           "Developed a registration form page, role based dashboard, profile page, payment gateway integration, massive quiz platform accessed by thousands of students all over Indonesia, etc)."
-        ]
-      }
-    ]
-  },
-  {
-    "company": "Institut Teknologi Sepuluh Nopember (ITS)",
-    "roles": [
-      {
-        "title": "Laboratory Assistant and Assistant Lecturer of Algorithms and Programming Techniques",
-        "duration": "September 2024 - December 2024 (4 months)",
-        "location": "Surabaya, East Java, Indonesia",
-        "tasks": [
-          "Developed learning modules and taught practical sessions for 100+ students to ensure clear understanding of theoretical and hands-on materials.",
-          "Designed and prepared lab assignments and exercises for junior students as well as evaluated and graded student submissions to ensure compliance with experiment guidelines and successful implementation of lab tasks."
         ]
       }
     ]
