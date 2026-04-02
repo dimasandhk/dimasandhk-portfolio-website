@@ -14,8 +14,6 @@
 
     import experienceData from '$lib/data/experience.json';
 
-    import experienceData from '$lib/data/experience.json';
-
     let viewMode = $state<'gallery' | 'list'>('gallery');
 
     import { projects } from '$lib/data/projects.js';
