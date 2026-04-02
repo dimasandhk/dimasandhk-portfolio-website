@@ -10,6 +10,9 @@
     import LayoutGrid from 'lucide-svelte/icons/layout-grid';
     import List from 'lucide-svelte/icons/list';
     import { pageSEO, personSchema } from '$lib/config/seo';
+    import ArrowUp from 'lucide-svelte/icons/arrow-up';
+
+    import experienceData from '$lib/data/experience.json';
 
     import experienceData from '$lib/data/experience.json';
 
@@ -18,6 +21,12 @@
     import { projects } from '$lib/data/projects.js';
 
     const featuredProjects = projects.filter(p => p.featured);
+
+    let scrollY = $state(0);
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 </script>
 
 <MetaTags 
@@ -205,3 +214,15 @@
         </div>
     </NotionBlock>
 </NotionPage>
+
+<svelte:window bind:scrollY={scrollY} />
+
+{#if scrollY > 300}
+    <button
+        class="fixed bottom-8 right-8 p-3 bg-[var(--notion-bg)] shadow-lg rounded-full border border-[var(--notion-border)] text-[var(--notion-text)] hover:bg-[var(--notion-hover)] transition-all z-50 cursor-pointer"
+        onclick={scrollToTop}
+        aria-label="Back to top"
+    >
+        <ArrowUp size={20} />
+    </button>
+{/if}
