@@ -44,18 +44,35 @@
     ];
 
     let videos = $state<any[]>([]);
+    let nowPlaying = $state<any>(null);
+    let topTracks = $state<any[]>([]);
+    let isSpotifyLoading = $state(true);
     
     import { onMount } from 'svelte';
 
     onMount(async () => {
         try {
-            const res = await fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNqSlVr9_fJ-682ILT-MBHA&maxResults=2&order=date&type=video&key=AIzaSyCSIVIRw-guAKkBQEVCdQenaOg24skiboM');
-            if (res.ok) {
-                const data = await res.json();
+            const [videoRes, nowPlayingRes, topTracksRes] = await Promise.all([
+                fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNqSlVr9_fJ-682ILT-MBHA&maxResults=2&order=date&type=video&key=AIzaSyCSIVIRw-guAKkBQEVCdQenaOg24skiboM'),
+                fetch('/api/spotify/now-playing'),
+                fetch('/api/spotify/top-tracks')
+            ]);
+
+            if (videoRes.ok) {
+                const data = await videoRes.json();
                 videos = data.items;
             }
+            if (nowPlayingRes.ok) {
+                nowPlaying = await nowPlayingRes.json();
+            }
+            if (topTracksRes.ok) {
+                const data = await topTracksRes.json();
+                topTracks = data.tracks;
+            }
         } catch (e) {
-            console.error('Failed to fetch videos', e);
+            console.error('Failed to fetch data', e);
+        } finally {
+            isSpotifyLoading = false;
         }
     });
 </script>
@@ -137,7 +154,75 @@
             {/each}
         </div>
     {/if}
-    
+
+    <!-- Spotify Activity -->
+    <NotionBlock>
+        <div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
+            <span class="text-xl">🎵</span>
+            <h2 class="text-xl font-semibold text-[var(--notion-text)]">Spotify Activity</h2>
+        </div>
+
+        {#if isSpotifyLoading}
+            <div class="text-[#9b9a97] animate-pulse text-sm">Loading Spotify stats...</div>
+        {:else}
+            <!-- Currently Playing — full-width row -->
+            <div class="mb-6">
+                <h3 class="text-xs font-semibold text-[#9b9a97] uppercase tracking-wider mb-3">Currently Playing</h3>
+                {#if nowPlaying?.isPlaying}
+                    <a href={nowPlaying.songUrl} target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] bg-[var(--notion-bg)] hover:bg-[var(--notion-hover)] transition-all group shadow-sm w-full">
+                        <img src={nowPlaying.albumImageUrl} alt={nowPlaying.album}
+                            class="w-16 h-16 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-300 shrink-0" />
+                        <div class="flex flex-col flex-1 min-w-0">
+                            <span class="font-semibold text-[var(--notion-text)] truncate text-base">{nowPlaying.title}</span>
+                            <span class="text-sm text-[#9b9a97] truncate">{nowPlaying.artist}</span>
+                            <span class="text-xs text-[#9b9a97] truncate mt-0.5">{nowPlaying.album}</span>
+                        </div>
+                        <div class="relative flex items-center justify-center w-10 h-10 shrink-0">
+                            <div class="absolute inset-0 rounded-full bg-green-500/20 animate-ping"></div>
+                            <div class="relative flex items-center justify-center w-10 h-10 rounded-full bg-green-500/10 text-green-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </a>
+                {:else}
+                    <div class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] bg-[var(--notion-gray)]/30 shadow-sm">
+                        <div class="w-16 h-16 rounded-lg border border-[var(--notion-border)] bg-[var(--notion-bg)] flex items-center justify-center text-2xl opacity-40 shrink-0">💤</div>
+                        <div class="flex flex-col">
+                            <span class="font-medium text-[var(--notion-text)]">Not Playing Anything</span>
+                            <span class="text-sm text-[#9b9a97]">Spotify is currently offline</span>
+                        </div>
+                    </div>
+                {/if}
+            </div>
+
+            <!-- Top 10 Tracks — 2 columns of 5 -->
+            <div>
+                <h3 class="text-xs font-semibold text-[#9b9a97] uppercase tracking-wider mb-3">Top 10 Tracks</h3>
+                {#if topTracks.length > 0}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+                        {#each topTracks as track, i}
+                            <a href={track.songUrl} target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--notion-hover)] transition-all group">
+                                <span class="text-xs font-mono text-[#9b9a97] w-5 text-right shrink-0">{i + 1}</span>
+                                <div class="relative overflow-hidden rounded shrink-0">
+                                    <img src={track.albumImageUrl} alt={track.title}
+                                        class="w-9 h-9 object-cover group-hover:scale-110 transition-transform duration-300" />
+                                </div>
+                                <div class="flex flex-col flex-1 min-w-0">
+                                    <span class="text-sm font-medium text-[var(--notion-text)] truncate">{track.title}</span>
+                                    <span class="text-xs text-[#9b9a97] truncate">{track.artist}</span>
+                                </div>
+                            </a>
+                        {/each}
+                    </div>
+                {:else}
+                    <div class="text-sm text-[#9b9a97]">No top tracks found.</div>
+                {/if}
+            </div>
+        {/if}
+    </NotionBlock>
+
     <NotionBlock>
         <div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4 text-center">
             © {new Date().getFullYear()} Dimas Andhika
