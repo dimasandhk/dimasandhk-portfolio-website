@@ -32,7 +32,7 @@
 
 	// Construct full URL for current page
 	const currentUrl = $derived(`${defaultSEO.siteUrl}${$page.url.pathname}`);
-	
+
 	// Construct full image URL
 	const fullImageUrl = $derived(
 		image?.startsWith('http') ? image : `${defaultSEO.siteUrl}${image}`
