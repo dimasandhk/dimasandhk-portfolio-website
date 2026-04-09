@@ -164,6 +164,8 @@
 				<button
 					class="absolute cursor-pointer top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors"
 					onclick={() => (selectedItem = null)}
+					aria-label="Close modal"
+					title="Close modal"
 				>
 					<X size={20} />
 				</button>
