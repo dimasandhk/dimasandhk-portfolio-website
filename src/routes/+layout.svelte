@@ -50,7 +50,7 @@
 </script>
 
 <div
-	class="min-h-screen w-full bg-[var(--notion-bg)] text-[var(--notion-text)] transition-colors duration-200"
+	class="min-h-screen w-full text-[var(--notion-text)] transition-colors duration-200"
 >
 	<!-- Main Content -->
 	<main class="w-full relative">
