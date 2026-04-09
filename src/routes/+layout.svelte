@@ -89,6 +89,8 @@
 				<button
 					onclick={toggleTheme}
 					class="flex items-center justify-center h-7 w-7 rounded hover:bg-[var(--notion-hover)] transition-colors text-[var(--notion-text)] cursor-pointer"
+					aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+					title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
 				>
 					{#if theme === 'dark'}
 						<Sun size={16} />
@@ -136,6 +138,8 @@
 						<button
 							onclick={() => (isContactOpen = false)}
 							class="text-[#9b9a97] cursor-pointer hover:text-[var(--notion-text)] transition-colors p-1 rounded"
+							aria-label="Close contact modal"
+							title="Close contact modal"
 						>
 							✕
 						</button>
