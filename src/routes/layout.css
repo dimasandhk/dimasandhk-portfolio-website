@@ -39,6 +39,8 @@
 
 body {
 	background-color: var(--notion-bg);
+	background-image: radial-gradient(var(--notion-border) 1px, transparent 1px);
+	background-size: 20px 20px;
 	color: var(--notion-text);
 	font-family: var(--font-inter);
 	-webkit-font-smoothing: antialiased;
