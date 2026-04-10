@@ -39,10 +39,8 @@
 {#if viewMode === 'gallery'}
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
 		{#each items as item, i}
-			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div
-				class="group relative flex cursor-pointer flex-col overflow-hidden rounded border border-[var(--notion-border)] transition-all hover:bg-[var(--notion-hover)] hover:shadow-sm"
+			<button
+				class="group relative flex cursor-pointer flex-col overflow-hidden rounded border border-[var(--notion-border)] transition-all hover:bg-[var(--notion-hover)] hover:shadow-sm w-full text-left focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				onclick={() => (selectedItem = item)}
 			>
 				<div
@@ -69,7 +67,7 @@
 						{/if}
 					</div>
 				</div>
-			</div>
+			</button>
 		{/each}
 
 		{#if showViewMore}
@@ -94,10 +92,8 @@
 {:else}
 	<div class="flex flex-col w-full">
 		{#each items as item, i}
-			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div
-				class="flex items-center gap-3 p-2 border-b border-[var(--notion-border)] hover:bg-[var(--notion-hover)] cursor-pointer transition-colors"
+			<button
+				class="flex items-center gap-3 p-2 border-b border-[var(--notion-border)] hover:bg-[var(--notion-hover)] cursor-pointer transition-colors w-full text-left focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				onclick={() => (selectedItem = item)}
 			>
 				<span class="text-lg">{item.icon || '📄'}</span>
@@ -113,7 +109,7 @@
 						<span class="text-xs text-[#9b9a97] px-1">+{item.tags.length - 3}</span>
 					{/if}
 				</div>
-			</div>
+			</button>
 		{/each}
 
 		{#if showViewMore}
