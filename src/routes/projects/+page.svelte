@@ -69,14 +69,15 @@
 			</div>
 
 			<!-- Filter Tabs -->
-			<div class="flex flex-wrap gap-2 pb-2">
+			<div class="flex flex-wrap gap-2 pb-2" role="group" aria-label="Project categories filter">
 				{#each categories as category}
 					<button
-						class="px-3 py-1 rounded-full text-sm transition-all duration-200 border {selectedCategory ===
+						class="px-3 py-1 rounded-full text-sm transition-all duration-200 border focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)] {selectedCategory ===
 						category
 							? 'bg-[var(--notion-text)] text-[var(--notion-bg)] border-[var(--notion-text)]'
 							: 'bg-[var(--notion-bg)] text-[var(--notion-text)] border-[var(--notion-border)] hover:bg-[var(--notion-hover)]'}"
 						onclick={() => (selectedCategory = category)}
+						aria-pressed={selectedCategory === category}
 					>
 						{category}
 					</button>
