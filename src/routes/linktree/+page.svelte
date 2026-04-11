@@ -53,9 +53,7 @@
 	onMount(async () => {
 		try {
 			const [videoRes, nowPlayingRes, topTracksRes] = await Promise.all([
-				fetch(
-					'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNqSlVr9_fJ-682ILT-MBHA&maxResults=2&order=date&type=video&key=AIzaSyCSIVIRw-guAKkBQEVCdQenaOg24skiboM'
-				),
+				fetch('/api/youtube/latest-videos'),
 				fetch('/api/spotify/now-playing'),
 				fetch('/api/spotify/top-tracks')
 			]);
