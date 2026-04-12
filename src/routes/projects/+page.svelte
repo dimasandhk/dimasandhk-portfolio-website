@@ -8,9 +8,11 @@
 	import LayoutGrid from 'lucide-svelte/icons/layout-grid';
 	import List from 'lucide-svelte/icons/list';
 	import ArrowUp from 'lucide-svelte/icons/arrow-up';
+	import Search from 'lucide-svelte/icons/search';
 
 	let viewMode = $state<'gallery' | 'list'>('gallery');
 	let selectedCategory = $state<string>('All');
+	let searchQuery = $state<string>('');
 	let scrollY = $state(0);
 
 	function scrollToTop() {
@@ -20,9 +22,16 @@
 	const categories = ['All', 'Achievements', 'Apps', 'Bots', 'System Testing / Utils'];
 
 	let filteredProjects = $derived(
-		selectedCategory === 'All'
-			? projects
-			: projects.filter((p) => p.category.includes(selectedCategory as ProjectCategory))
+		projects.filter((p) => {
+			const matchesCategory =
+				selectedCategory === 'All' || p.category.includes(selectedCategory as ProjectCategory);
+			const matchesSearch =
+				searchQuery.trim() === '' ||
+				p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				(p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
+				(p.tags && p.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())));
+			return matchesCategory && matchesSearch;
+		})
 	);
 </script>
 
@@ -66,6 +75,19 @@
 						<span>Gallery View</span>
 					{/if}
 				</button>
+			</div>
+
+			<!-- Search Bar -->
+			<div class="relative w-full">
+				<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+					<Search size={16} class="text-[#9b9a97]" />
+				</div>
+				<input
+					type="text"
+					bind:value={searchQuery}
+					placeholder="Search projects by title, description, or tags..."
+					class="w-full pl-9 pr-4 py-2 bg-[var(--notion-bg)] border border-[var(--notion-border)] rounded-md text-sm text-[var(--notion-text)] placeholder:text-[#9b9a97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:border-transparent transition-all"
+				/>
 			</div>
 
 			<!-- Filter Tabs -->
