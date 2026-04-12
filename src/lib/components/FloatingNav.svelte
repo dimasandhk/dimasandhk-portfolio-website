@@ -31,11 +31,12 @@
 
 		<a
 			href={link.href}
-			class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 group
+			class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]
             {$page.url.pathname === link.href
 				? 'bg-[var(--notion-text)] text-[var(--notion-bg)]'
 				: 'text-[#9b9a97] hover:bg-[var(--notion-hover)] hover:text-[var(--notion-text)]'}"
 			aria-label={link.label}
+			aria-current={$page.url.pathname === link.href ? 'page' : undefined}
 		>
 			<svelte:component this={link.icon} size={20} />
 
