@@ -90,17 +90,23 @@
 <NotionBlock>
 	<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
 		<span class="text-xl">🟩</span>
-		<h2 class="text-xl font-semibold text-[var(--notion-text)]">How Active I Am on GitHub <span class="text-sm text-[#9b9a97]">(currently using GitLab on my internship)</span></h2>
+		<h2 class="text-xl font-semibold text-[var(--notion-text)]">
+			How Active I Am on GitHub <span class="text-sm text-[#9b9a97]"
+				>(currently using GitLab on my internship)</span
+			>
+		</h2>
 		<span class="ml-auto text-xs text-[#9b9a97]">{totalContributions} in {selectedYear}</span>
 	</div>
 
 	<div class="flex gap-2 overflow-x-auto pb-2 mb-2 text-sm">
 		{#each years as year}
 			<button
-				class="px-2 py-1 rounded transition-colors {selectedYear === year
+				class="px-2 py-1 rounded transition-colors focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)] {selectedYear ===
+				year
 					? 'bg-[var(--notion-border)] text-[var(--notion-text)] font-medium'
 					: 'text-[#9b9a97] hover:bg-[var(--notion-hover)]'}"
 				on:click={() => (selectedYear = year)}
+				aria-pressed={selectedYear === year}
 			>
 				{year}
 			</button>
