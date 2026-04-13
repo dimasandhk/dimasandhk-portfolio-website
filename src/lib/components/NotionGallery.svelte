@@ -136,6 +136,7 @@
 			if (e.target === e.currentTarget) selectedItem = null;
 		}}
 		onkeydown={(e) => {
+			if (e.key === 'Escape') selectedItem = null;
 			if ((e.key === 'Enter' || e.key === ' ') && e.target === e.currentTarget) {
 				e.preventDefault();
 				selectedItem = null;
@@ -158,7 +159,7 @@
 					: getRandomGradient(0)}"
 			>
 				<button
-					class="absolute cursor-pointer top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors"
+					class="absolute cursor-pointer top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2"
 					onclick={() => (selectedItem = null)}
 					aria-label="Close modal"
 					title="Close modal"
