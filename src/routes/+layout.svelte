@@ -59,7 +59,7 @@
 			<div class="flex items-center gap-1 text-sm text-[var(--notion-text)]">
 				<a
 					href="/"
-					class="flex items-center gap-1 hover:bg-[var(--notion-hover)] px-2 py-1 rounded cursor-pointer transition-colors text-[var(--notion-text)]"
+					class="flex items-center gap-1 hover:bg-[var(--notion-hover)] px-2 py-1 rounded cursor-pointer transition-colors text-[var(--notion-text)] focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				>
 					<span class="text-base">👋</span>
 					<span class="font-medium sm:hidden">Dimas' Portfolio</span>
@@ -86,7 +86,7 @@
 			<div class="flex items-center gap-2">
 				<button
 					onclick={toggleTheme}
-					class="flex items-center justify-center h-7 w-7 rounded hover:bg-[var(--notion-hover)] transition-colors text-[var(--notion-text)] cursor-pointer"
+					class="flex items-center justify-center h-7 w-7 rounded hover:bg-[var(--notion-hover)] transition-colors text-[var(--notion-text)] cursor-pointer focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 					aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
 					title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
 				>
@@ -98,7 +98,7 @@
 				</button>
 				<button
 					onclick={toggleContact}
-					class="flex items-center gap-1.5 text-sm cursor-pointer font-medium hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors text-[var(--notion-text)]"
+					class="flex items-center gap-1.5 text-sm cursor-pointer font-medium hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors text-[var(--notion-text)] focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				>
 					<Contact size={16} />
 					<span>Contact</span>
@@ -121,7 +121,13 @@
 				}}
 				role="button"
 				tabindex="0"
-				onkeydown={(e) => e.key === 'Escape' && (isContactOpen = false)}
+				onkeydown={(e) => {
+					if (e.key === 'Escape') isContactOpen = false;
+					if ((e.key === 'Enter' || e.key === ' ') && e.target === e.currentTarget) {
+						e.preventDefault();
+						isContactOpen = false;
+					}
+				}}
 			>
 				<!-- Modal Content -->
 				<div
@@ -135,7 +141,7 @@
 						<h3 class="text-lg font-semibold text-[var(--notion-text)]">Get in Touch</h3>
 						<button
 							onclick={() => (isContactOpen = false)}
-							class="text-[#9b9a97] cursor-pointer hover:text-[var(--notion-text)] transition-colors p-1 rounded"
+							class="text-[#9b9a97] cursor-pointer hover:text-[var(--notion-text)] transition-colors p-1 rounded focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 							aria-label="Close contact modal"
 							title="Close contact modal"
 						>

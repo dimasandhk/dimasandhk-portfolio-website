@@ -12,3 +12,13 @@
 
 **Learning:** Found multiple places (navigation links, filter tabs, year selection tabs) where visual state (active/selected) was conveyed only through CSS classes, meaning screen readers couldn't identify the active element. Relying only on visual cues excludes users with visual impairments.
 **Action:** Always pair visual active states with semantic ARIA attributes (`aria-current="page"` for navigation links, `aria-pressed="true"` for toggle buttons/tabs). Additionally, always apply clear `focus-visible` styles to ensure keyboard users have a visible focus indicator when navigating these elements.
+
+## 2025-02-28 - Tooltip Keyboard Accessibility
+
+**Learning:** Hover-triggered tooltips (e.g., using `group-hover:opacity-100` in Tailwind) are invisible to keyboard-only users who navigate via the Tab key, unless explicit focus states are also defined.
+**Action:** Always pair `group-hover` visibility classes with `group-focus-visible` classes (like `group-focus-visible:opacity-100 group-focus-visible:visible`) on tooltip elements so they appear when the parent interactive element receives keyboard focus.
+
+## 2025-02-28 - Modal Keyboard Controls
+
+**Learning:** Custom modal backdrops that act as interactive overlays (e.g., `role="button" tabindex="0"`) often lack comprehensive keyboard support. Users expect to close modals with the `Escape` key at any point, and with `Enter` or `Space` when the backdrop itself is focused.
+**Action:** Ensure custom modal overlays handle `keydown` events for `Escape` globally within the modal context, and handle `Enter` and `Space` specifically when `e.target === e.currentTarget` on the backdrop itself.

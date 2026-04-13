@@ -42,7 +42,7 @@
 
 			<!-- Tooltip (Desktop only) -->
 			<span
-				class="absolute right-full mr-3 px-2 py-1 bg-[var(--notion-text)] text-[var(--notion-bg)] text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap hidden md:block"
+				class="absolute right-full mr-3 px-2 py-1 bg-[var(--notion-text)] text-[var(--notion-bg)] text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-visible:opacity-100 group-focus-visible:visible transition-all whitespace-nowrap hidden md:block"
 			>
 				{link.label}
 			</span>
