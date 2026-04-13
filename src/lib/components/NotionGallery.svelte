@@ -2,6 +2,9 @@
 	import { fade, fly } from 'svelte/transition';
 	import X from 'lucide-svelte/icons/x';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
+	import Link from 'lucide-svelte/icons/link';
+	import Check from 'lucide-svelte/icons/check';
+	import { onMount } from 'svelte';
 
 	interface GalleryItem {
 		title: string;
@@ -24,6 +27,41 @@
 	let { items, viewMode = 'gallery', showViewMore = false }: Props = $props();
 
 	let selectedItem = $state<GalleryItem | null>(null);
+	let isCopied = $state(false);
+
+	onMount(() => {
+		const hash = window.location.hash.slice(1);
+		if (hash) {
+			const project = items.find(
+				(item) => item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === hash
+			);
+			if (project) {
+				selectedItem = project;
+			}
+		}
+	});
+
+	$effect(() => {
+		if (selectedItem) {
+			const hash = selectedItem.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+			window.history.replaceState(null, '', `#${hash}`);
+		} else {
+			window.history.replaceState(null, '', window.location.pathname + window.location.search);
+		}
+	});
+
+	async function copyProjectLink() {
+		if (selectedItem) {
+			const url = new URL(window.location.href);
+			const hash = selectedItem.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+			url.hash = hash;
+			await navigator.clipboard.writeText(url.toString());
+			isCopied = true;
+			setTimeout(() => {
+				isCopied = false;
+			}, 2000);
+		}
+	}
 
 	function getRandomGradient(index: number) {
 		const gradients = [
@@ -169,9 +207,22 @@
 
 			<!-- Modal Content -->
 			<div class="flex-1 overflow-y-auto p-8 md:p-12 notion-scrollbar">
-				<div class="flex items-center gap-3 mb-6">
+				<div class="flex items-center gap-3 mb-6 pr-8">
 					<span class="text-4xl">{selectedItem.icon || '📄'}</span>
 					<h2 class="text-3xl font-bold text-[var(--notion-text)]">{selectedItem.title}</h2>
+					<button
+						class="flex items-center gap-1.5 px-2 py-1 ml-auto text-sm text-[#9b9a97] hover:text-[var(--notion-text)] hover:bg-[var(--notion-hover)] rounded transition-colors"
+						onclick={copyProjectLink}
+						aria-label="Copy link to project"
+					>
+						{#if isCopied}
+							<Check size={16} class="text-green-500" />
+							<span class="hidden sm:inline text-green-500">Copied!</span>
+						{:else}
+							<Link size={16} />
+							<span class="hidden sm:inline">Copy Link</span>
+						{/if}
+					</button>
 				</div>
 
 				<!-- Properties -->
