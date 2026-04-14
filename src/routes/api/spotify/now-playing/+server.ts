@@ -8,7 +8,6 @@ export async function GET({ setHeaders }) {
 
 	try {
 		const response = await getNowPlaying();
-		console.log(response);
 
 		if (response.status === 204 || response.status > 400) {
 			return json({ isPlaying: false });

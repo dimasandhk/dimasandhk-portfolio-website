@@ -50,30 +50,32 @@
 
 	import { onMount } from 'svelte';
 
-	onMount(async () => {
-		try {
-			const [videoRes, nowPlayingRes, topTracksRes] = await Promise.all([
-				fetch('/api/youtube/latest-videos'),
-				fetch('/api/spotify/now-playing'),
-				fetch('/api/spotify/top-tracks')
-			]);
-
-			if (videoRes.ok) {
-				const data = await videoRes.json();
+	onMount(() => {
+		// Fetch YouTube videos independently
+		fetch('/api/youtube/latest-videos')
+			.then((res) => (res.ok ? res.json() : Promise.reject('Failed to fetch videos')))
+			.then((data) => {
 				videos = data.items;
-			}
-			if (nowPlayingRes.ok) {
-				nowPlaying = await nowPlayingRes.json();
-			}
-			if (topTracksRes.ok) {
-				const data = await topTracksRes.json();
+			})
+			.catch((e) => console.error('Failed to fetch YouTube data', e));
+
+		// Fetch Spotify data concurrently but parse independently
+		const fetchNowPlaying = fetch('/api/spotify/now-playing')
+			.then((res) => (res.ok ? res.json() : Promise.reject('Failed to fetch now playing')))
+			.then((data) => {
+				nowPlaying = data;
+			});
+
+		const fetchTopTracks = fetch('/api/spotify/top-tracks')
+			.then((res) => (res.ok ? res.json() : Promise.reject('Failed to fetch top tracks')))
+			.then((data) => {
 				topTracks = data.tracks;
-			}
-		} catch (e) {
-			console.error('Failed to fetch data', e);
-		} finally {
+			});
+
+		// Stop loading only when both Spotify requests finish
+		Promise.allSettled([fetchNowPlaying, fetchTopTracks]).then(() => {
 			isSpotifyLoading = false;
-		}
+		});
 	});
 </script>
 

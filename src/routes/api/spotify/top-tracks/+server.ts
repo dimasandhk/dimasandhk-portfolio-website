@@ -8,7 +8,6 @@ export async function GET({ setHeaders }) {
 
 	try {
 		const response = await getTopTracks();
-		console.log(response);
 		const data = await response.json();
 
 		if (!response.ok) {
