@@ -51,17 +51,23 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
+		// Fetch YouTube videos independently so it doesn't block Spotify data loading (or vice versa)
+		fetch('/api/youtube/latest-videos')
+			.then(async (res) => {
+				if (res.ok) {
+					const data = await res.json();
+					videos = data.items;
+				}
+			})
+			.catch((e) => console.error('Failed to fetch YouTube videos', e));
+
+		// Fetch Spotify data together
 		try {
-			const [videoRes, nowPlayingRes, topTracksRes] = await Promise.all([
-				fetch('/api/youtube/latest-videos'),
+			const [nowPlayingRes, topTracksRes] = await Promise.all([
 				fetch('/api/spotify/now-playing'),
 				fetch('/api/spotify/top-tracks')
 			]);
 
-			if (videoRes.ok) {
-				const data = await videoRes.json();
-				videos = data.items;
-			}
 			if (nowPlayingRes.ok) {
 				nowPlaying = await nowPlayingRes.json();
 			}
@@ -70,7 +76,7 @@
 				topTracks = data.tracks;
 			}
 		} catch (e) {
-			console.error('Failed to fetch data', e);
+			console.error('Failed to fetch Spotify data', e);
 		} finally {
 			isSpotifyLoading = false;
 		}
