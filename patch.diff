@@ -1,0 +1,79 @@
+<<<<<<< SEARCH
+	let videos = $state<any[]>([]);
+	let nowPlaying = $state<any>(null);
+	let topTracks = $state<any[]>([]);
+	let isSpotifyLoading = $state(true);
+
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		// Fetch YouTube videos independently so it doesn't block Spotify data loading (or vice versa)
+		fetch('/api/youtube/latest-videos')
+			.then(async (res) => {
+				if (res.ok) {
+					const data = await res.json();
+					videos = data.items;
+				}
+			})
+			.catch((e) => console.error('Failed to fetch YouTube videos', e));
+
+		// Fetch Spotify data together
+		try {
+			const [nowPlayingRes, topTracksRes] = await Promise.all([
+				fetch('/api/spotify/now-playing'),
+				fetch('/api/spotify/top-tracks')
+			]);
+
+			if (nowPlayingRes.ok) {
+				nowPlaying = await nowPlayingRes.json();
+			}
+			if (topTracksRes.ok) {
+				const data = await topTracksRes.json();
+				topTracks = data.tracks;
+			}
+		} catch (e) {
+			console.error('Failed to fetch Spotify data', e);
+		} finally {
+			isSpotifyLoading = false;
+		}
+	});
+=======
+	let videos = $state<any[]>([]);
+	let nowPlaying = $state<any>(null);
+	let topTracks = $state<any[]>([]);
+	let isNowPlayingLoading = $state(true);
+	let isTopTracksLoading = $state(true);
+
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		// Fetch YouTube videos independently so it doesn't block Spotify data loading (or vice versa)
+		fetch('/api/youtube/latest-videos')
+			.then(async (res) => {
+				if (res.ok) {
+					const data = await res.json();
+					videos = data.items;
+				}
+			})
+			.catch((e) => console.error('Failed to fetch YouTube videos', e));
+
+		// Fetch Spotify now-playing data independently
+		fetch('/api/spotify/now-playing')
+			.then(async (res) => {
+				if (res.ok) nowPlaying = await res.json();
+			})
+			.catch((e) => console.error('Failed to fetch Spotify now playing', e))
+			.finally(() => (isNowPlayingLoading = false));
+
+		// Fetch Spotify top-tracks data independently
+		fetch('/api/spotify/top-tracks')
+			.then(async (res) => {
+				if (res.ok) {
+					const data = await res.json();
+					topTracks = data.tracks;
+				}
+			})
+			.catch((e) => console.error('Failed to fetch Spotify top tracks', e))
+			.finally(() => (isTopTracksLoading = false));
+	});
+>>>>>>> REPLACE
