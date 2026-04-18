@@ -50,6 +50,9 @@
 
 	import { onMount } from 'svelte';
 
+	// Bolt: Reusing Intl.DateTimeFormat instance instead of repeated toLocaleDateString calls for better performance
+	const dateFormatter = new Intl.DateTimeFormat();
+
 	onMount(async () => {
 		// Fetch YouTube videos independently so it doesn't block Spotify data loading (or vice versa)
 		fetch('/api/youtube/latest-videos')
@@ -168,7 +171,7 @@
 								{video.snippet.title}
 							</a>
 							<div class="text-xs text-[#9b9a97] mt-1">
-								{new Date(video.snippet.publishedAt).toLocaleDateString()}
+								{dateFormatter.format(new Date(video.snippet.publishedAt))}
 							</div>
 						</div>
 					</div>
