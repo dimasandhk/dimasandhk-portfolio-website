@@ -213,6 +213,11 @@
 			</li>
 			<li>
 				<span class="font-medium"
+					>Finalist Teknofest 2025 International UAV Competition Free Mission Category</span
+				> - Finalist in the International UAV Competition Free Mission Category, showcasing a custom auto mapping flight, autonomous system, and cloud surveillance system.
+			</li>
+			<li>
+				<span class="font-medium"
 					>Best Methodology Award on Technology Development - KRTI (2024)</span
 				> - Recognized for comprehensive methodology of our innovation and systematic engineering approach.
 			</li>
