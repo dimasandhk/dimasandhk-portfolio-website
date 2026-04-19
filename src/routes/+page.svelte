@@ -11,7 +11,31 @@
 	import List from 'lucide-svelte/icons/list';
 	import { pageSEO, personSchema } from '$lib/config/seo';
 	import ArrowUp from 'lucide-svelte/icons/arrow-up';
-
+	import FileCode from 'lucide-svelte/icons/file-code';
+	import FileCode2 from 'lucide-svelte/icons/file-code-2';
+	import Atom from 'lucide-svelte/icons/atom';
+	import Triangle from 'lucide-svelte/icons/triangle';
+	import Component from 'lucide-svelte/icons/component';
+	import Flame from 'lucide-svelte/icons/flame';
+	import Palette from 'lucide-svelte/icons/palette';
+	import TestTube from 'lucide-svelte/icons/test-tube';
+	import Smartphone from 'lucide-svelte/icons/smartphone';
+	import Hexagon from 'lucide-svelte/icons/hexagon';
+	import ServerCog from 'lucide-svelte/icons/server-cog';
+	import Box from 'lucide-svelte/icons/box';
+	import FlaskConical from 'lucide-svelte/icons/flask-conical';
+	import Code from 'lucide-svelte/icons/code';
+	import Zap from 'lucide-svelte/icons/zap';
+	import Database from 'lucide-svelte/icons/database';
+	import Leaf from 'lucide-svelte/icons/leaf';
+	import CloudRain from 'lucide-svelte/icons/cloud-rain';
+	import CircleDot from 'lucide-svelte/icons/circle-dot';
+	import Cloud from 'lucide-svelte/icons/cloud';
+	import Container from 'lucide-svelte/icons/container';
+	import Network from 'lucide-svelte/icons/network';
+	import GitBranch from 'lucide-svelte/icons/git-branch';
+	import Github from 'lucide-svelte/icons/github';
+	import Wrench from 'lucide-svelte/icons/wrench';
 	import experienceData from '$lib/data/experience.json';
 
 	let viewMode = $state<'gallery' | 'list'>('gallery');
@@ -89,18 +113,58 @@
 		</div>
 	</NotionBlock>
 
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-start">
 		<div class="flex flex-col gap-2">
 			<div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
 				<AppWindow size={18} />
 				Frontend
 			</div>
-			<div
-				class="bg-[var(--notion-gray)] p-3 rounded text-sm text-[var(--notion-text)] leading-relaxed"
-			>
-				Javascript • Typescript<br />
-				ReactJS • NextJS • VueJS<br />
-				Svelte • Tailwind CSS
+			<div class="flex flex-wrap gap-2">
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<FileCode size={14} /> Javascript
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<FileCode2 size={14} /> Typescript
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Atom size={14} /> ReactJS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Triangle size={14} /> NextJS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Component size={14} /> VueJS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Flame size={14} /> Svelte
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Palette size={14} /> Tailwind CSS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<TestTube size={14} /> Vitest
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Smartphone size={14} /> React Native
+				</div>
 			</div>
 		</div>
 		<div class="flex flex-col gap-2">
@@ -108,13 +172,67 @@
 				<Server size={18} />
 				Backend
 			</div>
-			<div
-				class="bg-[var(--notion-gray)] p-3 rounded text-sm text-[var(--notion-text)] leading-relaxed"
-			>
-				NodeJS • ExpressJS • NestJS<br />
-				Python • Flask • Django<br />
-				MySQL • MongoDB • Firebase<br />
-				Prisma • Drizzle • Mongoose<br />
+			<div class="flex flex-wrap gap-2">
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Hexagon size={14} /> NodeJS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<ServerCog size={14} /> ExpressJS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Box size={14} /> NestJS
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<FlaskConical size={14} /> Flask
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Code size={14} /> Django
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Zap size={14} /> Fiber (Go)
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Database size={14} /> MySQL
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Leaf size={14} /> MongoDB
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Database size={14} /> PostgreSQL
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Triangle size={14} /> Prisma
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<CloudRain size={14} /> Drizzle
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Database size={14} /> Mongoose
+				</div>
 			</div>
 		</div>
 		<div class="flex flex-col gap-2">
@@ -122,12 +240,47 @@
 				<Terminal size={18} />
 				DevOps & Tools
 			</div>
-			<div
-				class="bg-[var(--notion-gray)] p-3 rounded text-sm text-[var(--notion-text)] leading-relaxed"
-			>
-				Git • GitHub • Actions<br />
-				Docker • Kubernetes<br />
-				Ubuntu • CloudFlare
+			<div class="flex flex-wrap gap-2">
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<CircleDot size={14} /> Ubuntu
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Cloud size={14} /> CloudFlare
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Container size={14} /> Docker
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Network size={14} /> Kubernetes
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<GitBranch size={14} /> Git
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Github size={14} /> GitHub Actions
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Box size={14} /> Vagrant
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Wrench size={14} /> Ansible
+				</div>
 			</div>
 		</div>
 	</div>
@@ -214,7 +367,8 @@
 			<li>
 				<span class="font-medium"
 					>Finalist Teknofest 2025 International UAV Competition Free Mission Category</span
-				> - Finalist in the International UAV Competition Free Mission Category, showcasing a custom auto mapping flight, autonomous system, and cloud surveillance system.
+				> - Finalist in the International UAV Competition Free Mission Category, showcasing a custom auto
+				mapping flight, autonomous system, and cloud surveillance system.
 			</li>
 			<li>
 				<span class="font-medium"
