@@ -67,6 +67,10 @@
 		const labels: { index: number; label: string }[] = [];
 		let currentMonth = -1;
 
+		// ⚡ Bolt: Instantiated Intl.DateTimeFormat outside the loop to prevent creating
+		// multiple formatters, which is much faster than repeatedly calling toLocaleString()
+		const dateFormatter = new Intl.DateTimeFormat('default', { month: 'short' });
+
 		for (let i = 0; i < 53; i++) {
 			const dayIndex = i * 7;
 			if (dayIndex >= data.length) break;
@@ -76,7 +80,7 @@
 			const month = date.getMonth();
 
 			if (month !== currentMonth) {
-				const monthName = date.toLocaleString('default', { month: 'short' });
+				const monthName = dateFormatter.format(date);
 				labels.push({ index: i, label: monthName });
 				currentMonth = month;
 			}
