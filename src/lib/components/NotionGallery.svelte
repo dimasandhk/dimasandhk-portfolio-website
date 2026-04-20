@@ -196,7 +196,7 @@
 					: getRandomGradient(0)}"
 			>
 				<button
-					class="absolute cursor-pointer top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors"
+					class="absolute cursor-pointer top-4 right-4 p-1.5 bg-black/20 hover:bg-black/40 rounded text-white transition-colors focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
 					onclick={() => (selectedItem = null)}
 					aria-label="Close modal"
 					title="Close modal"
@@ -211,7 +211,7 @@
 					<span class="text-4xl">{selectedItem.icon || '📄'}</span>
 					<h2 class="text-3xl font-bold text-[var(--notion-text)]">{selectedItem.title}</h2>
 					<button
-						class="flex items-center gap-1.5 px-2 py-1 ml-auto text-sm text-[#9b9a97] hover:text-[var(--notion-text)] hover:bg-[var(--notion-hover)] rounded transition-colors"
+						class="flex items-center gap-1.5 px-2 py-1 ml-auto text-sm text-[#9b9a97] hover:text-[var(--notion-text)] hover:bg-[var(--notion-hover)] rounded transition-colors focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 						onclick={copyProjectLink}
 						aria-label="Copy link to project"
 					>
