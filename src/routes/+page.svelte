@@ -387,7 +387,7 @@
 			<span class="text-xl">🚀</span>
 			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Selected Projects</h2>
 			<button
-				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors"
+				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				onclick={() => (viewMode = viewMode === 'gallery' ? 'list' : 'gallery')}
 			>
 				{#if viewMode === 'gallery'}
@@ -420,7 +420,7 @@
 
 {#if scrollY > 300}
 	<button
-		class="fixed bottom-8 right-8 p-3 bg-[var(--notion-bg)] shadow-lg rounded-full border border-[var(--notion-border)] text-[var(--notion-text)] hover:bg-[var(--notion-hover)] transition-all z-50 cursor-pointer"
+		class="fixed bottom-8 right-8 p-3 bg-[var(--notion-bg)] shadow-lg rounded-full border border-[var(--notion-border)] text-[var(--notion-text)] hover:bg-[var(--notion-hover)] transition-all z-50 cursor-pointer focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 		onclick={scrollToTop}
 		aria-label="Back to top"
 	>
