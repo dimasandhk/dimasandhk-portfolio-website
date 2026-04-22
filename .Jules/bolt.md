@@ -1,0 +1,3 @@
+## 2025-04-13 - Add native lazy loading to external media frames and images
+**Learning:** External iframe embeds like YouTube and externally hosted images like Spotify covers were loaded eagerly by default in Svelte views. Eager loading of complex iframes blocks the main thread with heavy initialization scripts and heavily penalizes initial load times.
+**Action:** Always append native `loading="lazy"` to `<iframe>` elements loading external resources (and similarly for below-the-fold `<img>` assets) to defer initialization and network calls until they intersect the viewport. This is standard, safe HTML but extremely impactful for performance.

@@ -156,6 +156,7 @@
 								frameborder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowfullscreen
+								loading="lazy"
 							></iframe>
 						</div>
 						<div class="p-3">
@@ -203,6 +204,7 @@
 							src={nowPlaying.albumImageUrl}
 							alt={nowPlaying.album}
 							class="w-16 h-16 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-300 shrink-0"
+							loading="lazy"
 						/>
 						<div class="flex flex-col flex-1 min-w-0">
 							<span class="font-semibold text-[var(--notion-text)] truncate text-base"
@@ -260,6 +262,7 @@
 										src={track.albumImageUrl}
 										alt={track.title}
 										class="w-9 h-9 object-cover group-hover:scale-110 transition-transform duration-300"
+										loading="lazy"
 									/>
 								</div>
 								<div class="flex flex-col flex-1 min-w-0">
