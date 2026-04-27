@@ -9,6 +9,7 @@
 	import Mail from 'lucide-svelte/icons/mail';
 	import Instagram from 'lucide-svelte/icons/instagram';
 	import ExternalLink from 'lucide-svelte/icons/external-link';
+	import type { YouTubeVideo, NowPlaying, SpotifyTrack } from '$lib/types';
 
 	const links = [
 		{
@@ -43,9 +44,9 @@
 		}
 	];
 
-	let videos = $state<any[]>([]);
-	let nowPlaying = $state<any>(null);
-	let topTracks = $state<any[]>([]);
+	let videos = $state<YouTubeVideo[]>([]);
+	let nowPlaying = $state<NowPlaying | null>(null);
+	let topTracks = $state<SpotifyTrack[]>([]);
 	let isSpotifyLoading = $state(true);
 
 	import { onMount } from 'svelte';
