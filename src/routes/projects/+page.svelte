@@ -21,18 +21,27 @@
 
 	const categories = ['All', 'Achievements', 'Apps', 'Bots', 'System Testing / Utils'];
 
-	let filteredProjects = $derived(
-		projects.filter((p) => {
+	let filteredProjects = $derived.by(() => {
+		// ⚡ Bolt: Hoisted search query computations outside the filter loop
+		// to avoid redundant string operations (trim and toLowerCase) per project.
+		const trimmedQuery = searchQuery.trim();
+		const lowerQuery = trimmedQuery.toLowerCase();
+
+		return projects.filter((p) => {
 			const matchesCategory =
 				selectedCategory === 'All' || p.category.includes(selectedCategory as ProjectCategory);
-			const matchesSearch =
-				searchQuery.trim() === '' ||
-				p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				(p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
-				(p.tags && p.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())));
-			return matchesCategory && matchesSearch;
-		})
-	);
+
+			// ⚡ Bolt: Early return to skip expensive search checks if category doesn't match
+			if (!matchesCategory) return false;
+			if (trimmedQuery === '') return true;
+
+			return (
+				p.title.toLowerCase().includes(lowerQuery) ||
+				(p.description && p.description.toLowerCase().includes(lowerQuery)) ||
+				(p.tags && p.tags.some((tag) => tag.toLowerCase().includes(lowerQuery)))
+			);
+		});
+	});
 </script>
 
 <MetaTags
