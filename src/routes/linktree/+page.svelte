@@ -49,6 +49,18 @@
 	let topTracks = $state<SpotifyTrack[]>([]);
 	let isSpotifyLoading = $state(true);
 
+	// ⚡ Bolt: Performance Optimization
+	// Pre-instantiating Intl.DateTimeFormat outside the loop and precomputing the formatted
+	// string in a $derived block is significantly faster than using .toLocaleDateString()
+	// or instantiating it repeatedly inside the {#each} loop block.
+	const dateFormatter = new Intl.DateTimeFormat();
+	const formattedVideos = $derived(
+		videos.map((v) => ({
+			...v,
+			formattedDate: dateFormatter.format(new Date(v.snippet.publishedAt))
+		}))
+	);
+
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
@@ -143,7 +155,7 @@
 		</NotionBlock>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			{#each videos as video}
+			{#each formattedVideos as video}
 				<NotionBlock>
 					<div
 						class="rounded-lg overflow-hidden border border-[var(--notion-border)] bg-[var(--notion-bg)]"
@@ -169,7 +181,7 @@
 								{video.snippet.title}
 							</a>
 							<div class="text-xs text-[#9b9a97] mt-1">
-								{new Date(video.snippet.publishedAt).toLocaleDateString()}
+								{video.formattedDate}
 							</div>
 						</div>
 					</div>
