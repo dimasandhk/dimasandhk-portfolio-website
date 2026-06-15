@@ -110,7 +110,7 @@
 					href={link.url}
 					target={link.url.startsWith('/') ? '_self' : '_blank'}
 					rel={link.url.startsWith('/') ? '' : 'noopener noreferrer'}
-					class="flex items-center gap-4 p-3 rounded hover:bg-[var(--notion-hover)] border border-transparent hover:border-[var(--notion-border)] transition-all group"
+					class="flex items-center gap-4 p-3 rounded hover:bg-[var(--notion-hover)] border border-transparent hover:border-[var(--notion-border)] transition-all group focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				>
 					<div
 						class="flex items-center justify-center w-10 h-10 rounded bg-[var(--notion-bg)] border border-[var(--notion-border)] shadow-sm text-[var(--notion-text)]"
@@ -120,13 +120,15 @@
 
 					<div class="flex flex-col flex-1">
 						<span
-							class="font-medium text-[var(--notion-text)] group-hover:text-[var(--notion-text)]"
+							class="font-medium text-[var(--notion-text)] group-hover:text-[var(--notion-text)] group-focus-visible:text-[var(--notion-text)]"
 							>{link.label}</span
 						>
 						<span class="text-xs text-[#9b9a97]">{link.desc}</span>
 					</div>
 
-					<div class="text-[#9b9a97] opacity-0 group-hover:opacity-100 transition-opacity">
+					<div
+						class="text-[#9b9a97] opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity"
+					>
 						<ExternalLink size={16} />
 					</div>
 				</a>
@@ -164,7 +166,7 @@
 								href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="font-medium text-[var(--notion-text)] hover:underline line-clamp-2"
+								class="font-medium text-[var(--notion-text)] hover:underline line-clamp-2 focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)] rounded"
 							>
 								{video.snippet.title}
 							</a>
@@ -198,12 +200,12 @@
 						href={nowPlaying.songUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] bg-[var(--notion-bg)] hover:bg-[var(--notion-hover)] transition-all group shadow-sm w-full"
+						class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] bg-[var(--notion-bg)] hover:bg-[var(--notion-hover)] transition-all group shadow-sm w-full focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 					>
 						<img
 							src={nowPlaying.albumImageUrl}
 							alt={nowPlaying.album}
-							class="w-16 h-16 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-300 shrink-0"
+							class="w-16 h-16 rounded-lg shadow-sm group-hover:scale-105 group-focus-visible:scale-105 transition-transform duration-300 shrink-0"
 						/>
 						<div class="flex flex-col flex-1 min-w-0">
 							<span class="font-semibold text-[var(--notion-text)] truncate text-base"
@@ -252,7 +254,7 @@
 								href={track.songUrl}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--notion-hover)] transition-all group"
+								class="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--notion-hover)] transition-all group focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 							>
 								<span class="text-xs font-mono text-[#9b9a97] w-5 text-right shrink-0">{i + 1}</span
 								>
@@ -260,7 +262,7 @@
 									<img
 										src={track.albumImageUrl}
 										alt={track.title}
-										class="w-9 h-9 object-cover group-hover:scale-110 transition-transform duration-300"
+										class="w-9 h-9 object-cover group-hover:scale-110 group-focus-visible:scale-110 transition-transform duration-300"
 									/>
 								</div>
 								<div class="flex flex-col flex-1 min-w-0">
