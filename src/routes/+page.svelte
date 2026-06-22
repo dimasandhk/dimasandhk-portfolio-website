@@ -339,7 +339,7 @@
 			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Achievements</h2>
 			<a
 				href="/projects"
-				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors no-underline"
+				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors no-underline focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 			>
 				<span>More details on /projects</span>
 				<span class="text-[10px]">↗</span>
