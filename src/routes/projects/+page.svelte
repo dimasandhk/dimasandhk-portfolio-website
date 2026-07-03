@@ -21,18 +21,25 @@
 
 	const categories = ['All', 'Achievements', 'Apps', 'Bots', 'System Testing / Utils'];
 
-	let filteredProjects = $derived(
-		projects.filter((p) => {
+	let filteredProjects = $derived.by(() => {
+		// ⚡ Bolt: Hoist repeated string operations out of the loop
+		const trimmedQuery = searchQuery.trim();
+		const isQueryEmpty = trimmedQuery === '';
+		const lowerQuery = trimmedQuery.toLowerCase();
+
+		return projects.filter((p) => {
 			const matchesCategory =
 				selectedCategory === 'All' || p.category.includes(selectedCategory as ProjectCategory);
+
 			const matchesSearch =
-				searchQuery.trim() === '' ||
-				p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				(p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
-				(p.tags && p.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())));
+				isQueryEmpty ||
+				p.title.toLowerCase().includes(lowerQuery) ||
+				(p.description && p.description.toLowerCase().includes(lowerQuery)) ||
+				(p.tags && p.tags.some((tag) => tag.toLowerCase().includes(lowerQuery)));
+
 			return matchesCategory && matchesSearch;
-		})
-	);
+		});
+	});
 </script>
 
 <MetaTags
