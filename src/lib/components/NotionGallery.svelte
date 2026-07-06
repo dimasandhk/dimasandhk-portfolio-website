@@ -112,13 +112,13 @@
 			<!-- View More Placeholder -->
 			<a
 				href="/projects"
-				class="group relative flex cursor-pointer flex-col overflow-hidden rounded border-2 border-dashed border-[var(--notion-border)] bg-[var(--notion-gray)]/50 hover:bg-[var(--notion-hover)] transition-colors p-4 items-center justify-center min-h-[250px]"
+				class="group relative flex cursor-pointer flex-col overflow-hidden rounded border-2 border-dashed border-[var(--notion-border)] bg-[var(--notion-gray)]/50 hover:bg-[var(--notion-hover)] transition-colors p-4 items-center justify-center min-h-[250px] focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 			>
 				<div
-					class="flex flex-col items-center gap-3 text-[#9b9a97] group-hover:text-[var(--notion-text)] transition-colors"
+					class="flex flex-col items-center gap-3 text-[#9b9a97] group-hover:text-[var(--notion-text)] group-focus-visible:text-[var(--notion-text)] transition-colors"
 				>
 					<span
-						class="p-3 rounded-full bg-[var(--notion-border)] group-hover:bg-[var(--notion-gray)] transition-colors"
+						class="p-3 rounded-full bg-[var(--notion-border)] group-hover:bg-[var(--notion-gray)] group-focus-visible:bg-[var(--notion-gray)] transition-colors"
 					>
 						<ArrowRight size={24} />
 					</span>
