@@ -3,60 +3,45 @@
 		"company": "ParagonCorp",
 		"roles": [
 			{
-				"title": "Software Engineer",
-				"duration": "January 2026 - Present (4 months)",
+				"title": "Software Engineer Intern - E-Commerce Direct Selling Ecosystem",
+				"duration": "January 2026 - July 2026 (7 months)",
 				"location": "South Jakarta, Jakarta, Indonesia",
-				"tasks": []
-			}
-		]
-	},
-	{
-		"company": "Badan Eksekutif Mahasiswa Institut Teknologi Sepuluh Nopember (BEM ITS)",
-		"roles": [
-			{
-				"title": "FullStack Website Director General Staf",
-				"duration": "March 2025 - Present (1 year 2 months)",
-				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
-					"Developed the first official BEM ITS website from scratch, serving as its web representative.",
-					"Built article, link shortener, and profile pages for the platform."
+					"Built a multi-role marketplace aggregator platform enabling cross-functional teams (Brand Commerce, Store Controllers, Stock & SKU Managers) to manage and publish product listings across multiple e-commerce platforms.",
+					"Implemented support for complex product types (bundles, free items, variants, and promotional SKUs), including promotion handling logic for campaigns such as double date, brand day, and flash sales.",
+					"Designed inventory synchronization across multiple warehouses in Indonesia and integrated product-to-packaging mapping to streamline fulfillment operations."
 				]
 			}
 		]
 	},
 	{
-		"company": "Bayucaraka UAV Research Team",
-		"totalDuration": "2 years 4 months total duration",
+		"company": "Lab Kota Cerdas dan Keamanan Siber (Lab KCKS IT ITS)",
 		"roles": [
 			{
-				"title": "Software Engineer - Ground Control Station Software",
-				"duration": "March 2024 - Present (2 years 2 months)",
+				"title": "Assistant Lecturer & Laboratory Assistant",
+				"duration": "February 2024 - June 2026 (2 years 4 months)",
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
-					"Co-developed a custom UAV mission planner, designed to compete with commercial closed-source mission planning systems, focusing on flexibility and research-driven features.",
-					"Engineered the end-to-end communication infrastructure between UAV, ground control station, and cloud services for reliable telemetry, command exchange, and real-time data transfer.",
-					"Designed and deployed live aerial video streaming from onboard UAV cameras using TCP/UDP protocols, integrating edge capture, transmission pipeline, and monitoring interface.",
-					"Implemented an AI-based aerial detection system using ONNX for inference, Flask for model serving, and ReactJS for visualization and control dashboard."
-				]
-			},
-			{
-				"title": "Internship Programming Division",
-				"duration": "January 2024 - March 2024 (3 months)",
-				"location": "Surabaya, East Java, Indonesia",
-				"tasks": [
-					"Learn the basics of robotic programming including image processing and ROS2 communication."
+					"Served as Laboratory Assistant and Assistant Lecturer for Cloud Computing, Database Systems, and Algorithms and Programming Techniques courses.",
+					"Developed new Cloud Computing course material covering the ELK Stack, Prometheus, and Grafana.",
+					"Developed learning modules and taught practical sessions for 100+ students to ensure clear understanding of theoretical and hands-on materials.",
+					"Designed and prepared lab assignments and exercises for junior students, and evaluated and graded submissions to ensure compliance with experiment guidelines and successful implementation of lab tasks."
 				]
 			}
 		]
 	},
 	{
-		"company": "Society of Renewable Energy ITS (SRE ITS SC)",
+		"company": "IniKaryaKita",
 		"roles": [
 			{
-				"title": "Frontend Developer",
-				"duration": "August 2024 - July 2025 (1 year)",
-				"location": "Surabaya, East Java, Indonesia",
-				"tasks": ["Improved frontend codebase by implementing SOLID principles."]
+				"title": "Full Stack Engineer (Remote)",
+				"duration": "May 2026 - June 2026 (2 months)",
+				"location": "Jakarta, Indonesia",
+				"tasks": [
+					"Built an end-to-end organizational portal serving as the official digital hub for the student association to publish articles, manage events, and showcase organizational profiles.",
+					"Implemented a custom CMS and secure admin dashboard with Role-Based Access Control (RBAC) using Supabase PostgreSQL and Row Level Security (RLS) to restrict data mutations to authorized personnel.",
+					"Designed a high-performance and interactive user interface leveraging React 19, TypeScript, TanStack Start, and Framer Motion, deployed on Cloudflare Pages for optimized edge delivery."
+				]
 			}
 		]
 	},
@@ -70,7 +55,63 @@
 				"tasks": [
 					"Served as Product Manager, collaborating with two other PMs to lead a 32-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints involving animation-heavy pages and transitions.",
 					"Successfully managed to make all features including seat ticketing page, 3 pace event page, ticket order form page, online ticket exchange, etc on time within a very fast paced event timeline based website with over 10k page visitors.",
-					"Developed real time leaderboard minigame on main event with over 50+ users."
+					"Developed a real-time leaderboard minigame for the main event, utilizing Ngrok, with 50+ users."
+				]
+			}
+		]
+	},
+	{
+		"company": "Bayucaraka UAV Research Team",
+		"totalDuration": "2 years 6 months total duration",
+		"roles": [
+			{
+				"title": "Software & System Engineer - Ground Control Station",
+				"duration": "March 2024 - Present (2 years 4 months)",
+				"location": "Surabaya, East Java, Indonesia",
+				"tasks": [
+					"Led the team in developing a custom UAV mission planner designed to compete with commercial closed-source mission planning systems, focusing on flexibility and research-driven features.",
+					"Engineered the end-to-end communication infrastructure between the UAV, ground control station, and cloud services (utilizing AWS EC2 with H100 GPU) for reliable telemetry, command exchange, and real-time data transfer.",
+					"Designed and deployed live aerial video streaming from onboard UAV cameras using UDP protocols, integrating edge capture, transmission pipeline, and monitoring interface.",
+					"Implemented an AI-based aerial detection system using ONNX for inference, Flask for model serving, and ReactJS for visualization and control dashboard.",
+					"Won 2nd Place in the Technology Development Division at KRTI 2025 and the Best Methodology Award in the Technology Development Division at KRTI 2024, at a time when research funding was at its lowest."
+				]
+			},
+			{
+				"title": "Internship Programming Division",
+				"duration": "January 2024 - March 2024 (3 months)",
+				"location": "Surabaya, East Java, Indonesia",
+				"tasks": [
+					"Learn the basics of robotic programming including image processing and ROS2 communication."
+				]
+			}
+		]
+	},
+	{
+		"company": "Badan Eksekutif Mahasiswa Institut Teknologi Sepuluh Nopember (BEM ITS)",
+		"roles": [
+			{
+				"title": "Full Stack Web Developer",
+				"duration": "March 2025 - April 2026 (1 year 1 month)",
+				"location": "Surabaya, East Java, Indonesia",
+				"tasks": [
+					"Developed the first official BEM ITS website from scratch, serving as its web representative.",
+					"Deployed and managed infrastructure using Cloudflare Tunnels and DNS to securely expose a private campus VPS to the public internet.",
+					"Integrated the website with the Ghost CMS API for streamlined content management.",
+					"Built article, link shortener, and profile pages for the platform."
+				]
+			}
+		]
+	},
+	{
+		"company": "Ini Lho ITS!",
+		"roles": [
+			{
+				"title": "Senior Frontend Developer",
+				"duration": "October 2024 - January 2025 (4 months)",
+				"location": "Surabaya, East Java, Indonesia",
+				"tasks": [
+					"Developed a fast-paced website that handled more than 1,000 concurrent users across Indonesia during major events.",
+					"Developed a registration form page, role based dashboard, profile page, payment gateway integration, massive quiz platform accessed by thousands of students all over Indonesia, etc)."
 				]
 			}
 		]
@@ -90,8 +131,22 @@
 		]
 	},
 	{
+		"company": "Society of Renewable Energy ITS (SRE ITS SC)",
+		"roles": [
+			{
+				"title": "Frontend Developer",
+				"duration": "August 2024 - July 2025 (1 year)",
+				"location": "Surabaya, East Java, Indonesia",
+				"tasks": [
+					"Developed two new features within the period, including the academia and achievements pages.",
+					"Improved the frontend codebase by implementing SOLID principles."
+				]
+			}
+		]
+	},
+	{
 		"company": "ARA 7.0",
-		"totalDuration": "1 year 8 months total duration",
+		"totalDuration": "1 year 7 months total duration",
 		"roles": [
 			{
 				"title": "Senior Frontend Developer",
@@ -108,21 +163,7 @@
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
 					"Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
-					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event."
-				]
-			}
-		]
-	},
-	{
-		"company": "Ini Lho ITS!",
-		"roles": [
-			{
-				"title": "Senior Frontend Developer",
-				"duration": "October 2024 - January 2025 (4 months)",
-				"location": "Surabaya, East Java, Indonesia",
-				"tasks": [
-					"Developed a fast-paced website that handled thousands of concurrent users across Indonesia during major events.",
-					"Developed a registration form page, role based dashboard, profile page, payment gateway integration, massive quiz platform accessed by thousands of students all over Indonesia, etc)."
+					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event and marked my first hands-on web development experience."
 				]
 			}
 		]

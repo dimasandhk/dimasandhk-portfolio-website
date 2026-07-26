@@ -36,6 +36,15 @@
 	import GitBranch from 'lucide-svelte/icons/git-branch';
 	import Github from 'lucide-svelte/icons/github';
 	import Wrench from 'lucide-svelte/icons/wrench';
+	import Binary from 'lucide-svelte/icons/binary';
+	import Code2 from 'lucide-svelte/icons/code-2';
+	import Layers from 'lucide-svelte/icons/layers';
+	import Waves from 'lucide-svelte/icons/waves';
+	import HardDrive from 'lucide-svelte/icons/hard-drive';
+	import ChartLine from 'lucide-svelte/icons/chart-line';
+	import Search from 'lucide-svelte/icons/search';
+	import FileSearch from 'lucide-svelte/icons/file-search';
+	import Radio from 'lucide-svelte/icons/radio';
 	import experienceData from '$lib/data/experience.json';
 
 	let viewMode = $state<'gallery' | 'list'>('gallery');
@@ -165,6 +174,11 @@
 				>
 					<Smartphone size={14} /> React Native
 				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Layers size={14} /> Kotlin
+				</div>
 			</div>
 		</div>
 		<div class="flex flex-col gap-2">
@@ -233,6 +247,26 @@
 				>
 					<Database size={14} /> Mongoose
 				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Binary size={14} /> Golang
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Code2 size={14} /> Python
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Waves size={14} /> Redis
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<HardDrive size={14} /> S3 (MinIO, Supabase Storage)
+				</div>
 			</div>
 		</div>
 		<div class="flex flex-col gap-2">
@@ -280,6 +314,41 @@
 					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
 				>
 					<Wrench size={14} /> Ansible
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Flame size={14} /> Prometheus
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<ChartLine size={14} /> Grafana
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Search size={14} /> ELK Stack
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Server size={14} /> Nginx
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Network size={14} /> GNS3
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<FileSearch size={14} /> Cheerio (Scraper)
+				</div>
+				<div
+					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+				>
+					<Radio size={14} /> Ngrok
 				</div>
 			</div>
 		</div>
@@ -349,6 +418,11 @@
 
 	<NotionBlock>
 		<ul class="list-disc pl-6 space-y-2 text-[var(--notion-text)]">
+			<li>
+				<span class="font-medium">2nd Place on Garuda Hacks 7.0 Agriculture and Food System Track (2026)</span
+				> - Developed Tambak, an application that supports sustainable aquaculture through biofloc
+				technology, real-time water quality monitoring, and treatment recommendations.
+			</li>
 			<li>
 				<span class="font-medium">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed
 				an innovative smart city solution for Jakarta's flood control system.
