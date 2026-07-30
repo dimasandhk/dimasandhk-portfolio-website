@@ -93,7 +93,7 @@
 <NotionBlock>
 	<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
 		<span class="text-xl">🟩</span>
-		<h2 class="text-xl font-semibold text-[var(--notion-text)]">
+		<h2 id="github" class="text-xl font-semibold text-[var(--notion-text)]">
 			How Active I Am on GitHub <span class="text-sm text-[#9b9a97]"
 				>(currently using GitLab on my internship)</span
 			>

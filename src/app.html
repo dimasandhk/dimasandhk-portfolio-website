@@ -12,6 +12,20 @@
 		<meta name="theme-color" content="#191919" />
 		<meta name="color-scheme" content="dark light" />
 
+		<!-- Apply the stored theme before first paint to avoid a light/dark flash.
+		     Must stay in sync with the default in +layout.svelte (dark). -->
+		<script>
+			(function () {
+				try {
+					if ((localStorage.getItem('theme') || 'dark') === 'dark') {
+						document.documentElement.classList.add('dark');
+					}
+				} catch (e) {
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
+
 		<!-- SvelteKit Head -->
 		%sveltekit.head%
 	</head>

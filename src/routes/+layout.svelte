@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import { fade, fly } from 'svelte/transition';
 	import FloatingNav from '$lib/components/FloatingNav.svelte';
+	import LoadingScreen from '$lib/components/LoadingScreen.svelte';
 	import Contact from 'lucide-svelte/icons/contact';
 	import Sun from 'lucide-svelte/icons/sun';
 	import Moon from 'lucide-svelte/icons/moon';
@@ -12,6 +13,7 @@
 
 	let isContactOpen = $state(false);
 	let theme = $state<'dark' | 'light'>('dark');
+	let isLoading = $state(true);
 
 	function toggleContact() {
 		isContactOpen = !isContactOpen;
@@ -41,6 +43,12 @@
 		} else {
 			document.documentElement.classList.remove('dark');
 		}
+
+		const timer = setTimeout(() => {
+			isLoading = false;
+		}, 1200);
+
+		return () => clearTimeout(timer);
 	});
 
 	const routeConfig: Record<string, { icon: string; label: string }> = {
@@ -48,6 +56,10 @@
 		projects: { icon: '🚀', label: 'Projects' }
 	};
 </script>
+
+{#if isLoading}
+	<LoadingScreen />
+{/if}
 
 <div class="min-h-screen w-full text-[var(--notion-text)] transition-colors duration-200">
 	<!-- Main Content -->

@@ -46,6 +46,7 @@
 	import FileSearch from 'lucide-svelte/icons/file-search';
 	import Radio from 'lucide-svelte/icons/radio';
 	import experienceData from '$lib/data/experience.json';
+	import TableOfContents from '$lib/components/TableOfContents.svelte';
 
 	let viewMode = $state<'gallery' | 'list'>('gallery');
 
@@ -58,6 +59,101 @@
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
+
+	const tocSections = [
+		{ id: 'about', label: 'About Me' },
+		{ id: 'skills', label: 'Skills' },
+		{ id: 'experience', label: 'Experience' },
+		{ id: 'achievements', label: 'Achievements' },
+		{ id: 'projects', label: 'Projects' },
+		{ id: 'github', label: 'GitHub Activity' }
+	];
+
+	// Derived from the experience data so they can't drift out of sync.
+	const organizationCount = experienceData.length;
+	const roleCount = experienceData.reduce((total, exp) => total + exp.roles.length, 0);
+
+	const stats = [
+		{ value: '3.88', label: 'GPA / 4.00' },
+		{ value: '6', label: 'Awards' },
+		{ value: String(organizationCount), label: 'Organizations' },
+		{ value: String(roleCount), label: 'Roles' }
+	];
+
+	const skillGroups = [
+		{
+			label: 'Languages',
+			icon: Code2,
+			skills: [
+				{ name: 'Javascript', icon: FileCode },
+				{ name: 'Typescript', icon: FileCode2 },
+				{ name: 'Golang', icon: Binary },
+				{ name: 'Python', icon: Code2 },
+				{ name: 'Kotlin', icon: Layers }
+			]
+		},
+		{
+			label: 'Frontend',
+			icon: AppWindow,
+			skills: [
+				{ name: 'ReactJS', icon: Atom },
+				{ name: 'NextJS', icon: Triangle },
+				{ name: 'VueJS', icon: Component },
+				{ name: 'Svelte', icon: Flame },
+				{ name: 'React Native', icon: Smartphone },
+				{ name: 'Tailwind CSS', icon: Palette },
+				{ name: 'Vitest', icon: TestTube }
+			]
+		},
+		{
+			label: 'Backend',
+			icon: Server,
+			skills: [
+				{ name: 'NodeJS', icon: Hexagon },
+				{ name: 'ExpressJS', icon: ServerCog },
+				{ name: 'NestJS', icon: Box },
+				{ name: 'Fiber (Go)', icon: Zap },
+				{ name: 'Flask', icon: FlaskConical },
+				{ name: 'Django', icon: Code }
+			]
+		},
+		{
+			label: 'Databases & Storage',
+			icon: Database,
+			skills: [
+				{ name: 'MySQL', icon: Database },
+				{ name: 'PostgreSQL', icon: Database },
+				{ name: 'MongoDB', icon: Leaf },
+				{ name: 'Redis', icon: Waves },
+				{ name: 'S3 (MinIO, Supabase Storage)', icon: HardDrive },
+				{ name: 'Prisma', icon: Triangle },
+				{ name: 'Drizzle', icon: CloudRain },
+				{ name: 'Mongoose', icon: Database }
+			]
+		},
+		{
+			label: 'DevOps & Tools',
+			icon: Terminal,
+			wide: true,
+			skills: [
+				{ name: 'Docker', icon: Container },
+				{ name: 'Kubernetes', icon: Network },
+				{ name: 'Ubuntu', icon: CircleDot },
+				{ name: 'Nginx', icon: Server },
+				{ name: 'CloudFlare', icon: Cloud },
+				{ name: 'Git', icon: GitBranch },
+				{ name: 'GitHub Actions', icon: Github },
+				{ name: 'Prometheus', icon: Flame },
+				{ name: 'Grafana', icon: ChartLine },
+				{ name: 'ELK Stack', icon: Search },
+				{ name: 'Vagrant', icon: Box },
+				{ name: 'Ansible', icon: Wrench },
+				{ name: 'GNS3', icon: Network },
+				{ name: 'Cheerio (Scraper)', icon: FileSearch },
+				{ name: 'Ngrok', icon: Radio }
+			]
+		}
+	];
 </script>
 
 <MetaTags
@@ -80,7 +176,7 @@
 	<!-- </NotionBlock> -->
 
 	<NotionBlock>
-		<h2 class="text-2xl font-semibold mb-2 mt-4 text-[var(--notion-text)]">About Me</h2>
+		<h2 id="about" class="text-2xl font-semibold mb-2 mt-4 text-[var(--notion-text)]">About Me</h2>
 	</NotionBlock>
 	<NotionBlock>
 		<p class="text-[16px] leading-[1.5]">
@@ -92,6 +188,27 @@
 			work, supported by a strong academic and non-academic track, as well as intra- and interpersonal
 			skills.
 		</p>
+	</NotionBlock>
+
+	<!-- At a glance -->
+	<NotionBlock>
+		<div
+			class="grid grid-cols-2 sm:grid-cols-4 rounded border border-[var(--notion-border)] bg-[var(--notion-gray)] mt-4 overflow-hidden"
+		>
+			{#each stats as stat, i}
+				<div
+					class="flex flex-col items-center justify-center py-3 px-2 border-[var(--notion-border)]
+					{i % 2 === 1 ? 'border-l' : ''}
+					{i < 2 ? 'border-b sm:border-b-0' : ''}
+					{i === 2 ? 'sm:border-l' : ''}"
+				>
+					<span class="text-xl font-semibold text-[var(--notion-text)]">{stat.value}</span>
+					<span class="text-[11px] uppercase tracking-wide text-[#9b9a97] mt-0.5 text-center">
+						{stat.label}
+					</span>
+				</div>
+			{/each}
+		</div>
 	</NotionBlock>
 
 	<NotionBlock>
@@ -118,240 +235,30 @@
 	<NotionBlock>
 		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
 			<span class="text-xl">🛠️</span>
-			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Skills</h2>
+			<h2 id="skills" class="text-xl font-semibold text-[var(--notion-text)]">Skills</h2>
 		</div>
 	</NotionBlock>
 
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-start">
-		<div class="flex flex-col gap-2">
-			<div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
-				<AppWindow size={18} />
-				Frontend
-			</div>
-			<div class="flex flex-wrap gap-2">
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<FileCode size={14} /> Javascript
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5 mb-8 items-start">
+		{#each skillGroups as group}
+			<div class="flex flex-col gap-2 {group.wide ? 'md:col-span-2 lg:col-span-2' : ''}">
+				<div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
+					<group.icon size={18} />
+					{group.label}
+					<span class="text-xs font-normal text-[#9b9a97]">{group.skills.length}</span>
 				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<FileCode2 size={14} /> Typescript
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Atom size={14} /> ReactJS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Triangle size={14} /> NextJS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Component size={14} /> VueJS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Flame size={14} /> Svelte
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Palette size={14} /> Tailwind CSS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<TestTube size={14} /> Vitest
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Smartphone size={14} /> React Native
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Layers size={14} /> Kotlin
+				<div class="flex flex-wrap gap-2">
+					{#each group.skills as skill}
+						<div
+							class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+						>
+							<skill.icon size={14} />
+							{skill.name}
+						</div>
+					{/each}
 				</div>
 			</div>
-		</div>
-		<div class="flex flex-col gap-2">
-			<div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
-				<Server size={18} />
-				Backend
-			</div>
-			<div class="flex flex-wrap gap-2">
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Hexagon size={14} /> NodeJS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<ServerCog size={14} /> ExpressJS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Box size={14} /> NestJS
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<FlaskConical size={14} /> Flask
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Code size={14} /> Django
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Zap size={14} /> Fiber (Go)
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Database size={14} /> MySQL
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Leaf size={14} /> MongoDB
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Database size={14} /> PostgreSQL
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Triangle size={14} /> Prisma
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<CloudRain size={14} /> Drizzle
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Database size={14} /> Mongoose
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Binary size={14} /> Golang
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Code2 size={14} /> Python
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Waves size={14} /> Redis
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<HardDrive size={14} /> S3 (MinIO, Supabase Storage)
-				</div>
-			</div>
-		</div>
-		<div class="flex flex-col gap-2">
-			<div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
-				<Terminal size={18} />
-				DevOps & Tools
-			</div>
-			<div class="flex flex-wrap gap-2">
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<CircleDot size={14} /> Ubuntu
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Cloud size={14} /> CloudFlare
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Container size={14} /> Docker
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Network size={14} /> Kubernetes
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<GitBranch size={14} /> Git
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Github size={14} /> GitHub Actions
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Box size={14} /> Vagrant
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Wrench size={14} /> Ansible
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Flame size={14} /> Prometheus
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<ChartLine size={14} /> Grafana
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Search size={14} /> ELK Stack
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Server size={14} /> Nginx
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Network size={14} /> GNS3
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<FileSearch size={14} /> Cheerio (Scraper)
-				</div>
-				<div
-					class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
-				>
-					<Radio size={14} /> Ngrok
-				</div>
-			</div>
-		</div>
+		{/each}
 	</div>
 
 	<NotionBlock>
@@ -370,7 +277,7 @@
 	<NotionBlock>
 		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
 			<span class="text-xl">💼</span>
-			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Experience</h2>
+			<h2 id="experience" class="text-xl font-semibold text-[var(--notion-text)]">Experience</h2>
 		</div>
 	</NotionBlock>
 
@@ -416,7 +323,9 @@
 	<NotionBlock>
 		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
 			<span class="text-xl">🏆</span>
-			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Achievements</h2>
+			<h2 id="achievements" class="text-xl font-semibold text-[var(--notion-text)]">
+				Achievements
+			</h2>
 			<a
 				href="/projects"
 				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors no-underline"
@@ -430,34 +339,34 @@
 	<NotionBlock>
 		<ul class="list-disc pl-6 space-y-2 text-[var(--notion-text)]">
 			<li>
-				<span class="font-medium"
+				<span class="font-bold"
 					>2nd Place on Garuda Hacks 7.0 Agriculture and Food System Track (2026)</span
 				> - Developed Tambak, an application that supports sustainable aquaculture through biofloc technology,
 				real-time water quality monitoring, and treatment recommendations.
 			</li>
 			<li>
-				<span class="font-medium">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed
+				<span class="font-bold">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed
 				an innovative smart city solution for Jakarta's flood control system.
 			</li>
 			<li>
-				<span class="font-medium">2nd Place on Technology Development - KRTI (2025)</span> - Designed
+				<span class="font-bold">2nd Place on Technology Development - KRTI (2025)</span> - Designed
 				and implemented advanced control systems for unmanned aerial vehicles for disaster surveillance
 				and response.
 			</li>
 			<li>
-				<span class="font-medium"
+				<span class="font-bold"
 					>3rd Place on Web Development Hackathon Fit Competition 2025 - UKSW</span
 				> - Developed an interactive mapping platform designed to translate complex environmental data
 				into intuitive, personalized visuals
 			</li>
 			<li>
-				<span class="font-medium"
+				<span class="font-bold"
 					>Finalist Teknofest 2025 International UAV Competition Free Mission Category</span
 				> - Finalist in the International UAV Competition Free Mission Category, showcasing a custom auto
 				mapping flight, autonomous system, and cloud surveillance system.
 			</li>
 			<li>
-				<span class="font-medium"
+				<span class="font-bold"
 					>Best Methodology Award on Technology Development - KRTI (2024)</span
 				> - Recognized for comprehensive methodology of our innovation and systematic engineering approach.
 			</li>
@@ -471,7 +380,9 @@
 	<NotionBlock>
 		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
 			<span class="text-xl">🚀</span>
-			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Selected Projects</h2>
+			<h2 id="projects" class="text-xl font-semibold text-[var(--notion-text)]">
+				Selected Projects
+			</h2>
 			<button
 				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				onclick={() => (viewMode = viewMode === 'gallery' ? 'list' : 'gallery')}
@@ -501,6 +412,8 @@
 		</div>
 	</NotionBlock>
 </NotionPage>
+
+<TableOfContents sections={tocSections} />
 
 <svelte:window bind:scrollY />
 
