@@ -10,7 +10,8 @@
 					"Built a multi-role marketplace aggregator platform enabling cross-functional teams (Brand Commerce, Store Controllers, Stock & SKU Managers) to manage and publish product listings across multiple e-commerce platforms.",
 					"Implemented support for complex product types (bundles, free items, variants, and promotional SKUs), including promotion handling logic for campaigns such as double date, brand day, and flash sales.",
 					"Designed inventory synchronization across multiple warehouses in Indonesia and integrated product-to-packaging mapping to streamline fulfillment operations."
-				]
+				],
+				"skills": ["TypeScript", "ExpressJS", "PostgreSQL", "SAP ERP", "Next.js"]
 			}
 		]
 	},
@@ -26,7 +27,8 @@
 					"Developed new Cloud Computing course material covering the ELK Stack, Prometheus, and Grafana.",
 					"Developed learning modules and taught practical sessions for 100+ students to ensure clear understanding of theoretical and hands-on materials.",
 					"Designed and prepared lab assignments and exercises for junior students, and evaluated and graded submissions to ensure compliance with experiment guidelines and successful implementation of lab tasks."
-				]
+				],
+				"skills": ["Prometheus", "Grafana", "ELK Stack", "Docker", "Ansible", "SQL"]
 			}
 		]
 	},
@@ -41,7 +43,8 @@
 					"Built an end-to-end organizational portal serving as the official digital hub for the student association to publish articles, manage events, and showcase organizational profiles.",
 					"Implemented a custom CMS and secure admin dashboard with Role-Based Access Control (RBAC) using Supabase PostgreSQL and Row Level Security (RLS) to restrict data mutations to authorized personnel.",
 					"Designed a high-performance and interactive user interface leveraging React 19, TypeScript, TanStack Start, and Framer Motion, deployed on Cloudflare Pages for optimized edge delivery."
-				]
+				],
+				"skills": ["ReactJS", "TypeScript", "PostgreSQL", "Cloudflare", "Supabase"]
 			}
 		]
 	},
@@ -56,7 +59,8 @@
 					"Served as Product Manager, collaborating with two other PMs to lead a 32-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints involving animation-heavy pages and transitions.",
 					"Successfully managed to make all features including seat ticketing page, 3 pace event page, ticket order form page, online ticket exchange, etc on time within a very fast paced event timeline based website with over 10k page visitors.",
 					"Developed a real-time leaderboard minigame for the main event, utilizing Ngrok, with 50+ users."
-				]
+				],
+				"skills": ["Project Management", "ExpressJS", "Ngrok"]
 			}
 		]
 	},
@@ -74,7 +78,8 @@
 					"Designed and deployed live aerial video streaming from onboard UAV cameras using UDP protocols, integrating edge capture, transmission pipeline, and monitoring interface.",
 					"Implemented an AI-based aerial detection system using ONNX for inference, Flask for model serving, and ReactJS for visualization and control dashboard.",
 					"Won 2nd Place in the Technology Development Division at KRTI 2025 and the Best Methodology Award in the Technology Development Division at KRTI 2024, at a time when research funding was at its lowest."
-				]
+				],
+				"skills": ["Python", "Flask", "ONNX", "ReactJS", "AWS EC2"]
 			},
 			{
 				"title": "Internship Programming Division",
@@ -82,7 +87,8 @@
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
 					"Learn the basics of robotic programming including image processing and ROS2 communication."
-				]
+				],
+				"skills": ["Python", "ROS2", "C++"]
 			}
 		]
 	},
@@ -98,7 +104,8 @@
 					"Deployed and managed infrastructure using Cloudflare Tunnels and DNS to securely expose a private campus VPS to the public internet.",
 					"Integrated the website with the Ghost CMS API for streamlined content management.",
 					"Built article, link shortener, and profile pages for the platform."
-				]
+				],
+				"skills": ["TypeScript", "Cloudflare", "Ghost CMS", "ExpressJS", "Next.js"]
 			}
 		]
 	},
@@ -112,7 +119,8 @@
 				"tasks": [
 					"Developed a fast-paced website that handled more than 1,000 concurrent users across Indonesia during major events.",
 					"Developed a registration form page, role based dashboard, profile page, payment gateway integration, massive quiz platform accessed by thousands of students all over Indonesia, etc)."
-				]
+				],
+				"skills": ["Next.js", "Tailwind CSS"]
 			}
 		]
 	},
@@ -126,7 +134,8 @@
 				"tasks": [
 					"Served as Product Manager, collaborating with two other PMs to lead a 28-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints.",
 					"Successfully delivered all requested features on time for an event-based website, including the landing page, role-based dashboard, and competition registration and submission forms."
-				]
+				],
+				"skills": ["Project Management"]
 			}
 		]
 	},
@@ -140,7 +149,8 @@
 				"tasks": [
 					"Developed two new features within the period, including the academia and achievements pages.",
 					"Improved the frontend codebase by implementing SOLID principles."
-				]
+				],
+				"skills": ["ReactJS", "SOLID Principles", "Tailwind CSS"]
 			}
 		]
 	},
@@ -155,7 +165,8 @@
 				"tasks": [
 					"Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
 					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event."
-				]
+				],
+				"skills": ["Next.js", "Tailwind CSS"]
 			},
 			{
 				"title": "Frontend Developer",
@@ -164,7 +175,8 @@
 				"tasks": [
 					"Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
 					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event and marked my first hands-on web development experience."
-				]
+				],
+				"skills": ["Next.js", "Tailwind CSS"]
 			}
 		]
 	}

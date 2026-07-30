@@ -395,6 +395,17 @@
 								{/each}
 							</ul>
 						{/if}
+						{#if role.skills && role.skills.length > 0}
+							<div class="flex flex-wrap gap-1.5 mt-2">
+								{#each role.skills as skill}
+									<span
+										class="bg-[var(--notion-gray)] px-2 py-0.5 rounded text-xs text-[var(--notion-text)] border border-[var(--notion-border)]"
+									>
+										{skill}
+									</span>
+								{/each}
+							</div>
+						{/if}
 					</div>
 				{/each}
 			</div>
@@ -419,9 +430,10 @@
 	<NotionBlock>
 		<ul class="list-disc pl-6 space-y-2 text-[var(--notion-text)]">
 			<li>
-				<span class="font-medium">2nd Place on Garuda Hacks 7.0 Agriculture and Food System Track (2026)</span
-				> - Developed Tambak, an application that supports sustainable aquaculture through biofloc
-				technology, real-time water quality monitoring, and treatment recommendations.
+				<span class="font-medium"
+					>2nd Place on Garuda Hacks 7.0 Agriculture and Food System Track (2026)</span
+				> - Developed Tambak, an application that supports sustainable aquaculture through biofloc technology,
+				real-time water quality monitoring, and treatment recommendations.
 			</li>
 			<li>
 				<span class="font-medium">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed
