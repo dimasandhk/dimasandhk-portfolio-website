@@ -283,7 +283,7 @@
 
 				<div class="text-[var(--notion-text)] leading-relaxed space-y-4">
 					{#if selectedItem.description}
-						<p>{selectedItem.description}</p>
+						<p class="whitespace-pre-line">{selectedItem.description}</p>
 					{:else}
 						<p class="text-[#9b9a97] italic">No description available.</p>
 					{/if}

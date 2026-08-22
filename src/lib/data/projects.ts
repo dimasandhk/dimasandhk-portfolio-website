@@ -36,7 +36,53 @@ export const projects: Project[] = [
 		icon: '⚡',
 		timeline: 'Aug 2024 - Jul 2025',
 		preview: 'https://sre-its.com',
-		category: ['Apps'],
+		category: ['Apps']
+	},
+	{
+		title: 'Garuda Hacks 7.0 - 2nd Place Agriculture & Food Systems',
+		tags: [
+			'React Native',
+			'Expo',
+			'FastAPI',
+			'MongoDB',
+			'Python',
+			'scikit-learn',
+			'Random Forest',
+			'IoT'
+		],
+		image: '/projects/garuda.jpg',
+		description: `About the Event
+Garuda Hacks is a 501(c)(3) nonprofit hackathon and Southeast Asia's largest, running five consecutive years since 2020 to empower young Indonesians through computer science and entrepreneurship. GH 7.0 gathered 6,000+ builders for 30 straight hours around the theme of building resilient systems for Indonesia's most pressing challenges, split across three tracks: Health, Safety, and Agriculture & Food Systems.
+
+What We Built — Tambak ("Bukan Tebak, Pakai Tambak")
+Indonesia is a major aquaculture producer, but smallholder shrimp and fish farmers have no scientific monitoring tools. Biofloc Technology (BFT) cuts water exchange by over 90% and improves feed conversion, yet it is biologically unforgiving: up to 80% of seed stock can die within a week if stocked into an immature bacterial system, and a single crop failure costs a farmer around Rp 15,000,000. We treated this as an information problem and built a full-stack AI-powered biofloc pond monitoring and decision-support system.
+
+Key Features
+• Real-Time Water Quality Dashboard tracking 7 critical parameters (pH, temperature, dissolved oxygen, ammonia, nitrite, nitrate, total suspended solids) via custom SVG line charts.
+• AI Diagnose — rule-based instant diagnosis returning severity assessments with plain-language recommendations.
+• AI Setup — pre-cycle stocking and dosing recommendations tailored to pond volume and species.
+• AI Maturitas — multi-phase biofloc maturity assessment determining optimal stocking readiness.
+• AI Health Score — Random Forest Regression predicting pond health from historical trajectories.
+• Hybrid Data Entry — one unified pipeline accepting both automated IoT sensor streams and manual farmer input.
+
+My Role (Software Development)
+Built the FastAPI + MongoDB Atlas backend with JWT auth, bcrypt hashing, the Bucket Pattern for time-series efficiency, and 6 API routers covering auth, ponds, sensors, manual input, data, and AI operations. On the client side, shipped the React Native + Expo Router mobile app with hand-rolled SVG charting to avoid heavy third-party dependencies. Every biological threshold was grounded in peer-reviewed aquaculture literature rather than guesswork.
+
+Result
+2nd Place in the Agriculture & Food Systems track — a fully functional end-to-end system rather than a demo: trained models, a live authenticated backend, and real-time mobile communication all working by the deadline.`,
+		icon: '🥈',
+		timeline: 'Jul 2026',
+		preview: 'https://devpost.com/software/tambak',
+		sources: [
+			{ label: 'Devpost', url: 'https://devpost.com/software/tambak' },
+			{ label: 'Source Code', url: 'https://github.com/lisamzhr/Tambak-Bokurians' }
+    ],
+    gallery: [
+			'/projects/achievements/garuda1.jpg',
+			'/projects/achievements/garuda2.jpg',
+			'/projects/achievements/garuda3.jpg',
+		],
+		category: ['Achievements', 'Apps'],
 		featured: true
 	},
 	{
