@@ -52,11 +52,11 @@ export const defaultSEO: SEOConfig = {
 		'KRTI'
 	],
 	author: 'Dimas Andhika',
-	siteUrl: 'https://dimasandhika.vercel.app', // Update this with your actual domain
+	siteUrl: 'https://dimasandhk.com',
 	siteName: "Dimas Andhika's Portfolio",
 	locale: 'en_US',
 	type: 'website',
-	image: 'Banner_Linked_baru.png', // Default OG image
+	image: '/Banner_Linked_baru.png', // Default OG image (leading slash: joined onto siteUrl)
 	imageAlt: 'Dimas Andhika - Software Engineer Portfolio Banner',
 	twitterHandle: '@dimasandhk', // Update with your Twitter handle if you have one
 	twitterCard: 'summary_large_image'

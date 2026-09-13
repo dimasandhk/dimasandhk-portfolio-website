@@ -6,24 +6,24 @@
     
     <!-- Home Page -->
     <url>
-        <loc>https://dimasandhika.vercel.app/</loc>
-        <lastmod>2025-12-24</lastmod>
+        <loc>https://dimasandhk.com/</loc>
+        <lastmod>2026-09-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <!-- Projects Page -->
     <url>
-        <loc>https://dimasandhika.vercel.app/projects</loc>
-        <lastmod>2025-12-24</lastmod>
+        <loc>https://dimasandhk.com/projects</loc>
+        <lastmod>2026-09-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- Linktree Page -->
     <url>
-        <loc>https://dimasandhika.vercel.app/linktree</loc>
-        <lastmod>2025-12-24</lastmod>
+        <loc>https://dimasandhk.com/linktree</loc>
+        <lastmod>2026-09-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
