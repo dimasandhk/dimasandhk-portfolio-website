@@ -5,13 +5,16 @@
 			{
 				"title": "Software Engineer Intern - E-Commerce Direct Selling Ecosystem",
 				"duration": "January 2026 - July 2026 (7 months)",
-				"location": "South Jakarta, Jakarta, Indonesia",
+				"location": "Jakarta, Indonesia",
 				"tasks": [
-					"Built a multi-role marketplace aggregator platform enabling cross-functional teams (Brand Commerce, Store Controllers, Stock & SKU Managers) to manage and publish product listings across multiple e-commerce platforms.",
-					"Implemented support for complex product types (bundles, free items, variants, and promotional SKUs), including promotion handling logic for campaigns such as double date, brand day, and flash sales.",
-					"Designed inventory synchronization across multiple warehouses in Indonesia and integrated product-to-packaging mapping to streamline fulfillment operations."
+					"Delivered features across 3 consecutive release cycles (R2.1 Duplicate SKU, R2.2 Automate Dimension, RB2.3 Auto-Activate SKU) on Brify, an internal product-launch platform serving Brand Commerce, Stock Management, and QC teams publishing to multiple e-commerce marketplaces.",
+					"Built the store-selection (PID) flow for Auto-Activate SKU, collapsing a 2-system activation path into a single in-app action and removing the manual fallback where partial failures required direct intervention on Paragon's production marketplace account.",
+					"Shipped Automate Dimension end-to-end: box management page with role-based access guards, box-size computation logic for bundle and non-bundle briefs, and oversize shipping validation, replacing manual box-size entry on every brief and migrating the sizing taxonomy across 200+ live SKUs from small/medium to regular/large.",
+					"Implemented Duplicate SKU with autofill for BOM, BPOM, and SAP pricing across GWP, FOC, bundle, and variant product types, cutting brief creation time from 45 to 5 minutes for repeat launches.",
+					"Built Brief Log History, a post-launch audit trail with product comparison drawer, image diffing, and BOM change tracking; resolved 15+ technical review comments across the feature before merge.",
+					"Resolved cross-system pricing inconsistencies between Brify, Magpie, SAP, and Odoo ERP by migrating discount calculation to SAP as a single source of truth, fixing user-reported HET 0 and price-mismatch defects."
 				],
-				"skills": ["TypeScript", "ExpressJS", "PostgreSQL", "SAP ERP", "Next.js"]
+				"skills": ["SAP", "Odoo ERP", "Magpie", "RBAC"]
 			}
 		]
 	},
@@ -19,16 +22,17 @@
 		"company": "Lab Kota Cerdas dan Keamanan Siber (Lab KCKS IT ITS)",
 		"roles": [
 			{
-				"title": "Assistant Lecturer & Laboratory Assistant",
+				"title": "Assistant Lecturer & Assistant Laboratory",
 				"duration": "February 2024 - June 2026 (2 years 4 months)",
-				"location": "Surabaya, East Java, Indonesia",
+				"location": "Surabaya, Indonesia",
 				"tasks": [
-					"Served as Laboratory Assistant and Assistant Lecturer for Cloud Computing, Database Systems, and Algorithms and Programming Techniques courses.",
-					"Developed new Cloud Computing course material covering the ELK Stack, Prometheus, and Grafana.",
-					"Developed learning modules and taught practical sessions for 100+ students to ensure clear understanding of theoretical and hands-on materials.",
-					"Designed and prepared lab assignments and exercises for junior students, and evaluated and graded submissions to ensure compliance with experiment guidelines and successful implementation of lab tasks."
+					"Co-authored and maintained two open-source practicum curricula on GitHub across 3 semesters, spanning 12 hands-on modules for Cloud Computing Technology and Database Systems, delivered to 100+ undergraduate students.",
+					"Designed the Cloud Computing track as a progressive 5-module path: Docker → Docker Compose → Ansible → Logging & Monitoring (ELK Stack, Prometheus, Grafana) → Load Balancing & CloudSim. Authored the observability and infrastructure-automation modules from scratch as new material.",
+					"Built the Database Systems track covering ERD, normalization, MySQL DDL/DML, triggers, stored procedures, functions, and JSON/MongoDB, taking students from schema design through to procedural SQL and document stores.",
+					"Maintained both repositories as living codebases across 230+ commits, reviewing contributions from fellow assistants and iterating modules based on where students actually got stuck.",
+					"Authored lab assignments and graded submissions for 100+ students per cohort, assessing correctness of implementation against experiment specifications."
 				],
-				"skills": ["Prometheus", "Grafana", "ELK Stack", "Docker", "Ansible", "SQL"]
+				"skills": ["Docker", "Docker Compose", "Ansible", "ELK Stack", "Prometheus", "Grafana", "CloudSim", "MySQL", "MongoDB", "GitHub"]
 			}
 		]
 	},
@@ -40,11 +44,12 @@
 				"duration": "May 2026 - June 2026 (2 months)",
 				"location": "Jakarta, Indonesia",
 				"tasks": [
-					"Built an end-to-end organizational portal serving as the official digital hub for the student association to publish articles, manage events, and showcase organizational profiles.",
-					"Implemented a custom CMS and secure admin dashboard with Role-Based Access Control (RBAC) using Supabase PostgreSQL and Row Level Security (RLS) to restrict data mutations to authorized personnel.",
-					"Designed a high-performance and interactive user interface leveraging React 19, TypeScript, TanStack Start, and Framer Motion, deployed on Cloudflare Pages for optimized edge delivery."
+					"Delivered the official organizational portal for HIMANIKA Universitas Brawijaya, translating a non-technical client brief into a production site covering 5 top-level sections and 10 organizational units, each with division profiles, program listings, and member directories linking out to individual social profiles.",
+					"Built a custom CMS and admin dashboard with Role-Based Access Control on Supabase PostgreSQL, enforcing write permissions at the database layer via Row Level Security so content mutations stayed restricted to authorized officers regardless of client-side state.",
+					"Implemented the client's motion-heavy design direction (entry preloader, animated hero carousel, postcard-slider event feed, scroll-triggered page reveals, and a custom cursor) using Framer Motion, while keeping the site responsive and fast for the target mobile-first audience.",
+					"Deployed to Cloudflare Pages for edge delivery, handing over a self-serve publishing workflow that let the organization manage articles and events without developer involvement after handoff."
 				],
-				"skills": ["ReactJS", "TypeScript", "PostgreSQL", "Cloudflare", "Supabase"]
+				"skills": ["ReactJS", "TypeScript", "Supabase", "PostgreSQL", "RLS", "RBAC", "Framer Motion", "Cloudflare Pages"]
 			}
 		]
 	},
@@ -54,41 +59,31 @@
 			{
 				"title": "Product Manager",
 				"duration": "November 2024 - May 2025 (7 months)",
-				"location": "Surabaya, East Java, Indonesia",
+				"location": "Surabaya, Indonesia",
 				"tasks": [
 					"Served as Product Manager, collaborating with two other PMs to lead a 32-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints involving animation-heavy pages and transitions.",
-					"Successfully managed to make all features including seat ticketing page, 3 pace event page, ticket order form page, online ticket exchange, etc on time within a very fast paced event timeline based website with over 10k page visitors.",
-					"Developed a real-time leaderboard minigame for the main event, utilizing Ngrok, with 50+ users."
+					"Delivered all features on time, including seat ticketing page, 3 pace event pages, ticket order form page, and online ticket exchange, within a very fast-paced event timeline; the website served 10k+ page visitors.",
+					"Developed a real-time leaderboard minigame for the main event with 50+ users, utilizing Ngrok."
 				],
-				"skills": ["Project Management", "ExpressJS", "Ngrok"]
+				"skills": ["Project Management", "Sprint Planning", "Ticketing", "Real-Time Leaderboard", "Ngrok"]
 			}
 		]
 	},
 	{
 		"company": "Bayucaraka UAV Research Team",
-		"totalDuration": "2 years 6 months total duration",
 		"roles": [
 			{
 				"title": "Software & System Engineer - Ground Control Station",
-				"duration": "March 2024 - Present (2 years 4 months)",
+				"duration": "March 2024 - May 2026 (2 years 3 months)",
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
-					"Led the team in developing a custom UAV mission planner designed to compete with commercial closed-source mission planning systems, focusing on flexibility and research-driven features.",
-					"Engineered the end-to-end communication infrastructure between the UAV, ground control station, and cloud services (utilizing AWS EC2 with H100 GPU) for reliable telemetry, command exchange, and real-time data transfer.",
+					"Led the team in developing a custom UAV mission planner, designed to compete with commercial closed-source mission planning software, focusing on flexibility and research-driven features.",
+					"Engineered the end-to-end communication infrastructure between UAV, ground control station, and cloud services (AWS EC2 with H100 GPU) for reliable telemetry, command exchange, and real-time data transfer.",
 					"Designed and deployed live aerial video streaming from onboard UAV cameras using UDP protocols, integrating edge capture, transmission pipeline, and monitoring interface.",
-					"Implemented an AI-based aerial detection system using ONNX for inference, Flask for model serving, and ReactJS for visualization and control dashboard.",
-					"Won 2nd Place in the Technology Development Division at KRTI 2025 and the Best Methodology Award in the Technology Development Division at KRTI 2024, at a time when research funding was at its lowest."
+					"Implemented an AI-based aerial detection system using ONNX for inference, Flask for model serving, and ReactJS for the visualization and control dashboard.",
+					"Won 2nd Place in the Technology Development Division, KRTI 2025, and the Best Methodology Award, Technology Development Division, KRTI 2024, at a time when research funding was at its lowest."
 				],
 				"skills": ["Python", "Flask", "ONNX", "ReactJS", "AWS EC2"]
-			},
-			{
-				"title": "Internship Programming Division",
-				"duration": "January 2024 - March 2024 (3 months)",
-				"location": "Surabaya, East Java, Indonesia",
-				"tasks": [
-					"Learn the basics of robotic programming including image processing and ROS2 communication."
-				],
-				"skills": ["Python", "ROS2", "C++"]
 			}
 		]
 	},
@@ -96,16 +91,16 @@
 		"company": "Badan Eksekutif Mahasiswa Institut Teknologi Sepuluh Nopember (BEM ITS)",
 		"roles": [
 			{
-				"title": "Full Stack Web Developer",
+				"title": "Full Stack Engineer",
 				"duration": "March 2025 - April 2026 (1 year 1 month)",
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
 					"Developed the first official BEM ITS website from scratch, serving as its web representative.",
-					"Deployed and managed infrastructure using Cloudflare Tunnels and DNS to securely expose a private campus VPS to the public internet.",
+					"Deployed and managed infrastructure, using Cloudflare Tunnels and DNS to securely expose a private campus VPS to the public internet.",
 					"Integrated the website with the Ghost CMS API for streamlined content management.",
 					"Built article, link shortener, and profile pages for the platform."
 				],
-				"skills": ["TypeScript", "Cloudflare", "Ghost CMS", "ExpressJS", "Next.js"]
+				"skills": ["TypeScript", "Next.js", "Cloudflare Tunnels", "DNS", "Ghost CMS"]
 			}
 		]
 	},
@@ -117,8 +112,8 @@
 				"duration": "October 2024 - January 2025 (4 months)",
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
-					"Developed a fast-paced website that handled more than 1,000 concurrent users across Indonesia during major events.",
-					"Developed a registration form page, role based dashboard, profile page, payment gateway integration, massive quiz platform accessed by thousands of students all over Indonesia, etc)."
+					"Developed a fast-paced website that handled 1k+ concurrent users across Indonesia during major events.",
+					"Developed a registration form page, role-based dashboard, profile page, payment gateway integration, and a large-scale quiz platform accessed by thousands of students across Indonesia."
 				],
 				"skills": ["Next.js", "Tailwind CSS"]
 			}
@@ -133,7 +128,7 @@
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
 					"Served as Product Manager, collaborating with two other PMs to lead a 28-member cross-functional team (backend, frontend, and UI/UX) in planning and executing feature sprints.",
-					"Successfully delivered all requested features on time for an event-based website, including the landing page, role-based dashboard, and competition registration and submission forms."
+					"Delivered all requested features on time for an event-based website, including the landing page, role-based dashboard, and competition registration and submission forms."
 				],
 				"skills": ["Project Management"]
 			}
@@ -147,8 +142,8 @@
 				"duration": "August 2024 - July 2025 (1 year)",
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
-					"Developed two new features within the period, including the academia and achievements pages.",
-					"Improved the frontend codebase by implementing SOLID principles."
+					"Developed two features during the period: the academia page and the achievements page.",
+					"Improved the frontend codebase by applying SOLID principles."
 				],
 				"skills": ["ReactJS", "SOLID Principles", "Tailwind CSS"]
 			}
@@ -156,25 +151,14 @@
 	},
 	{
 		"company": "ARA 7.0",
-		"totalDuration": "1 year 7 months total duration",
 		"roles": [
 			{
-				"title": "Senior Frontend Developer",
-				"duration": "June 2024 - May 2025 (1 year)",
+				"title": "Frontend Developer → Senior Frontend Developer",
+				"duration": "October 2023 - May 2025 (1 year 8 months)",
 				"location": "Surabaya, East Java, Indonesia",
 				"tasks": [
-					"Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
-					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event."
-				],
-				"skills": ["Next.js", "Tailwind CSS"]
-			},
-			{
-				"title": "Frontend Developer",
-				"duration": "October 2023 - June 2024 (9 months)",
-				"location": "Surabaya, East Java, Indonesia",
-				"tasks": [
-					"Developed event based website for a webinar registration, competition registration, merch purchase, user and admin dashboard.",
-					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event and marked my first hands-on web development experience."
+					"Developed an event-based website for webinar registration, competition registration, merch purchase, and user and admin dashboards.",
+					"Developed the landing page, event information page, and contact pages. The website served as the main public platform for the event and marked the first hands-on web development experience."
 				],
 				"skills": ["Next.js", "Tailwind CSS"]
 			}
