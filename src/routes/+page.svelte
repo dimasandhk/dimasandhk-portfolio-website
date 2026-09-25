@@ -9,7 +9,7 @@
 	import Terminal from 'lucide-svelte/icons/terminal';
 	import LayoutGrid from 'lucide-svelte/icons/layout-grid';
 	import List from 'lucide-svelte/icons/list';
-	import { pageSEO, personSchema } from '$lib/config/seo';
+	import { pageSEO, personSchema, websiteSchema } from '$lib/config/seo';
 	import ArrowUp from 'lucide-svelte/icons/arrow-up';
 	import FileCode from 'lucide-svelte/icons/file-code';
 	import FileCode2 from 'lucide-svelte/icons/file-code-2';
@@ -161,7 +161,7 @@
 	description={pageSEO.home.description}
 	keywords={pageSEO.home.keywords}
 	type={pageSEO.home.type}
-	jsonLd={personSchema}
+	jsonLd={[websiteSchema, personSchema]}
 />
 
 <NotionPage

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { defaultSEO, type PageSEO } from '$lib/config/seo';
+	import { canonicalUrl, defaultSEO, type PageSEO } from '$lib/config/seo';
 	import { page } from '$app/stores';
 
 	interface Props {
@@ -13,7 +13,7 @@
 		modifiedTime?: string;
 		noindex?: boolean;
 		nofollow?: boolean;
-		jsonLd?: object;
+		jsonLd?: object | object[];
 	}
 
 	let {
@@ -31,12 +31,10 @@
 	}: Props = $props();
 
 	// Construct full URL for current page
-	const currentUrl = $derived(`${defaultSEO.siteUrl}${$page.url.pathname}`);
+	const currentUrl = $derived(canonicalUrl($page.url.pathname));
 
 	// Construct full image URL
-	const fullImageUrl = $derived(
-		image?.startsWith('http') ? image : `${defaultSEO.siteUrl}${image}`
-	);
+	const fullImageUrl = $derived(image?.startsWith('http') ? image : canonicalUrl(image ?? ''));
 
 	// Construct robots meta content
 	const robotsContent = $derived(() => {

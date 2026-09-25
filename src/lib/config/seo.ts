@@ -25,6 +25,14 @@ export interface PageSEO {
 	modifiedTime?: string;
 }
 
+// Canonical origin of the site: https, apex (no www), no trailing slash.
+// Every absolute URL in the app (canonical, og:url, JSON-LD) is built from this.
+// static/sitemap.xml and static/robots.txt hardcode the same origin: update them too.
+export const SITE_URL = 'https://dimasandhk.com';
+
+/** Absolute canonical URL for a path, e.g. canonicalUrl('/projects') */
+export const canonicalUrl = (path: string) => `${SITE_URL}${path}`;
+
 // Default SEO configuration
 export const defaultSEO: SEOConfig = {
 	title: 'Dimas Andhika Diputra - Software Engineer',
@@ -52,7 +60,7 @@ export const defaultSEO: SEOConfig = {
 		'KRTI'
 	],
 	author: 'Dimas Andhika',
-	siteUrl: 'https://dimasandhk.com',
+	siteUrl: SITE_URL,
 	siteName: "Dimas Andhika's Portfolio",
 	locale: 'en_US',
 	type: 'website',
@@ -114,13 +122,14 @@ export const pageSEO = {
 export const personSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Person',
-	name: 'Dimas Andhika',
-	alternateName: 'Dimas Andhika Diputra',
+	'@id': `${SITE_URL}/#person`,
+	name: 'Dimas Andhika Diputra',
+	alternateName: 'Dimas Andhika',
 	jobTitle: 'Software Engineer',
 	description:
 		'Passionate Software Engineer specializing in full-stack development with expertise in React, Node.js, Python, and modern web technologies.',
-	url: defaultSEO.siteUrl,
-	image: `${defaultSEO.siteUrl}${defaultSEO.image}`,
+	url: canonicalUrl('/'),
+	image: canonicalUrl(defaultSEO.image!),
 	email: 'dimasandhikadiputra@gmail.com',
 	address: {
 		'@type': 'PostalAddress',
@@ -153,20 +162,10 @@ export const personSchema = {
 export const websiteSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'WebSite',
+	'@id': `${SITE_URL}/#website`,
 	name: defaultSEO.siteName,
 	description: defaultSEO.description,
-	url: defaultSEO.siteUrl,
-	author: {
-		'@type': 'Person',
-		name: defaultSEO.author
-	},
+	url: canonicalUrl('/'),
 	inLanguage: 'en-US',
-	potentialAction: {
-		'@type': 'SearchAction',
-		target: {
-			'@type': 'EntryPoint',
-			urlTemplate: `${defaultSEO.siteUrl}/projects?q={search_term_string}`
-		},
-		'query-input': 'required name=search_term_string'
-	}
+	publisher: { '@id': personSchema['@id'] }
 };
