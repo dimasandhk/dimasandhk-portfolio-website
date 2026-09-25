@@ -14,7 +14,7 @@
 					"Built Brief Log History, a post-launch audit trail with product comparison drawer, image diffing, and BOM change tracking; resolved 15+ technical review comments across the feature before merge.",
 					"Resolved cross-system pricing inconsistencies between Brify, Magpie, SAP, and Odoo ERP by migrating discount calculation to SAP as a single source of truth, fixing user-reported HET 0 and price-mismatch defects."
 				],
-				"skills": ["SAP", "Odoo ERP", "Magpie", "RBAC"]
+				"skills": ["SAP", "Odoo ERP", "Magpie", "RBAC", "ExpressJS", "Next.js", "TanStack", "PostgreSQL"]
 			}
 		]
 	},
