@@ -4,7 +4,7 @@
 // after which the token endpoint returns `invalid_grant`. Re-run this when that happens.
 //
 // Usage: node scripts/spotify-auth.mjs [redirectUri]
-//   The redirect URI (default http://127.0.0.1:8888/callback) must be registered in the
+//   The redirect URI (default http://127.0.0.1:3000/callback) must be registered in the
 //   app's settings on https://developer.spotify.com/dashboard. Spotify rejects `localhost`.
 
 import { createServer } from 'node:http';
@@ -13,7 +13,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const ENV_PATH = new URL('../.env', import.meta.url);
 const SCOPES = 'user-read-currently-playing user-top-read';
-const redirectUri = new URL(process.argv[2] ?? 'http://127.0.0.1:8888/callback');
+const redirectUri = new URL(process.argv[2] ?? 'http://127.0.0.1:3000/callback');
 
 const envText = readFileSync(ENV_PATH, 'utf8');
 const readEnv = (key) =>
