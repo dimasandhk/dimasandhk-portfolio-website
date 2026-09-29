@@ -28,6 +28,8 @@ export const getAccessToken = async () => {
 	}).then((res) => res.json());
 
 	if (!response.access_token) {
+		// `invalid_grant` means the refresh token expired (6-month lifetime) or was revoked;
+		// mint a new one with `node scripts/spotify-auth.mjs`.
 		console.error('[Spotify] Token exchange failed:', JSON.stringify(response));
 		throw new Error('Failed to obtain Spotify access token');
 	}
