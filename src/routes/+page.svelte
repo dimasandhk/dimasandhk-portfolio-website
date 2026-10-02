@@ -294,7 +294,7 @@
 				{#each exp.roles as role}
 					<div class="mt-2 pl-4 border-l-2 border-[var(--notion-border)]">
 						<div class="font-medium text-[var(--notion-text)]">{role.title}</div>
-						<div class="text-sm text-[#9b9a97] mb-1">{role.duration} • {role.location}</div>
+						<div class="text-sm text-[#9b9a97] mb-1">{role.duration}{#if role.location} • {role.location}{/if}</div>
 						{#if role.tasks && role.tasks.length > 0}
 							<ul class="list-disc pl-5 mt-1 space-y-1 text-sm text-[var(--notion-text)]">
 								{#each role.tasks as task}
