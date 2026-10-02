@@ -1,6 +1,20 @@
 [
 	{
+		"company": "Philip Morris International",
+		"logo": "/logos/pmi.png",
+		"roles": [
+			{
+				"title": "Software Engineer Intern",
+				"duration": "October 2026 - Present (1 month)",
+				"location": "",
+				"tasks": [],
+				"skills": []
+			}
+		]
+	},
+	{
 		"company": "ParagonCorp",
+		"logo": "/logos/paragoncorp.png",
 		"roles": [
 			{
 				"title": "Software Engineer Intern - E-Commerce Direct Selling Ecosystem",
@@ -20,6 +34,7 @@
 	},
 	{
 		"company": "Lab Kota Cerdas dan Keamanan Siber (Lab KCKS IT ITS)",
+		"logo": "/logos/lab-kcks.png",
 		"roles": [
 			{
 				"title": "Assistant Lecturer & Assistant Laboratory",
@@ -38,6 +53,7 @@
 	},
 	{
 		"company": "IniKaryaKita",
+		"logo": "/logos/inikaryakita.png",
 		"roles": [
 			{
 				"title": "Full Stack Engineer (Remote)",
@@ -55,6 +71,7 @@
 	},
 	{
 		"company": "TEDxITS",
+		"logo": "/logos/tedxits.png",
 		"roles": [
 			{
 				"title": "Product Manager",
@@ -71,6 +88,7 @@
 	},
 	{
 		"company": "Bayucaraka UAV Research Team",
+		"logo": "/logos/bayucaraka.png",
 		"roles": [
 			{
 				"title": "Software & System Engineer - Ground Control Station",
@@ -89,6 +107,7 @@
 	},
 	{
 		"company": "Badan Eksekutif Mahasiswa Institut Teknologi Sepuluh Nopember (BEM ITS)",
+		"logo": "/logos/bem-its.png",
 		"roles": [
 			{
 				"title": "Full Stack Engineer",
@@ -106,6 +125,7 @@
 	},
 	{
 		"company": "Ini Lho ITS!",
+		"logo": "/logos/ini-lho-its.png",
 		"roles": [
 			{
 				"title": "Senior Frontend Developer",
@@ -121,6 +141,7 @@
 	},
 	{
 		"company": "Future Energy Summit (Futurest)",
+		"logo": "/logos/futurest.png",
 		"roles": [
 			{
 				"title": "Product Manager",
@@ -136,6 +157,7 @@
 	},
 	{
 		"company": "Society of Renewable Energy ITS (SRE ITS SC)",
+		"logo": "/logos/sre-its.png",
 		"roles": [
 			{
 				"title": "Frontend Developer",
@@ -151,6 +173,7 @@
 	},
 	{
 		"company": "ARA 7.0",
+		"logo": "/logos/ara.png",
 		"roles": [
 			{
 				"title": "Frontend Developer → Senior Frontend Developer",

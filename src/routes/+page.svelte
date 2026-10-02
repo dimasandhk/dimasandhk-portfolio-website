@@ -80,6 +80,64 @@
 		{ value: String(roleCount), label: 'Roles' }
 	];
 
+	// Closest Notion tag color to each tech's brand color. Keys are normalized names,
+	// so "Next.js" and "NextJS" share an entry. Anything unlisted (black/neutral brands,
+	// concepts, internal tools) falls back to gray.
+	const brandColors: Record<string, string> = {
+		typescript: 'blue',
+		golang: 'blue',
+		python: 'blue',
+		reactjs: 'blue',
+		reactnative: 'blue',
+		tailwindcss: 'blue',
+		fibergo: 'blue',
+		flask: 'blue',
+		mysql: 'blue',
+		postgresql: 'blue',
+		docker: 'blue',
+		dockercompose: 'blue',
+		kubernetes: 'blue',
+		githubactions: 'blue',
+		elkstack: 'blue',
+		vagrant: 'blue',
+		sap: 'blue',
+		onnx: 'blue',
+		javascript: 'yellow',
+		framermotion: 'yellow',
+		vuejs: 'green',
+		vitest: 'green',
+		nodejs: 'green',
+		django: 'green',
+		mongodb: 'green',
+		supabase: 'green',
+		drizzle: 'green',
+		nginx: 'green',
+		gns3: 'green',
+		svelte: 'orange',
+		ubuntu: 'orange',
+		cloudflare: 'orange',
+		cloudflarepages: 'orange',
+		cloudflaretunnels: 'orange',
+		prometheus: 'orange',
+		grafana: 'orange',
+		cheerioscraper: 'orange',
+		awsec2: 'orange',
+		s3miniosupabasestorage: 'orange',
+		nestjs: 'red',
+		redis: 'red',
+		mongoose: 'red',
+		git: 'red',
+		ansible: 'red',
+		kotlin: 'purple',
+		odooerp: 'purple',
+		tanstack: 'brown'
+	};
+
+	function tagStyle(name: string) {
+		const color = brandColors[name.toLowerCase().replace(/[^a-z0-9]/g, '')] ?? 'gray';
+		return `--tag-bg: var(--tag-${color}-bg); --tag-text: var(--tag-${color}-text);`;
+	}
+
 	const skillGroups = [
 		{
 			label: 'Languages',
@@ -250,7 +308,8 @@
 				<div class="flex flex-wrap gap-2">
 					{#each group.skills as skill}
 						<div
-							class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+							class="notion-tag flex items-center gap-1.5 px-2.5 py-1.5 rounded text-sm"
+							style={tagStyle(skill.name)}
 						>
 							<skill.icon size={14} />
 							{skill.name}
@@ -285,6 +344,16 @@
 		{#each experienceData as exp}
 			<div class="flex flex-col gap-1">
 				<div class="flex items-center gap-2">
+					{#if exp.logo}
+						<img
+							src={exp.logo}
+							alt=""
+							width="28"
+							height="28"
+							loading="lazy"
+							class="w-7 h-7 rounded flex-shrink-0 border border-[var(--notion-border)] object-cover"
+						/>
+					{/if}
 					<h3 class="text-lg font-semibold text-[var(--notion-text)]">{exp.company}</h3>
 					{#if exp.totalDuration}
 						<span class="text-sm text-[#9b9a97] italic ml-2">({exp.totalDuration})</span>
@@ -294,7 +363,7 @@
 				{#each exp.roles as role}
 					<div class="mt-2 pl-4 border-l-2 border-[var(--notion-border)]">
 						<div class="font-medium text-[var(--notion-text)]">{role.title}</div>
-						<div class="text-sm text-[#9b9a97] mb-1">{role.duration} • {role.location}</div>
+						<div class="text-sm text-[#9b9a97] mb-1">{role.duration}{#if role.location} • {role.location}{/if}</div>
 						{#if role.tasks && role.tasks.length > 0}
 							<ul class="list-disc pl-5 mt-1 space-y-1 text-sm text-[var(--notion-text)]">
 								{#each role.tasks as task}
@@ -306,7 +375,8 @@
 							<div class="flex flex-wrap gap-1.5 mt-2">
 								{#each role.skills as skill}
 									<span
-										class="bg-[var(--notion-gray)] px-2 py-0.5 rounded text-xs text-[var(--notion-text)] border border-[var(--notion-border)]"
+										class="notion-tag px-2 py-0.5 rounded text-xs"
+										style={tagStyle(skill)}
 									>
 										{skill}
 									</span>
