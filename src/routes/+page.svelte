@@ -344,6 +344,16 @@
 		{#each experienceData as exp}
 			<div class="flex flex-col gap-1">
 				<div class="flex items-center gap-2">
+					{#if exp.logo}
+						<img
+							src={exp.logo}
+							alt=""
+							width="28"
+							height="28"
+							loading="lazy"
+							class="w-7 h-7 rounded flex-shrink-0 border border-[var(--notion-border)] object-cover"
+						/>
+					{/if}
 					<h3 class="text-lg font-semibold text-[var(--notion-text)]">{exp.company}</h3>
 					{#if exp.totalDuration}
 						<span class="text-sm text-[#9b9a97] italic ml-2">({exp.totalDuration})</span>
