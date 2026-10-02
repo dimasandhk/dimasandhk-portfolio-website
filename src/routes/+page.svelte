@@ -80,6 +80,64 @@
 		{ value: String(roleCount), label: 'Roles' }
 	];
 
+	// Closest Notion tag color to each tech's brand color. Keys are normalized names,
+	// so "Next.js" and "NextJS" share an entry. Anything unlisted (black/neutral brands,
+	// concepts, internal tools) falls back to gray.
+	const brandColors: Record<string, string> = {
+		typescript: 'blue',
+		golang: 'blue',
+		python: 'blue',
+		reactjs: 'blue',
+		reactnative: 'blue',
+		tailwindcss: 'blue',
+		fibergo: 'blue',
+		flask: 'blue',
+		mysql: 'blue',
+		postgresql: 'blue',
+		docker: 'blue',
+		dockercompose: 'blue',
+		kubernetes: 'blue',
+		githubactions: 'blue',
+		elkstack: 'blue',
+		vagrant: 'blue',
+		sap: 'blue',
+		onnx: 'blue',
+		javascript: 'yellow',
+		framermotion: 'yellow',
+		vuejs: 'green',
+		vitest: 'green',
+		nodejs: 'green',
+		django: 'green',
+		mongodb: 'green',
+		supabase: 'green',
+		drizzle: 'green',
+		nginx: 'green',
+		gns3: 'green',
+		svelte: 'orange',
+		ubuntu: 'orange',
+		cloudflare: 'orange',
+		cloudflarepages: 'orange',
+		cloudflaretunnels: 'orange',
+		prometheus: 'orange',
+		grafana: 'orange',
+		cheerioscraper: 'orange',
+		awsec2: 'orange',
+		s3miniosupabasestorage: 'orange',
+		nestjs: 'red',
+		redis: 'red',
+		mongoose: 'red',
+		git: 'red',
+		ansible: 'red',
+		kotlin: 'purple',
+		odooerp: 'purple',
+		tanstack: 'brown'
+	};
+
+	function tagStyle(name: string) {
+		const color = brandColors[name.toLowerCase().replace(/[^a-z0-9]/g, '')] ?? 'gray';
+		return `--tag-bg: var(--tag-${color}-bg); --tag-text: var(--tag-${color}-text);`;
+	}
+
 	const skillGroups = [
 		{
 			label: 'Languages',
@@ -250,7 +308,8 @@
 				<div class="flex flex-wrap gap-2">
 					{#each group.skills as skill}
 						<div
-							class="flex items-center gap-1.5 bg-[var(--notion-gray)] px-2.5 py-1.5 rounded text-sm text-[var(--notion-text)] border border-[var(--notion-border)]"
+							class="notion-tag flex items-center gap-1.5 px-2.5 py-1.5 rounded text-sm"
+							style={tagStyle(skill.name)}
 						>
 							<skill.icon size={14} />
 							{skill.name}
@@ -306,7 +365,8 @@
 							<div class="flex flex-wrap gap-1.5 mt-2">
 								{#each role.skills as skill}
 									<span
-										class="bg-[var(--notion-gray)] px-2 py-0.5 rounded text-xs text-[var(--notion-text)] border border-[var(--notion-border)]"
+										class="notion-tag px-2 py-0.5 rounded text-xs"
+										style={tagStyle(skill)}
 									>
 										{skill}
 									</span>
