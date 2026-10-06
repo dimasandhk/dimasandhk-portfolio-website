@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { indicator } from '$lib/motion';
+
 	interface Section {
 		id: string;
 		label: string;
@@ -62,19 +64,22 @@
      FloatingNav on the right. Width is kept under the ~190px gutter available at the
      xl breakpoint so it never overlaps the content column. -->
 <nav
-	class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:block w-[150px]"
+	class="enter-left fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:block w-[150px]"
 	aria-label="On this page"
 >
 	<div class="text-[11px] font-medium uppercase tracking-wide text-[#9b9a97] mb-2 pl-3">
 		On this page
 	</div>
-	<ul class="flex flex-col">
+	<ul class="relative flex flex-col" use:indicator={{ selector: '[aria-current]', mode: 'bar' }}>
+		<!-- Active marker: slides along the rail as you scroll -->
+		<span data-indicator class="w-[2px] rounded-full bg-[var(--notion-text)]" aria-hidden="true"
+		></span>
 		{#each sections as section}
 			{@const isActive = currentId === section.id}
 			<li>
 				<button
 					onclick={() => scrollToSection(section.id)}
-					class="w-full text-left text-sm py-1.5 pl-3 border-l-2 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]
+					class="toc-item w-full text-left text-sm py-1.5 pl-3 border-l-2 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]
 					{isActive
 						? 'border-[var(--notion-text)] text-[var(--notion-text)] font-medium'
 						: 'border-[var(--notion-border)] text-[#9b9a97] hover:text-[var(--notion-text)] hover:border-[#9b9a97]'}"

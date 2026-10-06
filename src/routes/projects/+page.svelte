@@ -7,17 +7,13 @@
 	import { pageSEO } from '$lib/config/seo';
 	import LayoutGrid from 'lucide-svelte/icons/layout-grid';
 	import List from 'lucide-svelte/icons/list';
-	import ArrowUp from 'lucide-svelte/icons/arrow-up';
 	import Search from 'lucide-svelte/icons/search';
+	import BackToTop from '$lib/components/BackToTop.svelte';
+	import { fadeIn, indicator, reveal, spin } from '$lib/motion';
 
 	let viewMode = $state<'gallery' | 'list'>('gallery');
 	let selectedCategory = $state<string>('All');
 	let searchQuery = $state<string>('');
-	let scrollY = $state(0);
-
-	function scrollToTop() {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}
 
 	const categories = ['All', 'Achievements', 'Apps', 'Bots', 'System Testing / Utils'];
 
@@ -49,7 +45,7 @@
 	mobileCoverImage="/Banner_Linked_mobile.png"
 >
 	<NotionBlock>
-		<p class="text-[16px] leading-[1.5] mb-6">
+		<p class="text-[16px] leading-[1.5] mb-6" use:reveal>
 			Here are some of my projects. More projects will be added soon.
 		</p>
 	</NotionBlock>
@@ -57,30 +53,36 @@
 	<NotionBlock>
 		<div class="flex flex-col gap-6 mt-8 mb-8">
 			<!-- Header and View Toggle -->
-			<div class="flex items-center justify-between border-b border-[var(--notion-border)] pb-2">
+			<div class="section-rule flex items-center justify-between pb-2" use:reveal>
 				<div class="flex items-center gap-2">
-					<span class="text-xl">📂</span>
+					<span class="section-emoji text-xl">📂</span>
 					<h2 class="text-xl font-semibold text-[var(--notion-text)]">All Projects</h2>
 				</div>
 
 				<button
-					class="flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors"
+					class="flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] hover:text-[var(--notion-text)] px-2 py-1 rounded transition active:scale-95 focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 					onclick={() => (viewMode = viewMode === 'gallery' ? 'list' : 'gallery')}
 				>
-					{#if viewMode === 'gallery'}
-						<List size={14} />
-						<span>List View</span>
-					{:else}
-						<LayoutGrid size={14} />
-						<span>Gallery View</span>
-					{/if}
+					{#key viewMode}
+						<span class="flex" in:spin={{ from: -45, duration: 260 }}>
+							{#if viewMode === 'gallery'}
+								<List size={14} />
+							{:else}
+								<LayoutGrid size={14} />
+							{/if}
+						</span>
+					{/key}
+					<span>{viewMode === 'gallery' ? 'List View' : 'Gallery View'}</span>
 				</button>
 			</div>
 
 			<!-- Search Bar -->
-			<div class="relative w-full">
+			<div class="group relative w-full" use:reveal>
 				<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-					<Search size={16} class="text-[#9b9a97]" />
+					<Search
+						size={16}
+						class="text-[#9b9a97] transition duration-300 ease-out group-focus-within:text-[var(--notion-text)] group-focus-within:scale-110 group-focus-within:-rotate-12"
+					/>
 				</div>
 				<input
 					type="text"
@@ -91,10 +93,11 @@
 			</div>
 
 			<!-- Filter Tabs -->
-			<div class="flex flex-wrap gap-2 pb-2">
+			<div class="relative flex flex-wrap gap-2 pb-2" use:reveal use:indicator>
+				<span data-indicator class="rounded-full bg-[var(--notion-text)]" aria-hidden="true"></span>
 				{#each categories as category}
 					<button
-						class="px-3 py-1 rounded-full text-sm transition-all duration-200 border focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)] {selectedCategory ===
+						class="indicator-item px-3 py-1 rounded-full text-sm transition duration-200 active:scale-95 border focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)] {selectedCategory ===
 						category
 							? 'bg-[var(--notion-text)] text-[var(--notion-bg)] border-[var(--notion-text)]'
 							: 'bg-[var(--notion-bg)] text-[var(--notion-text)] border-[var(--notion-border)] hover:bg-[var(--notion-hover)]'}"
@@ -112,8 +115,9 @@
 			{:else}
 				<div
 					class="flex flex-col items-center justify-center p-12 text-[#9b9a97] border-2 border-dashed border-[var(--notion-border)] rounded-xl bg-[var(--notion-gray)]/30"
+					in:fadeIn={{ duration: 220 }}
 				>
-					<span class="text-4xl mb-2">📭</span>
+					<span class="empty-emoji text-4xl mb-2">📭</span>
 					<p>No projects found in this category yet.</p>
 				</div>
 			{/if}
@@ -121,20 +125,22 @@
 	</NotionBlock>
 
 	<NotionBlock>
-		<div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4">
-			Built with 💓 by Dimas Andhika himself • {new Date().getFullYear()}
+		<div
+			class="beat-parent text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4"
+			use:reveal={{ variant: 'fade' }}
+		>
+			Built with <span class="heartbeat">💓</span> by Dimas Andhika himself • {new Date().getFullYear()}
 		</div>
 	</NotionBlock>
 </NotionPage>
 
-<svelte:window bind:scrollY />
+<BackToTop />
 
-{#if scrollY > 300}
-	<button
-		class="fixed bottom-8 right-8 p-3 bg-[var(--notion-bg)] shadow-lg rounded-full border border-[var(--notion-border)] text-[var(--notion-text)] hover:bg-[var(--notion-hover)] transition-all z-50 cursor-pointer"
-		onclick={scrollToTop}
-		aria-label="Back to top"
-	>
-		<ArrowUp size={20} />
-	</button>
-{/if}
+<style>
+	@media (prefers-reduced-motion: no-preference) {
+		.empty-emoji {
+			display: inline-block;
+			animation: pop-in 520ms var(--ease-spring) 80ms backwards;
+		}
+	}
+</style>

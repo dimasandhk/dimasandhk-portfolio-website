@@ -10,6 +10,7 @@
 	import Instagram from 'lucide-svelte/icons/instagram';
 	import ExternalLink from 'lucide-svelte/icons/external-link';
 	import type { YouTubeVideo, NowPlaying, SpotifyTrack } from '$lib/types';
+	import { reveal } from '$lib/motion';
 
 	const links = [
 		{
@@ -99,7 +100,7 @@
 	domicile="Jakarta, Indonesia | GMT+7"
 >
 	<NotionBlock>
-		<p class="text-[16px] leading-[1.5] mb-6">Everything you need to find me on the internet.</p>
+		<p class="text-[16px] leading-[1.5] mb-6" use:reveal>Everything you need to find me on the internet.</p>
 	</NotionBlock>
 
 	<div class="flex flex-col gap-3">
@@ -110,12 +111,16 @@
 					href={link.url}
 					target={link.url.startsWith('/') ? '_self' : '_blank'}
 					rel={link.url.startsWith('/') ? '' : 'noopener noreferrer'}
-					class="flex items-center gap-4 p-3 rounded hover:bg-[var(--notion-hover)] border border-transparent hover:border-[var(--notion-border)] transition-all group"
+					use:reveal
+					class="flex items-center gap-4 p-3 rounded hover:bg-[var(--notion-hover)] border border-transparent hover:border-[var(--notion-border)] transition duration-200 active:scale-[0.99] group focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				>
 					<div
-						class="flex items-center justify-center w-10 h-10 rounded bg-[var(--notion-bg)] border border-[var(--notion-border)] shadow-sm text-[var(--notion-text)]"
+						class="flex items-center justify-center w-10 h-10 rounded bg-[var(--notion-bg)] border border-[var(--notion-border)] shadow-sm text-[var(--notion-text)] transition duration-300 ease-out group-hover:-translate-y-0.5 group-hover:shadow-md"
 					>
-						<Icon size={20} />
+						<Icon
+							size={20}
+							class="transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-6"
+						/>
 					</div>
 
 					<div class="flex flex-col flex-1">
@@ -126,7 +131,9 @@
 						<span class="text-xs text-[#9b9a97]">{link.desc}</span>
 					</div>
 
-					<div class="text-[#9b9a97] opacity-0 group-hover:opacity-100 transition-opacity">
+					<div
+						class="text-[#9b9a97] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition duration-200"
+					>
 						<ExternalLink size={16} />
 					</div>
 				</a>
@@ -136,8 +143,8 @@
 
 	{#if videos.length > 0}
 		<NotionBlock>
-			<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
-				<span class="text-xl">📺</span>
+			<div class="section-rule flex items-center gap-2 pb-2 mb-4 mt-8" use:reveal>
+				<span class="section-emoji text-xl">📺</span>
 				<h2 class="text-xl font-semibold text-[var(--notion-text)]">Latest Videos</h2>
 			</div>
 		</NotionBlock>
@@ -146,7 +153,8 @@
 			{#each videos as video}
 				<NotionBlock>
 					<div
-						class="rounded-lg overflow-hidden border border-[var(--notion-border)] bg-[var(--notion-bg)]"
+						class="rounded-lg overflow-hidden border border-[var(--notion-border)] bg-[var(--notion-bg)] transition duration-200 hover:shadow-md hover:-translate-y-0.5"
+						use:reveal={{ variant: 'scale' }}
 					>
 						<div class="aspect-video w-full">
 							<iframe
@@ -180,16 +188,41 @@
 
 	<!-- Spotify Activity -->
 	<NotionBlock>
-		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
-			<span class="text-xl">🎵</span>
+		<div class="section-rule flex items-center gap-2 pb-2 mb-4 mt-8" use:reveal>
+			<span class="section-emoji text-xl">🎵</span>
 			<h2 class="text-xl font-semibold text-[var(--notion-text)]">Spotify Activity</h2>
 		</div>
 
 		{#if isSpotifyLoading}
-			<div class="text-[#9b9a97] animate-pulse text-sm">Loading Spotify stats...</div>
+			<!-- Skeleton shaped like the loaded content -->
+			<div class="animate-pulse" aria-busy="true" aria-label="Loading Spotify stats">
+				<div class="h-3 w-28 rounded bg-[var(--notion-gray-bg)] mb-3"></div>
+				<div
+					class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] mb-6"
+				>
+					<div class="w-16 h-16 rounded-lg bg-[var(--notion-gray-bg)] shrink-0"></div>
+					<div class="flex flex-col gap-2 flex-1">
+						<div class="h-3.5 w-1/2 rounded bg-[var(--notion-gray-bg)]"></div>
+						<div class="h-3 w-1/3 rounded bg-[var(--notion-gray-bg)]"></div>
+					</div>
+				</div>
+				<div class="h-3 w-24 rounded bg-[var(--notion-gray-bg)] mb-3"></div>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+					{#each Array(6) as _}
+						<div class="flex items-center gap-3 p-2">
+							<div class="w-5 shrink-0"></div>
+							<div class="w-9 h-9 rounded bg-[var(--notion-gray-bg)] shrink-0"></div>
+							<div class="flex flex-col gap-1.5 flex-1">
+								<div class="h-3 w-3/4 rounded bg-[var(--notion-gray-bg)]"></div>
+								<div class="h-2.5 w-1/2 rounded bg-[var(--notion-gray-bg)]"></div>
+							</div>
+						</div>
+					{/each}
+				</div>
+			</div>
 		{:else}
 			<!-- Currently Playing — full-width row -->
-			<div class="mb-6">
+			<div class="mb-6" use:reveal>
 				<h3 class="text-xs font-semibold text-[#9b9a97] uppercase tracking-wider mb-3">
 					Currently Playing
 				</h3>
@@ -198,7 +231,7 @@
 						href={nowPlaying.songUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] bg-[var(--notion-bg)] hover:bg-[var(--notion-hover)] transition-all group shadow-sm w-full"
+						class="flex items-center gap-4 p-4 rounded-xl border border-[var(--notion-border)] bg-[var(--notion-bg)] hover:bg-[var(--notion-hover)] hover:shadow-md active:scale-[0.99] transition duration-200 group shadow-sm w-full"
 					>
 						<img
 							src={nowPlaying.albumImageUrl}
@@ -212,15 +245,15 @@
 							<span class="text-sm text-[#9b9a97] truncate">{nowPlaying.artist}</span>
 							<span class="text-xs text-[#9b9a97] truncate mt-0.5">{nowPlaying.album}</span>
 						</div>
-						<div class="relative flex items-center justify-center w-10 h-10 shrink-0">
-							<div class="absolute inset-0 rounded-full bg-green-500/20 animate-ping"></div>
-							<div
-								class="relative flex items-center justify-center w-10 h-10 rounded-full bg-green-500/10 text-green-500"
-							>
-								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-									><path d="M8 5v14l11-7z" /></svg
-								>
-							</div>
+						<!-- Equalizer: three bars bouncing on transform only -->
+						<div
+							class="flex items-end justify-center gap-[3px] w-10 h-10 shrink-0 rounded-full bg-green-500/10 pb-3"
+							role="img"
+							aria-label="Now playing"
+						>
+							<span class="eq-bar" style="--eq-delay: 0ms"></span>
+							<span class="eq-bar" style="--eq-delay: -400ms"></span>
+							<span class="eq-bar" style="--eq-delay: -200ms"></span>
 						</div>
 					</a>
 				{:else}
@@ -230,7 +263,7 @@
 						<div
 							class="w-16 h-16 rounded-lg border border-[var(--notion-border)] bg-[var(--notion-bg)] flex items-center justify-center text-2xl opacity-40 shrink-0"
 						>
-							💤
+							<span class="snooze">💤</span>
 						</div>
 						<div class="flex flex-col">
 							<span class="font-medium text-[var(--notion-text)]">Not Playing Anything</span>
@@ -242,7 +275,7 @@
 
 			<!-- Top 10 Tracks — 2 columns of 5 -->
 			<div>
-				<h3 class="text-xs font-semibold text-[#9b9a97] uppercase tracking-wider mb-3">
+				<h3 class="text-xs font-semibold text-[#9b9a97] uppercase tracking-wider mb-3" use:reveal>
 					Top 10 Tracks
 				</h3>
 				{#if topTracks.length > 0}
@@ -252,7 +285,8 @@
 								href={track.songUrl}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--notion-hover)] transition-all group"
+								use:reveal
+								class="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--notion-hover)] transition-colors group focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 							>
 								<span class="text-xs font-mono text-[#9b9a97] w-5 text-right shrink-0">{i + 1}</span
 								>
@@ -263,7 +297,9 @@
 										class="w-9 h-9 object-cover group-hover:scale-110 transition-transform duration-300"
 									/>
 								</div>
-								<div class="flex flex-col flex-1 min-w-0">
+								<div
+									class="flex flex-col flex-1 min-w-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+								>
 									<span class="text-sm font-medium text-[var(--notion-text)] truncate"
 										>{track.title}</span
 									>
@@ -282,8 +318,40 @@
 	<NotionBlock>
 		<div
 			class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4 text-center"
+			use:reveal={{ variant: 'fade' }}
 		>
 			© {new Date().getFullYear()} Dimas Andhika
 		</div>
 	</NotionBlock>
 </NotionPage>
+
+<style>
+	.eq-bar {
+		width: 3px;
+		height: 14px;
+		border-radius: 1px;
+		background: rgb(34 197 94);
+		transform-origin: bottom;
+		transform: scaleY(0.5);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.eq-bar {
+			animation: equalizer 900ms ease-in-out var(--eq-delay) infinite;
+		}
+		.snooze {
+			display: inline-block;
+			animation: snooze 2.4s ease-in-out infinite;
+		}
+	}
+
+	@keyframes snooze {
+		0%,
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+		50% {
+			transform: translate3d(0, -3px, 0);
+		}
+	}
+</style>

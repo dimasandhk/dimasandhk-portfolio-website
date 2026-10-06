@@ -10,7 +10,8 @@
 	import LayoutGrid from 'lucide-svelte/icons/layout-grid';
 	import List from 'lucide-svelte/icons/list';
 	import { pageSEO, personSchema, websiteSchema } from '$lib/config/seo';
-	import ArrowUp from 'lucide-svelte/icons/arrow-up';
+	import { countUp, reveal, spin } from '$lib/motion';
+	import BackToTop from '$lib/components/BackToTop.svelte';
 	import FileCode from 'lucide-svelte/icons/file-code';
 	import FileCode2 from 'lucide-svelte/icons/file-code-2';
 	import Atom from 'lucide-svelte/icons/atom';
@@ -53,12 +54,6 @@
 	import { projects } from '$lib/data/projects.js';
 
 	const featuredProjects = projects.filter((p) => p.featured);
-
-	let scrollY = $state(0);
-
-	function scrollToTop() {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}
 
 	const tocSections = [
 		{ id: 'about', label: 'About Me' },
@@ -229,15 +224,13 @@
 	mobileCoverImage="/Banner_Linked_mobile.png"
 	domicile="Jakarta, Indonesia | GMT+7"
 >
-	<!-- <NotionBlock> -->
-	<!-- <div class="h-4"></div> Spacer -->
-	<!-- </NotionBlock> -->
-
 	<NotionBlock>
-		<h2 id="about" class="text-2xl font-semibold mb-2 mt-4 text-[var(--notion-text)]">About Me</h2>
+		<h2 id="about" class="text-2xl font-semibold mb-2 mt-4 text-[var(--notion-text)]" use:reveal>
+			About Me
+		</h2>
 	</NotionBlock>
 	<NotionBlock>
-		<p class="text-[16px] leading-[1.5]">
+		<p class="text-[16px] leading-[1.5]" use:reveal>
 			Hi there! I'm <span class="font-bold text-[var(--notion-text)]">Dimas</span> Andhika a
 			passionate <span class="font-bold text-[var(--notion-text)]">Software Engineer</span> who loves
 			building something that is useful and innovative as well as considering best practice for a clean,
@@ -252,15 +245,19 @@
 	<NotionBlock>
 		<div
 			class="grid grid-cols-2 sm:grid-cols-4 rounded border border-[var(--notion-border)] bg-[var(--notion-gray)] mt-4 overflow-hidden"
+			use:reveal
 		>
 			{#each stats as stat, i}
 				<div
-					class="flex flex-col items-center justify-center py-3 px-2 border-[var(--notion-border)]
+					class="reveal-child flex flex-col items-center justify-center py-3 px-2 border-[var(--notion-border)] transition-colors hover:bg-[var(--notion-hover)]
 					{i % 2 === 1 ? 'border-l' : ''}
 					{i < 2 ? 'border-b sm:border-b-0' : ''}
 					{i === 2 ? 'sm:border-l' : ''}"
+					style="--i: {i}"
 				>
-					<span class="text-xl font-semibold text-[var(--notion-text)]">{stat.value}</span>
+					<span class="text-xl font-semibold text-[var(--notion-text)] tabular-nums" use:countUp={stat.value}
+						>{stat.value}</span
+					>
 					<span class="text-[11px] uppercase tracking-wide text-[#9b9a97] mt-0.5 text-center">
 						{stat.label}
 					</span>
@@ -271,45 +268,44 @@
 
 	<NotionBlock>
 		<div
-			class="bg-[var(--notion-gray)] p-4 rounded mt-4 mb-4 border border-[var(--notion-border)] flex items-start"
+			class="callout bg-[var(--notion-gray)] p-4 rounded mt-4 mb-4 border border-[var(--notion-border)] flex items-start"
+			use:reveal
 		>
-			<span class="mr-2 flex-shrink-0">💡</span>
+			<span class="section-emoji mr-2 flex-shrink-0">💡</span>
 			<span class="font-medium text-[var(--notion-text)]"
 				>Currently open for Internship or Freelance opportunities! Hit me up on <a
 					href="https://www.linkedin.com/in/dimasandhk/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="underline hover:text-gray-600">LinkedIn</a
+					class="notion-link">LinkedIn</a
 				>
 				or
-				<a href="mailto:dimasandhikadiputra@gmail.com" class="underline hover:text-gray-600"
-					>Email</a
-				>!</span
+				<a href="mailto:dimasandhikadiputra@gmail.com" class="notion-link">Email</a>!</span
 			>
 		</div>
 	</NotionBlock>
 
 	<!-- Skills Section -->
 	<NotionBlock>
-		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
-			<span class="text-xl">🛠️</span>
+		<div class="section-rule flex items-center gap-2 pb-2 mb-4 mt-8" use:reveal>
+			<span class="section-emoji text-xl">🛠️</span>
 			<h2 id="skills" class="text-xl font-semibold text-[var(--notion-text)]">Skills</h2>
 		</div>
 	</NotionBlock>
 
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5 mb-8 items-start">
 		{#each skillGroups as group}
-			<div class="flex flex-col gap-2 {group.wide ? 'md:col-span-2 lg:col-span-2' : ''}">
+			<div class="flex flex-col gap-2 {group.wide ? 'md:col-span-2 lg:col-span-2' : ''}" use:reveal>
 				<div class="flex items-center gap-2 font-medium text-[var(--notion-text)] mb-1 pl-1">
 					<group.icon size={18} />
 					{group.label}
 					<span class="text-xs font-normal text-[#9b9a97]">{group.skills.length}</span>
 				</div>
 				<div class="flex flex-wrap gap-2">
-					{#each group.skills as skill}
+					{#each group.skills as skill, j}
 						<div
-							class="notion-tag flex items-center gap-1.5 px-2.5 py-1.5 rounded text-sm"
-							style={tagStyle(skill.name)}
+							class="notion-tag skill-tag reveal-child flex items-center gap-1.5 px-2.5 py-1.5 rounded text-sm"
+							style="{tagStyle(skill.name)} --i: {j};"
 						>
 							<skill.icon size={14} />
 							{skill.name}
@@ -322,9 +318,10 @@
 
 	<NotionBlock>
 		<div
-			class="bg-[var(--notion-gray)] p-3 rounded mt-2 mb-8 flex items-start gap-3 text-[15px] text-[var(--notion-text)]"
+			class="callout bg-[var(--notion-gray)] p-3 rounded mt-2 mb-8 flex items-start gap-3 text-[15px] text-[var(--notion-text)]"
+			use:reveal
 		>
-			<span class="mt-0.5 flex-shrink-0">🌱</span>
+			<span class="section-emoji mt-0.5 flex-shrink-0">🌱</span>
 			<span class="font-medium">
 				I'm always eager to learn! I am open to challenging opportunities that require diving into
 				new fields and mastering new technologies.
@@ -334,8 +331,8 @@
 
 	<!-- Experience Section -->
 	<NotionBlock>
-		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
-			<span class="text-xl">💼</span>
+		<div class="section-rule flex items-center gap-2 pb-2 mb-4 mt-8" use:reveal>
+			<span class="section-emoji text-xl">💼</span>
 			<h2 id="experience" class="text-xl font-semibold text-[var(--notion-text)]">Experience</h2>
 		</div>
 	</NotionBlock>
@@ -343,7 +340,7 @@
 	<div class="mb-8 flex flex-col gap-6">
 		{#each experienceData as exp}
 			<div class="flex flex-col gap-1">
-				<div class="flex items-center gap-2">
+				<div class="flex items-center gap-2" use:reveal>
 					{#if exp.logo}
 						<img
 							src={exp.logo}
@@ -351,7 +348,7 @@
 							width="28"
 							height="28"
 							loading="lazy"
-							class="w-7 h-7 rounded flex-shrink-0 border border-[var(--notion-border)] object-cover"
+							class="reveal-child w-7 h-7 rounded flex-shrink-0 border border-[var(--notion-border)] object-cover"
 						/>
 					{/if}
 					<h3 class="text-lg font-semibold text-[var(--notion-text)]">{exp.company}</h3>
@@ -361,7 +358,7 @@
 				</div>
 
 				{#each exp.roles as role}
-					<div class="mt-2 pl-4 border-l-2 border-[var(--notion-border)]">
+					<div class="timeline-rule mt-2 pl-[18px]" use:reveal>
 						<div class="font-medium text-[var(--notion-text)]">{role.title}</div>
 						<div class="text-sm text-[#9b9a97] mb-1">{role.duration}{#if role.location} • {role.location}{/if}</div>
 						{#if role.tasks && role.tasks.length > 0}
@@ -373,10 +370,10 @@
 						{/if}
 						{#if role.skills && role.skills.length > 0}
 							<div class="flex flex-wrap gap-1.5 mt-2">
-								{#each role.skills as skill}
+								{#each role.skills as skill, j}
 									<span
-										class="notion-tag px-2 py-0.5 rounded text-xs"
-										style={tagStyle(skill)}
+										class="notion-tag reveal-child px-2 py-0.5 rounded text-xs"
+										style="{tagStyle(skill)} --i: {j};"
 									>
 										{skill}
 									</span>
@@ -391,51 +388,54 @@
 
 	<!-- Achievements Section -->
 	<NotionBlock>
-		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
-			<span class="text-xl">🏆</span>
+		<div class="section-rule flex items-center gap-2 pb-2 mb-4 mt-8" use:reveal>
+			<span class="section-emoji text-xl">🏆</span>
 			<h2 id="achievements" class="text-xl font-semibold text-[var(--notion-text)]">
 				Achievements
 			</h2>
 			<a
 				href="/projects"
-				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors no-underline"
+				class="group ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] hover:text-[var(--notion-text)] px-2 py-1 rounded transition no-underline active:scale-95 focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 			>
 				<span>More details on /projects</span>
-				<span class="text-[10px]">↗</span>
+				<span
+					class="text-[10px] inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+					>↗</span
+				>
 			</a>
 		</div>
 	</NotionBlock>
 
 	<NotionBlock>
 		<ul class="list-disc pl-6 space-y-2 text-[var(--notion-text)]">
-			<li>
+			<li use:reveal>
 				<span class="font-bold"
 					>2nd Place on Garuda Hacks 7.0 Agriculture and Food System Track (2026)</span
 				> - Developed Tambak, an application that supports sustainable aquaculture through biofloc technology,
 				real-time water quality monitoring, and treatment recommendations.
 			</li>
-			<li>
+			<li use:reveal>
 				<span class="font-bold">2nd Place on GEMASTIK XVIII Smart City Division (2025)</span> - Developed
 				an innovative smart city solution for Jakarta's flood control system.
 			</li>
-			<li>
+			<li use:reveal>
 				<span class="font-bold">2nd Place on Technology Development - KRTI (2025)</span> - Designed
 				and implemented advanced control systems for unmanned aerial vehicles for disaster surveillance
 				and response.
 			</li>
-			<li>
+			<li use:reveal>
 				<span class="font-bold"
 					>3rd Place on Web Development Hackathon Fit Competition 2025 - UKSW</span
 				> - Developed an interactive mapping platform designed to translate complex environmental data
 				into intuitive, personalized visuals
 			</li>
-			<li>
+			<li use:reveal>
 				<span class="font-bold"
 					>Finalist Teknofest 2025 International UAV Competition Free Mission Category</span
 				> - Finalist in the International UAV Competition Free Mission Category, showcasing a custom auto
 				mapping flight, autonomous system, and cloud surveillance system.
 			</li>
-			<li>
+			<li use:reveal>
 				<span class="font-bold"
 					>Best Methodology Award on Technology Development - KRTI (2024)</span
 				> - Recognized for comprehensive methodology of our innovation and systematic engineering approach.
@@ -448,22 +448,25 @@
 	</NotionBlock>
 
 	<NotionBlock>
-		<div class="flex items-center gap-2 border-b border-[var(--notion-border)] pb-2 mb-4 mt-8">
-			<span class="text-xl">🚀</span>
+		<div class="section-rule flex items-center gap-2 pb-2 mb-4 mt-8" use:reveal>
+			<span class="section-emoji text-xl">🚀</span>
 			<h2 id="projects" class="text-xl font-semibold text-[var(--notion-text)]">
 				Selected Projects
 			</h2>
 			<button
-				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] px-2 py-1 rounded transition-colors focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
+				class="ml-auto flex items-center gap-1 text-xs text-[#9b9a97] hover:bg-[var(--notion-hover)] hover:text-[var(--notion-text)] px-2 py-1 rounded transition active:scale-95 focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
 				onclick={() => (viewMode = viewMode === 'gallery' ? 'list' : 'gallery')}
 			>
-				{#if viewMode === 'gallery'}
-					<List size={14} />
-					<span>List View</span>
-				{:else}
-					<LayoutGrid size={14} />
-					<span>Gallery View</span>
-				{/if}
+				{#key viewMode}
+					<span class="flex" in:spin={{ from: -45, duration: 260 }}>
+						{#if viewMode === 'gallery'}
+							<List size={14} />
+						{:else}
+							<LayoutGrid size={14} />
+						{/if}
+					</span>
+				{/key}
+				<span>{viewMode === 'gallery' ? 'List View' : 'Gallery View'}</span>
 			</button>
 		</div>
 	</NotionBlock>
@@ -477,22 +480,15 @@
 	<GithubContributions />
 
 	<NotionBlock>
-		<div class="text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4">
-			Built with 💓 by Dimas Andhika himself • {new Date().getFullYear()}
+		<div
+			class="beat-parent text-sm text-[#9b9a97] mt-12 mb-8 border-t border-[var(--notion-border)] pt-4"
+			use:reveal={{ variant: 'fade' }}
+		>
+			Built with <span class="heartbeat">💓</span> by Dimas Andhika himself • {new Date().getFullYear()}
 		</div>
 	</NotionBlock>
 </NotionPage>
 
 <TableOfContents sections={tocSections} />
 
-<svelte:window bind:scrollY />
-
-{#if scrollY > 300}
-	<button
-		class="fixed bottom-8 right-8 p-3 bg-[var(--notion-bg)] shadow-lg rounded-full border border-[var(--notion-border)] text-[var(--notion-text)] hover:bg-[var(--notion-hover)] transition-all z-50 cursor-pointer focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--notion-bg)]"
-		onclick={scrollToTop}
-		aria-label="Back to top"
-	>
-		<ArrowUp size={20} />
-	</button>
-{/if}
+<BackToTop />
