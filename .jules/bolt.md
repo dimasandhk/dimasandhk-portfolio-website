@@ -2,7 +2,13 @@
 
 **Learning:** In SvelteKit applications (and single-page apps generally), combining independent API data fetches into a single blocking `Promise.all` is an anti-pattern when they hydrate unrelated UI components. For instance, the YouTube fetch in the linktree route was being artificially delayed by the Spotify fetches. The UI component for YouTube does not depend on Spotify data, so they should load and render independently to improve perceived performance and Time to Interactive (TTI).
 **Action:** Extract unrelated concurrent asynchronous operations into separate concurrent execution paths. Await them separately, use independent promise chains, or wrap them in independent async IIFEs so that each UI component can render as soon as its required data is available.
+
 ## 2024-04-20 - Intl.DateTimeFormat in Loops
 
 **Learning:** Re-instantiating `Intl.DateTimeFormat` or calling `toLocaleString` on `Date` objects repeatedly inside loops incurs a significant performance penalty compared to doing it once outside the loop.
 **Action:** When parsing dates or numbers using Intl APIs within a loop, instantiate the formatter once outside the loop and use `.format()` inside the loop to avoid recreating the expensive object during each iteration.
+
+## 2025-05-01 - Hoisting string operations in Svelte 5 $derived.by
+
+**Learning:** When using Svelte 5's reactivity runes, performing redundant string operations (like `.trim()` and `.toLowerCase()`) directly inside a `$derived` array filtering loop is a performance anti-pattern because the operations are unnecessarily executed per array element, scaling linearly with data size O(N).
+**Action:** Use `$derived.by(() => { ... })` instead of a plain `$derived(expr)`. By opening a function block, you can safely hoist identical, static computations out of the `filter` loop and evaluate them exactly once, achieving O(1) overhead before the O(N) array iteration runs.
