@@ -50,6 +50,15 @@
 	let topTracks = $state<SpotifyTrack[]>([]);
 	let isSpotifyLoading = $state(true);
 
+	// ⚡ Bolt: Precompute formatted dates with a hoisted Intl.DateTimeFormat instance to avoid recreating it in loop
+	const dateFormatter = new Intl.DateTimeFormat();
+	let formattedVideos = $derived(
+		videos.map((video) => ({
+			...video,
+			formattedPublishedAt: dateFormatter.format(new Date(video.snippet.publishedAt))
+		}))
+	);
+
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
@@ -150,7 +159,7 @@
 		</NotionBlock>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			{#each videos as video}
+			{#each formattedVideos as video}
 				<NotionBlock>
 					<div
 						class="rounded-lg overflow-hidden border border-[var(--notion-border)] bg-[var(--notion-bg)] transition duration-200 hover:shadow-md hover:-translate-y-0.5"
@@ -177,7 +186,7 @@
 								{video.snippet.title}
 							</a>
 							<div class="text-xs text-[#9b9a97] mt-1">
-								{new Date(video.snippet.publishedAt).toLocaleDateString()}
+								{video.formattedPublishedAt}
 							</div>
 						</div>
 					</div>
