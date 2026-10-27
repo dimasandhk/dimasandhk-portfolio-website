@@ -101,7 +101,7 @@
 		<span class="section-emoji text-xl">🟩</span>
 		<h2 id="github" class="text-xl font-semibold text-[var(--notion-text)]">
 			How Active I Am on GitHub <span class="text-sm text-[#9b9a97]"
-				>(currently using GitLab on my internship)</span
+				>(currently using Bitbucket on my internship)</span
 			>
 		</h2>
 		<span class="ml-auto text-xs text-[#9b9a97] tabular-nums"
